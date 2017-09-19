@@ -1,13 +1,13 @@
 $(function(){
-	//ÉèÖÃËùÓĞ ³ıµÇÂ½£¬Ö÷Ò³µÄbody¸ß¶È
+
 	$('.bodyHeight').css('height',($(document).outerHeight()+'px'));
-	//ËùÓĞ·µ»Ø °´Å¥ ·µ»ØÉÏÒ»¼¶
+
 	$('.backButton').click(function(){
 		window.history.back();
 	})
-	//ÓÃ»§Ö÷Ò³¼ÓÔØ¶¯»­
+
 	
-	//½çÃæÍ¨ÓÃ Ñ¡ÔñÏÔÊ¾µÄÁĞ±í
+
 	$('.changeTypeSelect').click(function(){
 			if($(this).index() == 0){
 				$(this).siblings().removeClass('changeTypeSelect_selected');
@@ -41,11 +41,11 @@ $(function(){
 				$('.selected_3').slideDown();
 			}
 	});
-	////½çÃæÍ¨ÓÃ µã»÷Ê±¼ä ÏÔÊ¾Ã÷Ï¸ĞÅÏ¢	
+	////ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ ï¿½ï¿½Ê¾ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢	
 	$('.details_Data').click(function(){
 		$(this).parent().find('.details_MessageRow').slideToggle();
 	})
-	//½çÃæÍ¨ÓÃ µã»÷input ÏÔÊ¾Ñ¡ÔñÁĞ±í
+	//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ ï¿½ï¿½ï¿½input ï¿½ï¿½Ê¾Ñ¡ï¿½ï¿½ï¿½Ğ±ï¿½
 	$('.forInputSelect').click(function(){
 		$('.inputSelectOuterDiv').css({'display':'block'});
 		setTimeout(function(){
