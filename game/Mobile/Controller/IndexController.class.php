@@ -8,7 +8,6 @@ class IndexController extends CommonController {
 		$userid = session('userid');
 		$dbu = M('user');
 		$userInfo = $dbu->where('userid='.$userid)->find();
-		dump($userInfo);die;
 		if($userInfo['leve']==1){
 			$userInfo['levename']="平民";
 		}
