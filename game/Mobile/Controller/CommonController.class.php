@@ -7,9 +7,7 @@ class CommonController extends Controller {
           if(!session('userid')){
             redirect(U('Regus/login'));
            }
-         /*$userid=session('userid');
-         $this->account=$account=M('user')->where("userid=$userid")->getField('account');  
-         $this->notin();*/
+
     }
 
     
