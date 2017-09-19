@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="always" name="referrer">
+    <meta charset="UTF-8">
+    <title>会员列表</title>
+
+
+<script type="text/javascript" src="__PUBLIC__/inputtime/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/inputtime/jquery.date_input.pack.js"></script>
+<link href="__PUBLIC__/inputtime/datePicker.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<script type="text/javascript">
+    $(function(){
+    $('#datePicker').date_input();
+    $('#datePicker2').date_input();
+    })
+</script>
+    <style>
+.date_selector { font:12px/1.5 Arial; color:#666; background:#fff;}
+        td{
+            width:200px;
+            align:center;
+        }
+    .pages a,.pages span {
+    display:inline-block;
+    padding:2px 5px;
+    margin:0 1px;
+    border:1px solid #f0f0f0;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
+.pages a,.pages li {
+    display:inline-block;
+    list-style: none;
+    text-decoration:none; color:#58A0D3;
+}
+.pages a.first,.pages a.prev,.pages a.next,.pages a.end{
+    margin:0;
+}
+.pages a:hover{
+    border-color:#50A8E6;
+}
+.pages span.current{
+    background:#50A8E6;
+    color:#FFF;
+    font-weight:700;
+    border-color:#50A8E6;
+}
+.pages div{
+    float: right;
+}
+
+
+
+table td{
+    height: 40px;
+}
+
+</style>
+
+
+<body style="background: #ffffff">
+
+
+<div class="jbpz_bottom">
+     <h2 style="color: red;">会员列表(24小时未打款用户)</h2>
+        <div class="xxgl_bottom_t">
+            <form id="form_search" action="{:U('User/user_list24')}" method="post">
+            <span style="margin-left:0px;">搜索</span>
+                <input type="text" name="start_time" id="datePicker" style="width: 80px;" placeholder="选择开始日期"/>
+                <input type="text" name="end_time"  id="datePicker2" style="width: 80px;" placeholder="点击结束日期"/>
+                    <select name="condition">
+                        <option value="userid">编号</option>
+                        <option value="mobile">会员账号</option>
+                        <option value="true_name">姓名</option>
+                        <option value="wealthb">财富币</option>
+                        <option value="parent_id">推荐人账号</option>
+                    </select>
+                    <input type="text" name="text"/>
+                    <select name="farm_lock">
+                        <option value="">农田是否锁定</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                    <select name="lockuser">
+                        <option value="">用户是否锁定</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                    <input type="hidden" value="1" name="where">
+                <input type="submit" id="search" value="提交搜索">
+            </form>
+        </div>
+
+
+   <table border="1" align="center" style=" border-collapse:collapse;border:1px solid #abcdef;">
+                    <tr>
+                        <td align="center">编号</td>
+                        <td align="center">会员账号</td>
+                        <td align="center">姓名</td>
+                        <td align="center">财富币</td>
+                        <td align="center">农田锁</td>
+                        <td align="center">用户锁</td>
+                        <td align="center">注册时间</td>
+                        <td align="center">推荐人账号</td>
+                        <td align="center" colspan="2">操作</td>
+                    </tr>
+                    <foreach name="userArr" item="value" key="key">
+                        <tr>
+                            <td align="center">{$value.userid}</td>
+                            <td align="center">{$value.mobile}</td>
+                            <td align="center">{$value.true_name}</td>
+                            <td align="center">{$value.wealthb}</td>
+                            <td align="center">
+                                <?php if($value['farm_lock']==0){
+                                 echo "否";
+                                }else if($value['farm_lock']==1){
+                                 echo "是";
+                                }
+                                ?>
+                            </td>
+                            <td align="center">
+                                        <?php echo lock_user($value['lockuser']);?>
+                            </td>
+
+                            <td align="center">{$value.add_time|date="Y-m-d H:i:s",###}</td>
+                            <td align="center">
+
+                          <?php  echo $mobile=M('user')->where("userid=$value[parent_id]")->getField('mobile'); ?>
+
+                            </td>
+                            <td align="center">
+								<a href="{:U(MODULE_NAME.'/User/input_user',array('userid'=>$value['userid']))}" target="_Blank" style="color:blue" >
+									进入用户
+								</a>
+									<br/>
+								<a href="{:U(MODULE_NAME.'/User/updateuser',array('userid'=>$value['userid']))}"   style="color:blue" >
+									修改信息/密码
+								</a>
+                            </td>
+                        </tr>
+                        
+                        </foreach>
+                        <tr>
+                            <td colspan="10">
+                                    <div class="pages">
+                                       {$pageshow}
+                                    </div>
+                            </td>
+                        </tr>
+                </table>
+</div>
+
+
+</body>
+</html>
+

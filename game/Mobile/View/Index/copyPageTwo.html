@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/copypagestyle.css">
+	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <style>
+	</style>
+</head>
+<body  class="bodyPageWidth">
+<div class="pageTwoTitleDiv">
+	
+    <!--<div class="waibuyuanquan zuobiaopan">
+        <div class="zhongxinxuxian"></div>
+        <div class="neibuyuanquan">
+            <div class="xuanzhuanzhongxin">
+                <div class="zhizhen">                </div>
+            </div>
+        </div>
+    </div>
+    <div class="waibuyuanquan youbiaopan">
+        <div class="zhongxinxuxian"></div>
+        <div class="neibuyuanquan">
+            <div class="xuanzhuanzhongxin">
+                <div class="zhizhen">          </div>
+            </div>
+        </div>
+    </div>-->
+	<div class="pageTwoTitleDiv-Row">
+		<div  class="pageTwoTitleDiv-RowLeftDiv oneRowLeft" style="background-color: rgb(0, 193, 239);">
+			<div class="pageTwoTitleDiv-RowTitle oneRowLeftSkew">现金币余额</div>
+			<div class="pageTwoTitleDiv-RowMessage oneRowLeftSkew">10000000</div>
+		</div>
+		<div  class="pageTwoTitleDiv-RowRightDiv oneRowRight" style="background-color: rgba(243, 157, 18, 0.98);">
+			<div class="pageTwoTitleDiv-RowTitle oneRowRightSkew">报单币</div>
+			<div class="pageTwoTitleDiv-RowMessage oneRowRightSkew">10000000</div>
+		</div>
+	</div>
+	<div class="pageTwoTitleDiv-Row">
+		<div  class="pageTwoTitleDiv-RowLeftDiv twoRowLeft" style="background-color:rgba(0, 167, 90, 0.98);">
+			<div class="pageTwoTitleDiv-RowMessage twoRowLeftSkew">10000000</div>
+			<div class="pageTwoTitleDiv-RowTitle twoRowLeftSkew">购车基金</div>
+		</div>
+		<div  class="pageTwoTitleDiv-RowRightDiv twoRowRight" style="background-color: rgb(221, 74, 56);">
+			<div class="pageTwoTitleDiv-RowMessage twoRowRightSkew">10000000</div>
+			<div class="pageTwoTitleDiv-RowTitle twoRowRightSkew">奖金累计</div>
+			
+		</div>
+	</div>
+    <div class="shoujihao">{$userInfo.account}</div>
+    <div class="xingming">{$userInfo.username}</div>
+    <div class="shenfen">{$userInfo.levename}</div>
+</div> 
+	<div class="body_control_functions" >
+        <div class="body_control_functions_div">
+            <img src="__PUBLIC__/img/5.png" alt="" class="body_control_functions_divImageTitle">
+            <div class="body_control_functions_divBottomTitle">系统首页</div>
+        </div>
+        <a href="usersettings/user_systemnotice.html" class="body_control_functions_div">
+            <img src="__PUBLIC__/img/2.png" alt="" class="body_control_functions_divImageTitle">
+            <div class="body_control_functions_divBottomTitle">系统公告</div>
+        </a>
+        <a href="usersettings/user_privateemail.html" class="body_control_functions_div">
+            <img src="__PUBLIC__/img/4.png" alt="" class="body_control_functions_divImageTitle">
+            <div class="body_control_functions_divBottomTitle">站内信件</div>
+        </a>
+        <div class="body_control_functions_div">
+            <img src="__PUBLIC__/img/1.png" alt="" class="body_control_functions_divImageTitle">
+            <div class="body_control_functions_divBottomTitle">退出登陆</div>
+        </div>
+
+    </div>
+    <div class="body_control_selectDiv">
+
+        <div class="body_control_Div">
+            <img src="__PUBLIC__/img/14.png" alt="" class="body_control_titleImage">
+            <span class="body_control_message">团队管理</span>
+            <div class="body_control_titleRight">
+                <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            </div>
+        </div>
+		<!--团队管理二级菜单-->
+		<div class="body_control_selectDiv tuanduiguanli" style="margin:50px 0;display:none;">
+
+        		<div class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/19.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">激活帐号</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</div>
+				<a href="teamcontrol/team_recommenddetailed.html" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/22.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">推荐列表</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<a href="{:U('Datamodify/structure')}" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/25.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">结构管理</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+    	</div>
+		<!--团队管理二级菜单   end-->
+		
+
+        <div class="body_control_Div" style="margin-top: 0;border-top:none;">
+            <img src="__PUBLIC__/img/6.png" alt="" class="body_control_titleImage">
+            <span class="body_control_message">业务管理</span>
+            <div class="body_control_titleRight">
+                <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            </div>
+        </div>
+		
+		<!--业务管理二级菜单-->
+		<div class="body_control_selectDiv yewuguanli" style="margin:50px 0;display:none;">
+
+        		<a href="{:U('Index/user_register')}" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/10.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">注册会员</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<a href="servicemanagement/user_memberupgrade.html" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/18.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">会员升级</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<a href="servicemanagement/user_reportcenter.html" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/26.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">报单中心</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<div class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/15.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">报单列表</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</div>
+    	</div>
+		<!--业务管理二级菜单   end-->
+        <div class="body_control_Div" style="margin-top: 0;border-top:none;">
+            <img src="__PUBLIC__/img/12.png" alt="" class="body_control_titleImage">
+            <span class="body_control_message">财务管理</span>
+            <div class="body_control_titleRight">
+                <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            </div>
+        </div>
+		
+		<!--财务管理二级菜单-->
+		<div class="body_control_selectDiv caiwuguanli" style="margin:50px 0;display:none;">
+
+        		<a href="financemanagement/finance_bonusdetailed.html" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/21.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">奖金记录</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<a href="financemanagement/finance_detailed.html" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/8.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">资金明细</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<a  href="financemanagement/finance_fundconversion.html" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/23.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">资金转换</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<a  href="financemanagement/finance_transfer.html" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/16.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">资金转账</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<a  href="financemanagement/finance_withdrawals.html" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/11.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">奖金体现</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+    	</div>
+		<!--财务管理二级菜单   end-->
+		<div class="body_control_Div" style="margin-top: 0;border-top:none;">
+            <img src="__PUBLIC__/img/17.png" alt="" class="body_control_titleImage">
+            <span class="body_control_message">个人设置</span>
+            <div class="body_control_titleRight">
+                <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            </div>
+        </div>
+		
+		<!--个人设置二级菜单-->
+		<div class="body_control_selectDiv gerenshezhi" style="margin:50px 0;display:none;">
+
+        		<a href="{:U('Datamodify/user_message')}" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/24.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">个人信息</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<a href="{:U('Datamodify/user_bankmessage')}" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/13.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">银行信息</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				<a href="{:U('Datamodify/user_passwordchange')}" class="body_control_Div listTwoColor" style="margin-top:0;">
+            		<img src="__PUBLIC__/img/27.png" alt="" class="body_control_titleImage">
+            		<span class="body_control_message">修改密码</span>
+            		<div class="body_control_titleRight">
+                		<img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            		</div>
+        		</a>
+				
+    	</div>
+		<!--个人设置二级菜单   end-->
+    </div>
+    <div class="loginBottomMessage" style="position:static;margin-top:300px;">
+        <img src="__PUBLIC__/img/loginBottom.gif" alt="">
+        联系在线客服
+    </div>
+</body>
+<script>
+    function pageReload() {
+        location.reload()
+    }
+    addEventListener('resize', pageReload, false);
+	$('.bodyPageWidth').css('height',$(window).outerHeight() + "px")
+  
+	document.getElementsByClassName('body_control_functions_div')[3].onclick = function (){
+        location.href = "{:U(MODULE_NAME.'/Regus/login')}";
+    }
+</script>
+<script>
+    $(function(){
+	
+        var moveDeg_left=100;
+        var moveDeg_right=70;
+        $('.zuobiaopan .xuanzhuanzhongxin').css('transform','rotateZ('+(moveDeg_left) +'deg)')
+        $('.youbiaopan .xuanzhuanzhongxin').css('transform','rotateZ('+(moveDeg_right) +'deg)')
+		
+		$('.body_control_Div').click(function(){
+			$(this).siblings().removeClass('body_control_Div_Click');
+			$(this).addClass('body_control_Div_Click');
+			if($(this).find('.body_control_message').text() == "团队管理"){
+				if($('.tuanduiguanli').css('display') == 'block'){
+					$('.listTwoColor').parent().slideUp();
+					$('.body_control_Div').removeClass('body_control_Div_Click');
+					return;
+				}
+				$('.listTwoColor').parent().slideUp();
+				$('.tuanduiguanli').slideDown();
+			}else if($(this).find('.body_control_message').text() == "业务管理"){
+				if($('.yewuguanli').css('display') == 'block'){
+					$('.listTwoColor').parent().slideUp();
+					$('.body_control_Div').removeClass('body_control_Div_Click');
+					return;
+				}
+				$('.listTwoColor').parent().slideUp();
+				$('.yewuguanli').slideDown();
+			}else if($(this).find('.body_control_message').text() == "财务管理"){
+				if($('.caiwuguanli').css('display') == 'block'){
+					$('.listTwoColor').parent().slideUp();
+					$('.body_control_Div').removeClass('body_control_Div_Click');
+					return;
+				}
+				$('.listTwoColor').parent().slideUp();
+				$('.caiwuguanli').slideDown();
+			}else if($(this).find('.body_control_message').text() == "个人设置"){
+				if($('.gerenshezhi').css('display') == 'block'){
+					$('.listTwoColor').parent().slideUp();
+					$('.body_control_Div').removeClass('body_control_Div_Click');
+					return;
+				}
+				$('.listTwoColor').parent().slideUp();
+				$('.gerenshezhi').slideDown();
+			}
+		})
+		setTimeout(function(){
+			$('.pageTwoTitleDiv-RowLeftDiv').addClass('pageTwoTitleDiv-loadLeftMove');		
+			$('.pageTwoTitleDiv-RowRightDiv').addClass('pageTwoTitleDiv-loadRightMove');	
+		},500);
+    })
+
+</script>
+</html>

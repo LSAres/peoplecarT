@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/stylesheet.css">
+	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+	<script src="__PUBLIC__/js/comment.js"></script>
+    <style></style>
+</head>
+<body  class="bodyHeight">
+<!--topTitle -->
+<div class="pageTitleDiv">
+	<div class="backButton">
+		返回
+	</div>
+	<span class="pageTitleText">
+		银行信息
+	</span>
+</div>
+
+<!---->
+<form action="{:U(MODULE_NAME.'/Datamodify/updateBankInfo')}" method="post" id="myform">
+<div class="messageDidsplayDiv">
+	<div class="leftMessage">真是姓名:</div>
+	<input type="text" value="{$bankInfo.realname}" placeholder="无"  name="realname"  class="rightMessage" />
+	
+</div>
+<!---->
+<div class="messageDidsplayDiv">
+	<div class="leftMessage">收款银行:</div>
+	<input type="text" value="{$bankInfo.bank_name}" name="bank_name" placeholder="例：中国银行"   class="rightMessage" />
+	
+	
+</div>
+<!---->
+<div class="messageDidsplayDiv">
+	<div class="leftMessage">银行卡号:</div>
+	<input type="text" value="{$bankInfo.bank_card}" name="bank_card" placeholder="无"   class="rightMessage" />
+	
+</div>
+<!---->
+<div class="messageDidsplayDiv">
+	<div class="leftMessage">开户地址:</div>
+	<input type="text" value="{$bankInfo.bank_address}" name="bank_address" placeholder="无" class="rightMessage" />
+	
+</div>
+<!--确认按钮-->
+<div class="etermineButton" onClick="test()">
+	确认
+</div>
+</form>
+</body>
+
+<script>
+   function test()
+	{
+		document.getElementById("myform").submit();    
+	}
+
+</script>
+</html>

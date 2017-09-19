@@ -1,0 +1,50 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/ht_index.css" type="text/css">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body style="background:#fff;height: 1000px;">
+<form action="{:U('admin/User/input_user')}" id="add_form" method="post">
+
+    <div class="jbpz_bottom">
+        <h3>
+            输入你的密码</h3>
+        <em>登录密码：</em>
+        <input type="password" id="spid" class="text2" name="manage_pw" value=""
+         >&nbsp;&nbsp;<i>*</i>
+        <br>
+
+        <div class="anniu">
+            <input type="button"  id="submit_btn" value="进入">
+
+        </div>
+    </div>
+</form>
+
+
+
+<style type="text/css">
+    textarea{
+        margin-top: 10px;
+        margin-left: 30px;
+        width: 358px;
+        height: 90px;
+    }
+</style>
+
+<script type="text/javascript">
+    $('#submit_btn').click(function(){
+
+        if(!confirm('确认要进入?')){
+            return false;
+        }
+        $('#add_form').submit();
+
+    })
+
+</script>
+
+</body>
+</html>

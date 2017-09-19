@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<title>{:C('SITE_NAME')}</title>
+
+<!--html,body { margin: 0; padding: 0; overflow: hidden;}
+<!--.container2 {position:absolute;width:100%; height:auto;  overflow: hidden;}-->
+<!--iframe { width: 100% }-->
+<style>
+@media screen and (min-width: 320px) {
+background: url('__PUBLIC__/Mobile/images/4.jpg') no-repeat ;
+html,body { margin: 0; padding: 0; overflow: hidden;}
+.container2 {top:0px;left:0px;position:absolute;width:100%; height:auto; overflow:hidden;  }
+iframe { width: 100%; }
+}
+@media only screen and (min-width: 1000px){
+background: url('__PUBLIC__/Mobile/images/4.jpg') no-repeat ;
+html,body { margin: 0; padding: 0; overflow: hidden;}
+.container2 {top:0px;left:0px;position:absolute;width:35%; height:auto; overflow: hidden; margin-left:450px;}
+iframe { width: 100%;}
+
+
+}
+
+
+
+</style>
+</head>
+<body>
+<div class="container2" style="height:100%;">
+	<iframe src="{:U('Mobile/Regus/login')}"  frameborder="0"></iframe>
+</div>
+<script src="__PUBLIC__/js/jquery.min.js"></script>
+<script>
+$(function(){
+	var h = $(window).height();
+	$('iframe').height(h);
+});
+</script>
+</body>
+</html>

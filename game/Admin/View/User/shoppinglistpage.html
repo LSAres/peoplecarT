@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="always" name="referrer">
+    <meta charset="UTF-8">
+    <title>会员列表</title>
+
+
+<script type="text/javascript" src="__PUBLIC__/inputtime/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/inputtime/jquery.date_input.pack.js"></script>
+<link href="__PUBLIC__/inputtime/datePicker.css" rel="stylesheet" type="text/css" />
+</head>
+
+<style>
+	table{
+		width:100%;
+		
+		
+	}
+	tr{
+		width:100%;
+		display:flex;
+	}
+	th{
+		flex:1;
+		border:solid 1px #dedede;
+	}
+	td{
+		flex:1;
+		text-align:center;
+		border:solid 1px #dedede;
+	}
+	.commodityImage{
+		height:4rem;
+		width:4rem;
+		border:solid 1px red;
+	}
+	.commodityName{
+		line-height:4rem;
+	}
+
+</style>
+
+
+<body style="background: #ffffff">
+<a href="{:U('User/addgoods')}" style="border:solid 1px;background-color:rgba(86, 161, 228, 0.5);border-radius:5px;text-decoration:none;align:center;position:relative;left:46%;">添加新商品</a>
+	<table>
+		<tr>
+			<th>商品图片</th>
+			<th>商品名称</th>
+			<th>已夺数量</th>
+			<th>执行操作</th>
+		</tr>
+		<foreach name="productInfo" item="vo">
+		<tr>
+			<td> <img src="{$vo.img}" class="commodityImage"/></td>
+			<td class="commodityName"> 
+				{$vo.name}
+			</td>
+			<td class="commodityName1"> 
+				{$vo.shengyu}
+			</td>
+			<td>
+				<div >
+					<a href="{:U('user/DeleteGood',array('id'=>$vo['id']))}">删除商品</a>
+					
+				</div>
+				<div >
+					<a href="{:U('user/shoppinguserlist',array('id'=>$vo['id']))}">查看参与用户</a>
+					
+				</div>
+				<div class="userChange" onClick="changeDivShow({$vo.id})">
+					增加参与用户数量
+				</div>
+			</td>
+		</tr>
+		</foreach>
+	</table>
+	
+	<!--增加用户数量弹出框-->
+	<div class="userNumberChangeDiv" style="display:none;position: fixed; top: 20%;width:35%;left:30%;background-color:rgba(204, 204, 204, 0.78);;padding:60px;border-radius:10px" >
+		<form action="{:U('User/updatenum')}" method="post">
+			<input type="number" id="productid" style="display:none;" value="" name="productid" />
+			<input type="number" min="1" required="required" name="num" />
+			<input type="submit" value="确认修改" />
+			<input class="userChangeClose" type="button" value="关闭"/>
+		</form>
+	</div>
+
+</body>
+<script type="text/javascript">
+
+function changeDivShow(id){
+	var tes=id;
+	$('#productid').val(tes);
+	$('.userNumberChangeDiv').show();
+}
+$('.userChangeClose').click(function(){
+	$('.userNumberChangeDiv').hide();
+
+});
+
+</script>
+</html>
+

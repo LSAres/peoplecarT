@@ -1,0 +1,249 @@
+<!doctype html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{:C('SITE_NAME')}</title>
+
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+  <link rel="icon" type="image/png" href="__PUBLIC__/assets/i/favicon.png">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="__PUBLIC__/assets/i/app-icon72x72@2x.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="__PUBLIC__/assets/i/app-icon72x72@2x.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="__PUBLIC__/assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+
+  <link rel="stylesheet" href="__PUBLIC__/assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/assets/css/app.css">
+  <style>
+  body { overflow: hidden }
+  </style>
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="__PUBLIC__/assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<!--[if lte IE 8 ]>
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+	<script src="__PUBLIC__/assets/js/amazeui.ie8polyfill.min.js"></script>
+	<![endif]-->
+</head>
+
+<body  style="overflow:hidden;">
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+  href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+<!--<div class="am-g tpl-g">
+	<header>-->
+	  <!-- logo -->
+	  <!--<div class="am-fl tpl-header-logo">
+	      <a href="javascript:;"><img src="__PUBLIC__/assets/img/logo.png" alt=""></a>
+	  </div>-->
+	  <!-- 右侧内容 -->
+	  <!--<div class="tpl-header-fluid">-->
+	  	<!-- 侧边切换 -->
+	  <!--	<div class="am-fl tpl-header-switch-button am-icon-list">
+	  		<span></span>
+	  	</div>-->
+	  	<!-- 其它功能-->
+	  	<!--<div class="am-fr tpl-header-navbar">
+	  		<ul>-->
+	  			<!-- 欢迎语 -->
+	  			<!--<li class="am-text-sm tpl-header-navbar-welcome">
+	  				<a href="javascript:;">欢迎你, <span>{$user_row.account}</span></a>
+	  			</li>-->
+          <!-- 退出 -->
+         <!-- <li class="am-text-sm">
+            <a href="{:U('Mobile/Regus/logout')}">
+              <span class="am-icon-sign-out"></span> 退出
+            </a>
+          </li>-->
+	  		<!--</ul>
+	  	</div>
+	  </div>
+	</header>-->
+
+  <!-- 侧边导航栏 -->
+ <!-- <div class="left-sidebar">-->
+    <!-- 菜单 -->
+   <!-- <ul class="sidebar-nav">
+      <li class="sidebar-nav-link">
+        <a href="javascript:;" class="sidebar-nav-sub-title">
+          <i class="am-icon-tree sidebar-nav-link-logo"></i> {:C('GUOYUAN')}管理
+          <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+        </a>
+        <ul class="sidebar-nav sidebar-nav-sub">
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Index/youxijiemian')}" data-name="game">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 我的{:C('GUOYUAN')}
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Index/haoyouguoyuan')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 好友{:C('GUOYUAN')}
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Index/kaifaxinguoyuan')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 开发新{:C('GUOYUAN')}
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Index/youxidating')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 游戏公告
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Index/ggdetail', 'new_id='.$news_row[new_id])}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 玩法介绍
+            </a>
+          </li>
+          
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Index/chart')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 生长走势图
+            </a>
+          </li> 
+         
+        </ul>
+      </li>
+
+      <li class="sidebar-nav-link">
+        <a href="javascript:;" class="sidebar-nav-sub-title">
+          <i class="am-icon-line-chart sidebar-nav-link-logo"></i> 成长记录
+          <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+        </a>
+        <ul class="sidebar-nav sidebar-nav-sub">
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Growth/bozhongjilu')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {:C('BOZHONG')}记录
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Growth/caimijilu')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {:C('CAIMI')}记录
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Growth/daocaorenjiangli')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {:C('GIFT_1')}奖励记录
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Growth/guoyuanshengzhang')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 生长记录
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Growth/kanmengou')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {:C('GIFT_2_3')}奖励记录
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Growth/shifeijilu')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {:C('SHIFEI')}记录
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Growth/shougejilu')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {:C('SHOUGE')}记录
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Growth/zhongzijiangli')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {:C('ZHONGZI')}奖励记录
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="sidebar-nav-link">
+        <a href="javascript:;" class="sidebar-nav-sub-title">
+          <i class="am-icon-exchange sidebar-nav-link-logo"></i> 交易中心
+          <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+        </a>
+        <ul class="sidebar-nav sidebar-nav-sub">
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Trading/chushouguozi')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 出售{:C('GUOZI')}
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Trading/chushoujilu')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 出售记录
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Trading/goumaijilu')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 购买记录
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Trading/zhongzizhuanshuiguo')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {:C('ZHONGZI')}转水果
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Trading/zhongzizhuanhuan')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {:C('ZHONGZI')}转换记录
+            </a>
+          </li>                    
+        </ul>
+      </li>
+
+      <li class="sidebar-nav-link">
+        <a href="javascript:;" class="sidebar-nav-sub-title">
+          <i class="am-icon-user sidebar-nav-link-logo"></i> 资料修改
+          <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+        </a>
+        <ul class="sidebar-nav sidebar-nav-sub">
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Datamodify/xiugaigerenziliao')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 个人资料
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Datamodify/xiugaimima')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 修改密码
+            </a>
+          </li>
+          <li class="sidebar-nav-link">
+            <a href="#none" data-href="{:U('Mobile/Datamodify/mibaoshezhi')}">
+              <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 密保设置
+            </a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>-->
+
+  <!-- 内容区域 -->
+  <div >
+  	<div id="wrapper_inner" style="position:absolute;overflow:hidden;left:35%;">
+  		<iframe id="framework" src="{:U('Mobile/Index/ncgl')}"  style="width: 100%;overflow:hidden;"></iframe>
+  	</div>
+  </div>
+
+</div>
+<script src="__PUBLIC__/assets/js/amazeui.min.js"></script>
+<script src="__PUBLIC__/assets/js/app.js"></script>
+</body>
+</html>

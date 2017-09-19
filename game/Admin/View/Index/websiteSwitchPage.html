@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加新管理员</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+</head>
+<body>
+<!--顶部搜索DIV-->
+<div class="topSearchDiv">
+    <div class="updateTitleMessage">
+        网站开关请慎重操作！！(输入1为开启网站/输入2为关闭网站)
+    </div>
+</div>
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+       	网站当前状态：
+    </span>
+    <input type="text" class="updateMessageInput" readonly="readonly"  value="开启" style="border:none;box-shadow: none;" >
+</div>
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+        输入开关指令：
+    </span>
+    <input type="text" class="updateMessageInput" maxlength="1" placeholder="请输入管理员密码">
+</div>
+
+
+
+<div class="updateTrue">
+    确认修改
+</div>
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
+<script>
+    $(function(){
+        var testListData =$('#testList option');
+        function textFor() {
+            for(var i=0; i<testListData.length;i++){
+                alert(testListData[i].val());
+
+            }
+            return 1;
+        }
+        $('.updateTrue').click(function(){
+
+            textFor()
+        });
+    })
+
+
+
+
+</script>
+</html>

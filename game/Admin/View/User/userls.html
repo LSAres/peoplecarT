@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="__PUBLIC__/inputtime/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/inputtime/jquery.date_input.pack.js"></script>
+<link href="__PUBLIC__/inputtime/datePicker.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    $(function(){
+    $('#datePicker').date_input();
+    $('#datePicker2').date_input();
+    })
+</script>
+
+  
+    <style>
+.date_selector { font:12px/1.5 Arial; color:#666; background:#fff;}
+
+        td{
+            width:200px;
+            align:center;
+        }
+
+        .num,.prev,.next,.current{
+
+            height: 22px;
+            background-color: #fff;
+            border: 1px solid #999999;
+            display: block;
+            padding: 2px;
+            margin: 0 2px;
+            color: #000;
+            text-align: center;
+            float: left;
+        }
+        .search{
+            width:900px;
+            margin:0px auto;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<div class="jbpz_bottom">
+    <h2 style="color:red;">会员交易明细</h2>
+        <div class="xxgl_bottom_t">
+            <form id="form_search" action="{:U('User/userls')}" method="post">
+            <span style="margin-left:0px;">搜索</span>
+                <input type="text" name="start_time" id="datePicker" style="width: 80px;" placeholder="选择开始日期"/>
+                <input type="text" name="end_time"  id="datePicker2" style="width: 80px;" placeholder="点击结束日期"/>
+                    <select name="condition">
+                        <option value="">请选择条件</option>
+                        <option value="id">订单编号</option>
+                        <option value="account">卖家账号</option>
+                        <option value="buy_account">买家账号</option>
+                        <option value="sell_num">出售数量</option>  
+                        <!--<option value="z.manage_id">管理员</option>-
+                        <option value="id">用户</option>-->        
+                    </select>
+                    <input type="text" name="text"/>
+                    <input type="hidden" value="1" name="where">
+                <input type="submit" id="search" value="提交搜索">
+            </form>
+        </div>
+    
+
+    <table border="1" align="center" style=" border-collapse:collapse;border:1px solid #abcdef;">
+        <tr>
+            <td align="center"  style="color: #bb0000">会员总财富：</td>
+            <td align="center"  style="color: #bb0000">{$fruit.user_fruit}</td>
+            <td align="center" colspan="6" style="color: #bb0000"></td>
+        </tr>
+       
+        <tr>
+            <td align="center">订单编号</td>
+            <td align="center">卖家账号</td>
+            <td align="center">买家账号</td>
+            <td align="center">出售数量</td>
+            <td align="center">到帐数量</td>
+            <td align="center">手续费</td>
+            <td align="center">成交时间</td> 
+        </tr>
+        <foreach name="mArr" item="value" key="key">
+            <tr>
+                <td align="center">{$value.id}</td>
+                <td align="center">{$value.account}</td>
+                <td align="center">{$value.buy_account}</td>
+                <td align="center">{$value.sell_num}</td> 
+                <td align="center">{$value.seller_num}</td> 
+                <td align="center">{$value.formality}</td> 
+                <td align="center">{$value.sell_time|date="Y-m-d H:i:s",###}</td>
+                
+            </tr>
+        </foreach>
+             <tr>
+                <td colspan="8">
+                        <div class="pages">
+                           {$pageshow}
+                        </div>
+                </td>
+            </tr>
+    </table>
+</div>
+
+
+<style type="text/css">
+    
+.pages a,.pages span {
+    display:inline-block;
+    padding:2px 5px;
+    margin:0 1px;
+    border:1px solid #f0f0f0;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
+.pages a,.pages li {
+    display:inline-block;
+    list-style: none;
+    text-decoration:none; color:#58A0D3;
+}
+.pages a.first,.pages a.prev,.pages a.next,.pages a.end{
+    margin:0;
+}
+.pages a:hover{
+    border-color:#50A8E6;
+}
+.pages span.current{
+    background:#50A8E6;
+    color:#FFF;
+    font-weight:700;
+    border-color:#50A8E6;
+}
+.pages div{
+    float: right;
+}
+
+.input{
+	width:30%;
+}
+
+</style>
+
+</body>
+</html>
+
+
+
+
+
+

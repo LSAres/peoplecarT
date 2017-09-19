@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/ht_index.css" type="text/css">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/User/js/tab.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/User/js/jsAddress.js"></script>
+
+</head>
+<body style="background:#fff;height: 1000px;">
+
+ 
+<form id="add_form" action="{:U('User/up_pw')}" method="post">
+
+    <div class="jbpz_bottom">
+        <h3>后台修改用户密码</h3>
+        <?php
+        $userid=I('get.userid');
+         
+        if(I('get.longin')){  ?>
+        <em>请输入登录密码：</em>
+        <input type="password"   class="text2" name="login_pw" ><br/>  
+
+        <?php }else{   ?>
+
+        <em>请输入安全密码：</em>
+        <input type="password"   class="text2" name="safety_pw"   ><br/>
+
+         <?php   }  ?>
+
+         
+         <input type="hidden"   class="text2" name="userid"   value="<?php echo $userid ?>">
+        <div class="anniu">
+            <input type="button"  id="submit_btn" value="修改">
+            <input type="button" onClick="javascript:location.href=location.href;"  value="重置">
+        </div>
+    </div>
+</form>
+ 
+
+
+
+<style type="text/css">
+    textarea{
+        margin-top: 10px;
+        margin-left: 30px;
+        width: 358px;
+        height: 90px;
+    }
+</style>
+
+<script type="text/javascript">
+     
+
+
+    $('#submit_btn').click(function(){
+
+        if(!confirm('你确定要修改吗?')){
+            return false;
+        }
+        $('#add_form').submit();
+
+    })
+
+</script>
+
+</body>
+</html>

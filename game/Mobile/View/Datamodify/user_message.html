@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/stylesheet.css">
+	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+	<script src="__PUBLIC__/js/comment.js"></script>
+    <style></style>
+</head>
+<body  class="bodyHeight">
+<!--topTitle -->
+<div class="pageTitleDiv">
+	<div class="backButton">
+		返回
+	</div>
+	<span class="pageTitleText">
+		个人信息
+	</span>
+</div>
+
+<!---->
+<form action="{:U(MODULE_NAME.'/Datamodify/updateInfo')}" method="post" id="myform">
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">会员帐号:</div>
+		<input type="text" value="{$userInfo.account}"  readonly="readonly"  class="rightMessage" />
+		
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">会员姓名:</div>
+		<input type="text" value="{$userInfo.username}"  readonly="readonly"  class="rightMessage" />
+		
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">手机号码:</div>
+		<input type="text" value="{$userInfo.phone}" name="phone"  class="rightMessage" />
+		
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">身份证号:</div>
+		<input type="text" value="{$userInfo.identity_card}" name="identity_card" class="rightMessage" />
+		
+	</div>
+	<!--确认按钮-->
+	<div class="etermineButton" onClick="test()">
+		确认
+	</div>
+</form>
+</body>
+
+<script>
+   function test()
+	{
+		document.getElementById("myform").submit();    
+	}
+
+</script>
+</html>

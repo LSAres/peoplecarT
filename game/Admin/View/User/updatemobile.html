@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/ht_index.css" type="text/css">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/User/js/tab.js"></script>
+    <style>
+        .form-group { padding-left: 20px; margin-top: 20px }
+        font { color: red }
+    </style>
+</head>
+<body style="background:#fff;height: 1000px;">
+
+<form id="update_form" method="post">
+    <div class="jbpz_bottom">
+        <h3>后台修改用户手机</h3>
+        <div class="form-group">账号：{$user_row.account}</div>
+        <div class="form-group">姓名：{$user_row.username}</div>
+        <div class="form-group">原手机号码：{$user_row.mobile}</div>
+		 <div class="form-group">原支付宝帐号：{$user_row.alipay}</div>
+		  <div class="form-group">原微信帐号：{$user_row.wx_no}</div>
+		  <!--<div class="form-group">原登录密码：{$user_row.login_pw}</div>
+		  <div class="form-group">原安全密码：{$user_row.wx_no}</div>-->
+        <div class="form-group">
+            <font>*</font>新手机号码：
+            <input type="text" class="text2" name="mobile" />
+        </div>
+		<div class="form-group">
+            <font>*</font>新支付宝帐号：
+            <input type="text" class="text2" name="alipay" />
+        </div>
+		<div class="form-group">
+            <font>*</font>新微信帐号：
+            <input type="text" class="text2" name="wx_no" />
+        </div>
+		<!--<div class="form-group">
+            <font>*</font>新登录密码：
+            <input type="text" class="text2" name="denglumima" />
+        </div>-->
+        <input type="hidden" name="userid" value="{$user_row.userid}">
+        <input type="hidden" name="account" value="{$user_row.account}">
+        
+ 
+   
+      <div class="form-group">
+            <font>*</font>
+      修改登录密码
+        <input type="password"   class="text2" name="login_pw" ><br/>  
+        </div>
+       
+        <div class="form-group">
+            <font>*</font>
+        修改安全密码：
+        <input type="password"   class="text2" name="safety_pw"   ><br/>
+        </div>
+        
+
+         
+         <input type="hidden"   class="text2" name="userid"   value="<?php echo $userid ?>">
+        <div class="anniu">
+            <input type="button"  id="submit_btn" value="确认修改">
+           
+        </div>
+
+</form>
+   </div>
+ 
+
+
+
+<style type="text/css">
+    textarea{
+        margin-top: 10px;
+        margin-left: 30px;
+        width: 358px;
+        height: 90px;
+    }
+</style>
+
+
+
+ 
+<script>
+$(function(){
+    $('#submit_btn').on('click', function(){
+        if (confirm("确认修改？")) {
+            $('#update_form').submit();
+        }
+    });
+});
+</script>
+</script>
+</body>
+</html>

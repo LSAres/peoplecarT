@@ -1,0 +1,362 @@
+<?php
+namespace Admin\Controller;
+use Think\Controller;
+class UserController extends CommonController {
+      #会员列表
+      public function user_list(){
+
+
+    $cwhere=I('where');
+    $start_time = strtotime(I('start_time'));
+    $end_time = strtotime(I('end_time'));
+
+    if($start_time && $end_time){
+        $where['add_time'] = array('between',"$start_time,$end_time"); 
+    }
+          $tb_user=M('user');
+
+     if(I('condition')){
+            $we = I('condition');
+            $value=trim(I('text'));
+
+            if($we == 'parent_id' &&  strlen($value) == 11 ){
+               $wherepid =  $tb_user->where("mobile = $value ")->getField($we);
+               $where[$we] = $wherepid;
+            }else{
+                echo '<script>请输入11位手机号</script>';
+            }
+                if($value !='' && $we != 'parent_id'){
+                $where[$we] =array('like',"%$value%");
+                }
+        }
+
+        //锁定
+        if(($farm_lock = I('farm_lock') != '')){
+            $where['farm_lock'] = $farm_lock;
+
+        }
+
+        if(($lockuser = I('lockuser'))){
+
+         
+          $where['lockuser'] = array(array('NOTIN','2,3'),array('NEQ',0));
+           
+        }else{
+          $where['lockuser'] = array('NOTIN','2,3');
+        }
+
+
+    
+
+    $clockwhere = 'clockwhere_'.MODULE_NAME.CONTROLLER_NAME.ACTION_NAME ;
+     if($cwhere){
+        session($clockwhere,null); 
+        session($clockwhere,$where); 
+     }
+     $where = session($clockwhere)?session($clockwhere):$where;
+
+
+
+          //锁定用户
+          if(IS_GET){
+              $lockuser=I('get.lockuser_status');
+              $userid=I('get.userid');
+              $lockuser = ($lockuser> 0 )?0:1;
+              $up_lockuser=array(
+                  'lockuser'=>$lockuser
+              );
+              $tb_user->where(array('userid'=>$userid))->save($up_lockuser);
+
+          }
+          $pagesize =20;
+          //$where=true;
+          $p = getpage($tb_user, $where, $pagesize);
+          $pageshow   = $p->show();
+
+          $userArr=$tb_user->where($where)
+                           ->field('userid,account,username,lockuser,add_time,wealthb,farm_lock,parent_id,limits')
+                           ->order('userid desc ')
+                           ->select();
+
+          $this->assign(array(
+              'userArr'=>$userArr,
+              'pageshow'=>$pageshow,
+          ));
+         $this->display();
+      }
+    
+    //修改用户用户密码
+    public function upuserpw(){
+                
+                
+            if (I('post.pw1')) {
+              $dbu=M('user');
+              $pw1=trim(I('post.pw1'));
+              $u_id=I('post.userid'); 
+              $account=trim(I('post.user_account')); 
+
+              
+              $userInfo=$dbu->where("account='".$account."'")->find(); 
+                  if ($userInfo) {
+                      $mimadata['salt'] = substr(md5(time()),0,3);
+                      $mimadata['password']=md5(md5($pw1).$mimadata['salt']); 
+                      $a=$dbu->where("account='".$account."'")->save($mimadata);
+                      
+                      if ($a) {
+                         echo "<script>alert('修改成功')</script>";
+                      }else{
+                         echo "<script>alert('修改失败')</script>";
+                      }
+                     
+                  }else{
+
+                echo "<script>alert('没有此账号，请重新输入')</script>";
+                echo "<script>javascript:history.back(-1);</script>";
+                return;     
+                  }
+   
+            }
+        $this->display();        
+    }
+    
+
+    
+//================================================
+
+    public function user_list24(){
+    $cwhere=I('where');
+    $start_time = strtotime(I('start_time'));
+    $end_time = strtotime(I('end_time'));
+
+    if($start_time && $end_time){
+        $where['add_time'] = array('between',"$start_time,$end_time"); 
+    }
+
+
+          $tb_user=M('user');
+
+     if(I('condition')){
+            $we = I('condition');
+            $value=trim(I('text'));
+
+            if($we == 'parent_id' &&  strlen($value) == 11 ){
+               $wherepid =  $tb_user->where("mobile = $value ")->getField($we);
+               $where[$we] = $wherepid;
+            }else{
+                echo '<script>请输入11位手机号</script>';
+            }
+                if($value !='' && $we != 'parent_id'){
+                $where[$we] =array('like',"%$value%");
+                }
+        }
+
+        //锁定
+        if(($farm_lock = I('farm_lock') != '')){
+            $where['farm_lock'] = $farm_lock;
+
+        }
+   
+          $where['lockuser'] = array('IN','2,3');
+        
+
+
+    
+
+    $clockwhere = 'clockwhere_'.MODULE_NAME.CONTROLLER_NAME.ACTION_NAME ;
+     if($cwhere){
+        session($clockwhere,null); 
+        session($clockwhere,$where); 
+     }
+     $where = session($clockwhere)?session($clockwhere):$where;
+
+
+
+          //锁定用户
+          if(IS_GET){
+              $lockuser=I('get.lockuser_status');
+              $userid=I('get.userid');
+              $lockuser = ($lockuser> 0 )?0:1;
+              $up_lockuser=array(
+                  'lockuser'=>$lockuser
+              );
+              $tb_user->where(array('userid'=>$userid))->save($up_lockuser);
+
+          }
+          $pagesize =20;
+          //$where=true;
+          $p = getpage($tb_user, $where, $pagesize);
+          $pageshow   = $p->show();
+
+          $userArr=$tb_user->where($where)
+                           ->field('userid,account,username,lockuser,add_time,wealthb,farm_lock,parent_id,limits')
+                           ->order('userid desc ')
+                           ->select();
+
+          $this->assign(array(
+              'userArr'=>$userArr,
+              'pageshow'=>$pageshow,
+          ));
+         $this->display();
+      }
+
+
+    
+
+    #点击用户直接进去用户个人中心
+    public function input_user(){
+        echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />';
+       $userid=I('get.userid');
+       session('user_get_id',$userid);
+          if(!$_POST){
+              $this->display();
+          }else{
+              $spdb=M('nzspuser');
+              $dbuser=M('user');
+              $manage_id=$_SESSION['sp_user'];#拿到进来的管理员id
+              $manage_arr=$spdb->where("sp_id=$manage_id")->find();
+              $manage_pw=I('post.manage_pw');
+              $input_pw=md5(md5($manage_pw).$manage_arr['sp_salt']);
+              if($input_pw!=$manage_arr['sp_password']){
+                 echo "<script>alert('密码错误');</script>";
+                 echo '<script>javascript:history.back(-1);</script>';die;
+              }
+              $userid=$_SESSION['user_get_id'];
+              $user_account=$dbuser->where("userid=$userid")->getField('mobile');
+              session('userid',$userid);
+              session('mobile',$user_account);
+              session('userroot',null);
+              session('gx_array',null);
+              session('get_tree',null);
+              session('get_pidtree',null);
+              redirect(U('/home/Index/index'));
+          }
+    }
+
+    #后台修改用户资料
+    public function updateuser(){
+     
+      $dbuserinfo=M('userinfo');
+      if (!IS_POST) {
+          $get_uid=I('get.userid');
+          session('userid',$get_uid);
+          $get_uid=session('userid');
+          $udata=M()->query('select u.account,u.username,u.userid,s.cangku_num from syd_user u INNER JOIN syd_store s ON u.userid=s.uid WHERE u.userid='.$get_uid.'');
+          $this->assign('udata',$udata);
+          $this->display();
+         
+      }else{
+           $dbst=M('store');
+           $cangku_num=I('post.cangku_num');
+           $uid=I('post.userid');
+           $up=$dbst->where('uid='.$uid.'')->setInc('cangku_num',$cangku_num);
+        if ($up) {
+              echo "<script>alert('修改成功');</script>";
+               echo "<script>window.location.href='".U('User/updateuser')."'</script>";
+
+           }else{
+             echo "<script>alert('修改失败');</script>";
+               echo "<script>javascript:history.back(-1);</script>";
+           }        
+      }
+    }
+    
+    #后台修改用户安全码和登录密码
+    public function up_pw(){
+           $db_user=M('user');
+            
+           if (I('post.login_pw')) {
+                $date['password']=I('post.login_pw');
+                $userid=I('post.userid');     
+                $date['salt']=substr(md5(time()),0,3);   
+                $date['password']=md5(md5($date['password']).$date['salt']);
+                $up_password=$db_user->where("userid=$userid")->save($date);
+                 
+               if ($up_password) {
+                  echo "<script>alert('修改成功');</script>";
+                  echo "<script>window.location.href='".U('admin/User/up_pw')."'</script>";
+               }else{
+                  echo "<script>alert('修改失败');</script>";
+                  echo "<script>javascript:history.back(-1);</script>";
+               }
+                
+               
+           }else if(I('post.safety_pw')){
+                $date['safety_pw']=I('post.safety_pw');
+                $userid=I('post.userid');     
+                $date['safety_salt']=substr(md5(time()),0,3);   
+                $date['safety_pw']=md5(md5($date['safety_pw']).$date['safety_salt']);
+                
+                $up_password=$db_user->where("userid=$userid")->save($date);
+                 
+               if ($up_password) {
+                  echo "<script>alert('修改成功');</script>";
+                  echo "<script>window.location.href='".U('admin/User/up_pw')."'</script>";
+               }else{
+                  echo "<script>alert('修改失败');</script>";
+                  echo "<script>javascript:history.back(-1);</script>";
+               }
+              die;
+           }
+            $this->display();
+        
+    }
+
+
+    //系谱图
+    public function familytree(){
+
+    
+if($_POST['mobile']){
+        
+    $udb = M('user');
+    $mobile = I('post.mobile');
+    
+    $uid = $udb->where("mobile = $mobile ")->getField('userid');
+
+
+         function get_str($id = 0) {
+          global $str;
+          $udb=M('user');
+          $uinf=$udb->field('userid,parent_id,true_name,mobile,add_time')->where("parent_id= {$id}")->select();
+         static  $i=1;
+        if($uinf){//如果有子类
+          $str .= '<ul>';
+          foreach ($uinf as $v ) { //循环记录集
+             $str .=  "<li>".$i++."┠━&nbsp;编号$v[userid]&nbsp;".$v['true_name']."&nbsp;".$v['mobile']."&nbsp;(".date('Y-m-d',$v[add_time])."加入)"; //构建字符串
+            get_str($v['userid']); //调用get_str()，将记录集中的id参数传入函数中，继续查询下级
+          }
+          $str .= '</ul>';
+        }
+        return $str;
+      }
+      if($uid){
+$aaa = get_str($uid);
+$this->tree = $aaa;
+      }else{
+        echo "<script>alert('手机号不存在');</script>";
+      }
+}
+
+
+
+      $this->display();
+
+    }
+	
+	public function setsjvd(){
+		$where['userid']=I('u','','intval');
+		$data['limits']=I('l')?I('l'):'#';
+		$tdb=M('user');
+        $bool=$tdb->where($where)->data($data)->save();
+        if($bool!==false){
+		echo 'ggggg';
+		}
+	}
+
+        
+
+
+
+
+}
+

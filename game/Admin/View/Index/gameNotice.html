@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>游戏公告页面</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+</head>
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+         -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+         -ms-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: black;
+    }
+
+    .wrap {
+        margin: 150px auto;
+        position: relative;
+         -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+         -ms-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .wrap, .x, .y, .z {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+
+    .x1, .x2, .y, .y1, .y2, .z, .z1, .z2, .xInner, .yInner, .zInner {
+        position: absolute;
+    }
+
+    .x1, .x2, .y1, .y2, .z1, .z2 {
+        width: 87.5%;
+        height: 87.5%;
+        border-radius: 50%;
+    }
+
+    .x {
+        position: relative;
+        border: 1px solid #FF0099;
+         -webkit-transform-style: preserve-3d;
+         -moz-transform-style: preserve-3d;
+         -ms-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+         -webkit-animation: mymove 10s linear infinite;
+         -moz-animation: mymove 10s linear infinite;
+         -ms-animation: mymove 10s linear infinite;
+        animation: mymove 10s linear infinite;
+    }
+
+    .y {
+        top: 0;
+        left: 0;
+        border: 2px solid #0099FF;
+         -webkit-transform: rotateX(90deg);
+         -moz-transform: rotateX(90deg);
+         -ms-transform: rotateX(90deg);
+        transform: rotateX(90deg);
+    }
+
+    .z {
+        top: 0;
+        left: 0;
+        border: 1px solid #FFCC33;
+         -webkit-transform: rotateY(90deg);
+         -moz-transform: rotateY(90deg);
+         -ms-transform: rotateY(90deg);
+        transform: rotateY(90deg);
+    }
+
+    .x1 {
+        top: 6.25%;
+        left: 6.25%;
+        border: 1px solid #FF0099;
+         -webkit-transform: translateZ(50px);
+         -moz-transform: translateZ(50px);
+         -ms-transform: translateZ(50px);
+        transform: translateZ(50px);
+    }
+
+    .x2 {
+        top: 6.25%;
+        left: 6.25%;
+        border: 1px solid #FF0099;
+         -webkit-transform: rotateX(180deg) translateZ(50px);
+         -moz-transform: rotateX(180deg) translateZ(50px);
+         -ms-transform: rotateX(180deg) translateZ(50px);
+        transform: rotateX(180deg) translateZ(50px);
+    }
+
+    .y1 {
+        top: 6.25%;
+        left: 6.25%;
+        border: 1px solid #0099FF;
+         -webkit-transform: rotateX(90deg) translateZ(50px);
+         -moz-transform: rotateX(90deg) translateZ(50px);
+         -ms-transform: rotateX(90deg) translateZ(50px);
+        transform: rotateX(90deg) translateZ(50px);
+    }
+
+    .y2 {
+        top: 6.25%;
+        left: 6.25%;
+        border: 1px solid #0099FF;
+         -webkit-transform: rotateX(270deg) translateZ(50px);
+         -moz-transform: rotateX(270deg) translateZ(50px);
+         -ms-transform: rotateX(270deg) translateZ(50px);
+        transform: rotateX(270deg) translateZ(50px);
+    }
+
+    .z1 {
+        top: 6.25%;
+        left: 6.25%;
+        border: 1px solid #FFCC33;
+         -webkit-transform: rotateY(90deg) translateZ(50px);
+         -moz-transform: rotateY(90deg) translateZ(50px);
+         -ms-transform: rotateY(90deg) translateZ(50px);
+        transform: rotateY(90deg) translateZ(50px);
+    }
+
+    .z2 {
+        top: 6.25%;
+        left: 6.25%;
+        border: 1px solid #FFCC33;
+         -webkit-transform: rotateY(270deg) translateZ(50px);
+         -moz-transform: rotateY(270deg) translateZ(50px);
+         -ms-transform: rotateY(270deg) translateZ(50px);
+        transform: rotateY(270deg) translateZ(50px);
+    }
+
+    .xInner {
+        border: 1px solid #FF0099;
+        width: 100%;
+        top: 50%;
+    }
+
+    .yInner {
+        height: 100%;
+        left: 50%;
+        border: 1px solid #0099FF;
+         -webkit-transform: rotateX(90deg);
+         -moz-transform: rotateX(90deg);
+         -ms-transform: rotateX(90deg);
+        transform: rotateX(90deg);
+    }
+
+    .zInner {
+        height: 100%;
+        left: 50%;
+        border: 1px solid #FFCC33;
+         -webkit-transform: rotateY(90deg);
+         -moz-transform: rotateY(90deg);
+         -ms-transform: rotateY(90deg);
+        transform: rotateY(90deg);
+    }
+
+    @-webkit-keyframes mymove {
+        100% {
+             -webkit-transform: rotateX(360deg) rotateY(180deg)
+        }
+    }
+
+    @-moz-keyframes mymove {
+        100% {
+             -moz-transform: rotateX(360deg) rotateY(360deg)
+        }
+    }
+
+    @-ms-keyframes mymove {
+        100% {
+             -ms-transform: rotateX(360deg) rotateY(360deg)
+        }
+    }
+
+    @keyframes mymove {
+        100% {
+            transform: rotateX(360deg) rotateY(360deg)
+        }
+    }
+</style>
+<body>
+<div class="wrap">
+    <div class="inner"></div>
+    <div class="x">
+        <div class="x1"></div>
+        <div class="x2"></div>
+        <div class="xInner"></div>
+        <div class="y"></div>
+        <div class="y1"></div>
+        <div class="y2"></div>
+        <div class="yInner"></div>
+        <div class="z"></div>
+        <div class="z1"></div>
+        <div class="z2"></div>
+        <div class="zInner"></div>
+    </div>
+</div>
+<div class="maintainMessageDiv">
+    <div class="maintainMessageDiv_Head">
+        游戏维护公告
+    </div>
+    <div class="maintainMessageDiv_body">
+        公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息
+        公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息公告信息
+        公告信息。
+        <ul class="maintainMessageDiv_body_Ul">
+            <li class="maintainMessageDiv_body_Li">信息公告信息公告信息公</li>
+            <li class="maintainMessageDiv_body_Li">信息公告信息公告信息公</li>
+            <li class="maintainMessageDiv_body_Li">信息公告信息公告信息公</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

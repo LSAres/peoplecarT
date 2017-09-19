@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body style="background:#fff;height: 1000px;">
+		<form action="" id="add_form" method="post">
+
+		    <div class="jbpz_bottom">
+				<h2 style="color: red;">修改推荐人</h2>
+					旧推荐人ID:<input type="number" name="old_id" id="old_id">
+					新推荐人ID:<input type="number" name="new_id" id="new_id">
+					<div class="anniu">
+					   <input type="button"  id="submit_btn" value="提交">
+					   <input type="reset"  value="清空">
+					</div>
+			</div>
+		</form>
+
+<style type="text/css">
+			textarea{
+				margin-top: 10px;
+				margin-left: 30px;
+				width: 358px;
+    			height: 90px;
+			}
+
+li {list-style-type:none;margin: 5px;}
+ul{    padding-left: 65px;}
+</style>
+
+<script type="text/javascript">
+	$('#submit_btn').click(function(){
+
+		if(!confirm('确认提交?')){
+			return false;
+		}
+		$('#add_form').submit();
+
+	})
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!--右边我的好友 start-->
+        <div id="floatTools" class="rides-cs" >
+            <a style="display: none;" id="aFloatTools_Hide" class="btnCtn" title="" href="javascript:void(0);"></a>
+            <a style="display: block;" id="btnCtn2" class="btnCtn" title="" href="javascript:void(0);"></a>
+            <div class="cn">
+                <h3><a href="#">我的排名</a><a href="#" style="color: #fff;">15</a></h3>
+                <form>
+                    <input type="text" value="搜索" class="text" />
+                    <input class="btn" src="__PUBLIC__/home/images/an.jpg" title="" value="" type="image" />
+                </form>
+
+                <ul id="ul">
+                    <li class="current">按等级</li>
+                    <li>可操作</li>
+                    <li>按评分</li>
+                </ul>
+                <div id ="content">
+                    <div class="show" >
+                        <ul>
+                           <foreach name="userfriend" item="uf">
+                            <li><a href="{:U('Friend/index/index',array('fid'=>$uf['userid']))}">{$uf.true_name}</a></li>
+                           </foreach>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>aa22a</li>
+                            <li>aaa</li>
+                            <li>aaa</li>
+                            <li>aaa</li>
+                            <li>aaa</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>aa33a</li>
+                            <li>aaa</li>
+                            <li>aaa</li>
+                            <li>aaa</li>
+                            <li>aaa</li>
+                        </ul>
+                    </div>
+                </div>
+                <style>
+                .cn #content ul li{
+                    width: 150px;
+                    height: 30px;
+                    line-height: 30px;
+                    //background: red;
+                    display: block;
+                    font-size: 21px;
+                    margin-top: 20px;
+                    float: left;
+                    margin-left: 25px;
+                }
+                </style>
+
+
+                <script>
+                $('#ul>li').click(function(){
+                   $(this).addClass('current').siblings().removeClass('current');
+                   $('#content>div').eq($(this).index()).show().siblings().hide();
+
+                })
+
+                </script>
+            </div>
+            <div class="ss_bottom">
+                <p>1/24</p>
+                <em><a href="#"></a></em>
+                <i><a href="#"></a></i>
+            </div>
+        </div>

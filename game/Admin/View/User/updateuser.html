@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/ht_index.css" type="text/css">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/User/js/tab.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/User/js/jsAddress.js"></script>
+
+</head>
+<body style="background:#fff;height: 1000px;">
+
+<form action="" id="add_form" method="post">
+    <div class="jbpz_bottom">
+        <h3>后台修改用户财富</h3>
+        <em>账号：</em>
+        <input type="text"   class="text2" name="uif_name" disabled="true" value="{$udata[0].account}" ><br/>
+        <em>姓名：</em>
+        <input type="text"   class="text2" name="uif_alipay"  disabled="true"   value="{$udata[0].username}"><br/>
+        <em>原有财富：</em>
+        <input type="text"   class="text2" name="uif_wechat"  disabled="true"  value="{$udata[0].cangku_num}"><br/>
+
+        <em>新增财富：</em>
+        <input type="text"   class="text2" name="cangku_num"  ><br/>
+
+
+         <input type="hidden"   class="text2" name="userid"   value="{$udata[0].userid}">
+        <div class="anniu">
+            <input type="button"  id="submit_btn" value="增加">
+            <!-- <input type="button" onclick="javascript:location.href=location.href;"  value="重置"> -->
+        </div>
+    </div>
+</form>
+<hr/>
+   <div>
+       <p>
+         <!--<span><a href="{:U('User/up_pw',array('userid'=>$udata[0]['userid'],'longin'=>1))}" style="color:#3121aa">修改登录密码</a></span>
+         <span><a href="{:U('User/up_pw',array('userid'=>$udata[0]['userid']))}" style="color:#3121aa">修改安全密码</a></span>-->
+         <span><a href="{:U('Guozi/updatecaifu',array('userid'=>$udata[0]['userid']))}" style="color:#3121aa">用户违规减掉他的财富</a></span>
+       </p>
+    </div>
+
+
+<style type="text/css">
+    textarea{
+        margin-top: 10px;
+        margin-left: 30px;
+        width: 358px;
+        height: 90px;
+    }
+</style>
+
+<script type="text/javascript">
+    $('#submit_btn').click(function(){
+
+        if(!confirm('你确定要增加他的财富吗?')){
+            return false;
+        }
+        $('#add_form').submit();
+
+    })
+
+</script>
+
+</body>
+</html>

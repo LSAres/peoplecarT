@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理登录界面</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+</head>
+<body>
+<!--外围背景DIV-->
+<div class="loginPageBackGroundImg">
+    <!--内容显示区域-->
+    <div class="loginMessageDisplayDiv">
+        <!--登录框-->
+        <div class="loginDiv">
+            <form action="{:U('login/idcheck')}" id="myform" method="post">
+                <!--登录框题头-->
+                <span class="loginMessageTitleDiv">
+                    <span class="leftArrow"></span>
+                    <span class="loginTitle">
+                        用户登录
+                        <span class="loginBottomMessage">
+                            USERS LOGIN
+                        </span>
+                    </span>
+                    <span class="rightArrow"></span>
+
+                </span>
+                <span class="longinMessageInput">
+                    <span class="inputMessageTitle">用户名：</span>
+                    <input type="text" name="id" placeholder="您的用户名">
+                </span>
+                <span class="longinMessageInput">
+                    <span class="inputMessageTitle">密码：</span>
+                    <input type="password" name="password" placeholder="您的密码">
+                </span>
+                <span class="loginButton"  onClick="test()">
+                    登录
+                </span>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+<script>
+	function test()
+	{
+		document.getElementById("myform").submit();    
+	}
+   
+</script>
+
+</html>
