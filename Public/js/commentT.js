@@ -52,6 +52,11 @@ $(function(){
     $('.testTwo').click(function(){
         $('iframe').attr('src','index.php?s=/super/Index/updateMessagePage.html');
     });
+    //公告选项
+	$(".addNoticePage").click(function(){
+        $('iframe').attr('src','index.php?s=/super/Index/addNoticePage.html');
+
+    });
 	//参数概率
 	$('.functionValueReset').click(function(){
 		$('iframe').attr('src','index.php?s=/super/Index/functionValueResetPage.html');									
@@ -96,55 +101,54 @@ $(function(){
 	*用户列表 下方 切换数据显示页面 
 	*
 	*/
-	//接受传来的 页数值 动态添加底部切换页码
-	var userMessageSpanLength = 9;
-	
-	//循环添加页码
-	for(var i = userMessageSpanLength; i > 0; i--){
-		$('.userMessageUp').after("<span>"+ i +"</span>");
-	}
-	//为第一个页码添加高亮样式
-	$('.userMessageUp').next().addClass('bottomPageSelectActive');
-	//点击左右箭头 切换页码高亮
-	//获取 高亮元素的下标
-	var pageNumber = $('.bottomPageSelect span');
-	var pageNumberIndex;
-	//向上切换
-	$('.userMessageUp').click(function(){
-		for(var i=0; i < pageNumber.length; i++){
-			if($(pageNumber[i]).hasClass('bottomPageSelectActive')){
-				pageNumberIndex = 	$(pageNumber[i]).index();
-			}
-		}
-		//如果等于1 则前面再无页码 退出方法
-		if(pageNumberIndex == 1){
-			return;	
-		}else{
-			//首先移除已有高亮样式
-			$(pageNumber).removeClass('bottomPageSelectActive');
-			//添加高亮样式
-			$(pageNumber[pageNumberIndex-1]).addClass('bottomPageSelectActive');
-		}
-	});
-	//向下切换
-	$('.userMessageDown').click(function(){
-		
-		for(var i=0; i < pageNumber.length; i++){
-			if($(pageNumber[i]).hasClass('bottomPageSelectActive')){
-				pageNumberIndex = 	$(pageNumber[i]).index();
-			}
-		}
-		//如果等于最大页码 则后面再无页码 退出方法 userMessageSpanLength为接收的最大页码值
-		if(pageNumberIndex == userMessageSpanLength){
-			return;	
-		}else{
-			//首先移除已有高亮样式
-			$(pageNumber).removeClass('bottomPageSelectActive');
-			//添加高亮样式
-			$(pageNumber[pageNumberIndex+1]).addClass('bottomPageSelectActive');
-		}
-	});
-	//点击切换页面 页码高亮
+	// //接受传来的 页数值 动态添加底部切换页码
+	// var userMessageSpanLength = 9;
+	//
+	// //循环添加页码
+	// for(var i = userMessageSpanLength; i > 0; i--){
+	// 	$('.userMessageUp').after("<span>"+ i +"</span>");
+	// }
+	// //为第一个页码添加高亮样式
+	// $('.userMessageUp').next().addClass('bottomPageSelectActive');
+	// //点击左右箭头 切换页码高亮
+	// //获取 高亮元素的下标
+	// var pageNumber = $('.bottomPageSelect span');
+	// var pageNumberIndex;
+	// //向上切换
+	// $('.userMessageUp').click(function(){
+	// 	for(var i=0; i < pageNumber.length; i++){
+	// 		if($(pageNumber[i]).hasClass('bottomPageSelectActive')){
+	// 			pageNumberIndex = 	$(pageNumber[i]).index();
+	// 		}
+	// 	}
+	// 	//如果等于1 则前面再无页码 退出方法
+	// 	if(pageNumberIndex == 1){
+	// 		return;
+	// 	}else{
+	// 		//首先移除已有高亮样式
+	// 		$(pageNumber).removeClass('bottomPageSelectActive');
+	// 		//添加高亮样式
+	// 		$(pageNumber[pageNumberIndex-1]).addClass('bottomPageSelectActive');
+	// 	}
+	// });
+	// //向下切换
+	// $('.userMessageDown').click(function(){
+	//
+	// 	for(var i=0; i < pageNumber.length; i++){
+	// 		if($(pageNumber[i]).hasClass('bottomPageSelectActive')){
+	// 			pageNumberIndex = 	$(pageNumber[i]).index();
+	// 		}
+	// 	}
+	// 	//如果等于最大页码 则后面再无页码 退出方法 userMessageSpanLength为接收的最大页码值
+	// 	if(pageNumberIndex == userMessageSpanLength){
+	// 		return;
+	// 	}else{
+	// 		//首先移除已有高亮样式
+	// 		$(pageNumber).removeClass('bottomPageSelectActive');
+	// 		//添加高亮样式
+	// 		$(pageNumber[pageNumberIndex+1]).addClass('bottomPageSelectActive');
+	// 	}
+	// });
 	
 	
 	

@@ -453,39 +453,39 @@ table td {
 }
 
 /*底部页面切换按钮*/
-.bottomPageSelect {
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-    background-color: rgba(000, 000, 000, .5);
-    box-shadow: 0 0 20px rgba(255, 255, 255, .8) inset;
-}
+/*.bottomPageSelect {*/
+    /*display: block;*/
+    /*text-align: center;*/
+    /*padding: 10px 0;*/
+    /*background-color: rgba(000, 000, 000, .5);*/
+    /*box-shadow: 0 0 20px rgba(255, 255, 255, .8) inset;*/
+/*}*/
 
-.bottomPageSelect span {
-    display: inline-block;
-    text-align: center;
-    color: rgba(255, 255, 255, .5);
-    cursor: pointer;
-    padding: 5px 20px;
-    margin-left: -5px;
-    background-color: rgba(000, 000, 000, .5);
-    box-shadow: 0 0 20px rgba(255, 255, 255, .7) inset;
-    transition: all 1s;
-}
+/*.bottomPageSelect span {*/
+    /*display: inline-block;*/
+    /*text-align: center;*/
+    /*color: rgba(255, 255, 255, .5);*/
+    /*cursor: pointer;*/
+    /*padding: 5px 20px;*/
+    /*margin-left: -5px;*/
+    /*background-color: rgba(000, 000, 000, .5);*/
+    /*box-shadow: 0 0 20px rgba(255, 255, 255, .7) inset;*/
+    /*transition: all 1s;*/
+/*}*/
 
-.bottomPageSelect span:hover {
-    color: #ffffff;
-    background-color: rgba(000, 000, 000, .5);
-    box-shadow: 0 0 50px rgba(255, 255, 255, .8) inset;
-    transition: all 1s;
-}
+/*.bottomPageSelect span:hover {*/
+    /*color: #ffffff;*/
+    /*background-color: rgba(000, 000, 000, .5);*/
+    /*box-shadow: 0 0 50px rgba(255, 255, 255, .8) inset;*/
+    /*transition: all 1s;*/
+/*}*/
 
-.bottomPageSelect span.bottomPageSelectActive {
-    color: #ffffff;
-    background-color: rgba(000, 000, 000, .5);
-    box-shadow: 0 0 50px rgba(255, 255, 255, .8) inset;
-    transition: all 1s;
-}
+/*.bottomPageSelect span.bottomPageSelectActive {*/
+    /*color: #ffffff;*/
+    /*background-color: rgba(000, 000, 000, .5);*/
+    /*box-shadow: 0 0 50px rgba(255, 255, 255, .8) inset;*/
+    /*transition: all 1s;*/
+/*}*/
 
 /*****************修改信息的页面 顶部DIV公用*/
 .topSearchDiv .updateTitleMessage {
@@ -520,7 +520,22 @@ table td {
     box-shadow: 0 0 15px rgba(255, 255, 255, .6) inset;
 
 }
-
+/*公告输入框*/
+.addNoticeDiv{
+    display: block;
+    width: 70%;
+    height: 500px;
+    background: rgba(0,0,0,.6);
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    margin: 0 auto;
+    resize: none;
+    word-break: break-all;
+    word-wrap: break-word;
+    text-indent: 20px;
+    border: solid 1px #dedede;
+}
 input::-webkit-input-placeholder { /* WebKit browsers */
     color: #fff;
 }
@@ -537,7 +552,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #fff;
 }
 
-/*覅不确认修改按钮*/
+/*不确认修改按钮*/
 .updateTrue {
     color: #ffffff;
     font-size: 20px;
