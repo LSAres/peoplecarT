@@ -53,6 +53,9 @@ $(function () {
     $('.testTwo').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/Index/updateMessagePage.html');
     });
+    $('.userRecommendStructure').click(function(){
+        $('iframe').attr('src', 'index.php?s=/super/UserAdministration/userRecommendStructure.html');
+    });
     //财富汇总明细
     $('.userDetails').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/userDetails.html');
