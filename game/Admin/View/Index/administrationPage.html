@@ -30,11 +30,14 @@
 </div>
 
 <table>
+
     <tr>
+        <th>会员编号</th>
         <th>会员姓名</th>
+        <th>会员账号</th>
         <th>身份证号码</th>
         <th>手机号</th>
-        <th>会员昵称</th>
+        <th>锁定状态</th>
         <th>表头</th>
         <th>表头</th>
         <th>表头</th>
@@ -45,12 +48,20 @@
         <th>操作</th>
         <th>操作</th>
     </tr>
+    <foreach name="userArr" item="value" key="key">
     <tr>
-        <td>苍天有井独自空</td>
-        <td>220183199307280050</td>
-        <td>13111111111</td>
-        <td>诸葛黑</td>
-        <td>220183199307280050</td>
+        <td>{$value.id}</td>
+        <td>{$value.username}</td>
+        <td>{$value.account}</td>
+        <td>{$value.identity_card}</td>
+        <td>{$value.phone}</td>
+        <td>
+            <if condition="$value.lockuser eq 0">
+                    <a href="{:U(MODULE_NAME.'/Index/updatelockuser',array('userid'=>$value['userid']))}" style="color:blue">未锁定</a>
+                <else/>
+                    <a href="{:U(MODULE_NAME.'/User/updatelockuser',array('userid'=>$value['userid']))}" style="color:blue">已锁定</a>
+            </if>
+        </td>
         <td>内容</td>
         <td>内容</td>
         <td>内容</td>
@@ -61,6 +72,7 @@
         <td>操作</td>
 
     </tr>
+    </foreach>
     <tr>
         <td>内撒的说法答复容</td>
         <td>220183199307280050</td>
