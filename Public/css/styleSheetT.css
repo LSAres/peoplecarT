@@ -130,7 +130,7 @@ html body {
 
 .contentDisplayDiv {
     width: 95%;
-    min-width: 1200px;
+    min-width: 1600px;
     height: 100%;
     margin: 0 auto;
     position: relative;
@@ -310,7 +310,7 @@ html body {
 
 /*右方页面切换DIV*/
 .rightPageChange {
-    width: 84%;
+    width: 84.5%;
     height: 700px;
     display: inline-block;
     margin-left: -8px;
