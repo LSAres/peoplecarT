@@ -129,7 +129,7 @@ html body {
 /********************************后台管理首页*/
 
 .contentDisplayDiv {
-    width: 1850px;
+    width: 95%;
     min-width: 1200px;
     height: 100%;
     margin: 0 auto;
@@ -310,7 +310,7 @@ html body {
 
 /*右方页面切换DIV*/
 .rightPageChange {
-    width: 1600px;
+    width: 84%;
     height: 700px;
     display: inline-block;
     margin-left: -8px;
