@@ -25,18 +25,18 @@ $(function(){
                 'transition':'1s'
             });
             $('.rightPageChange').css({
-                'width':'1850px',
+                'width':'100%',
                 'transition':'1s'
             });
         }else {
             $(this).addClass('leftControDiv');
-            $(this).removeClass('rightControDiv')
+            $(this).removeClass('rightControDiv');
             $('.leftControle').css({
-                'width':'250px',
+                'width':'15%',
                 'transition':'1s'
             });
             $('.rightPageChange').css({
-                'width':'1600px',
+                'width':'84.5%',
                 'transition':'1s'
             });
         }} );
