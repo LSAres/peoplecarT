@@ -85,7 +85,31 @@ class IndexController extends CommonController {
 
    public function updatelockuser(){
        $userid = I('get.userid');
+       $lockuser = M('user')->where('userid='.$userid)->getField('lockuser');
+       if($lockuser==0){
+           $res = M('user')->where('userid='.$userid)->setField('lockuser',1);
+       }else{
+           $res = M('user')->where('userid='.$userid)->setField('lockuser',0);
+       }
+       if($res){
+           echo "<script>alert('修改成功');</script>";
+           echo "<script>window.location.href='".U('Index/administrationPage')."'</script>";
+       }else{
+           echo "<script>alert('修改失败');</script>";
+           echo "<script>javascript:history.back(-1);</script>";die;
+       }
+   }
 
+   public function deleteuser(){
+       $userid = I('get.userid');
+       $res = M('user')->where('userid='.$userid)->delete();
+       if($res){
+           echo "<script>alert('删除成功');</script>";
+           echo "<script>window.location.href='".U('Index/administrationPage')."'</script>";
+       }else{
+           echo "<script>alert('删除失败');</script>";
+           echo "<script>javascript:history.back(-1);</script>";die;
+       }
    }
 
 }
