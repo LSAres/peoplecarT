@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户信息</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+</head>
+<body>
+<!--顶部搜索DIV-->
+<div class="topSearchDiv">
+    <div class="updateTitleMessage">
+        请慎重修改信息！
+    </div>
+</div>
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+        用户名：
+    </span>
+    <input type="text" class="updateMessageInput" placeholder="请输入修改信息">
+</div>
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+        电话号：
+    </span>
+    <input type="text" class="updateMessageInput" placeholder="请输入修改信息">
+</div>
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+        密码：
+    </span>
+    <input type="text" class="updateMessageInput" placeholder="请输入修改信息">
+</div>
+
+
+<div class="updateTrue">
+    确认修改按钮
+</div>
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
+<script>
+    $(function(){
+        var testListData =$('#testList option');
+        function textFor() {
+            for(var i=0; i<testListData.length;i++){
+                alert(testListData[i].val());
+
+            }
+            return 1;
+        }
+        $('.updateTrue').click(function(){
+
+            textFor()
+        });
+    })
+
+
+
+
+</script>
+</html>
