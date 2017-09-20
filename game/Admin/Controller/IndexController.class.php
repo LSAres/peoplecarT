@@ -83,4 +83,9 @@ class IndexController extends CommonController {
        $this->display();
    }
 
+   public function updatelockuser(){
+       $userid = I('get.userid');
+
+   }
+
 }
