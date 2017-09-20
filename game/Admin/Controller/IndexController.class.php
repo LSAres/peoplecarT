@@ -14,9 +14,8 @@ class IndexController extends CommonController {
    		$this->display();
    }
 
+   //用户列表数据查询
    public function administrationPage(){
-
-       $cwhere=I('where');
        $start_time = strtotime(I('start_time'));
        $end_time = strtotime(I('end_time'));
 
@@ -36,7 +35,6 @@ class IndexController extends CommonController {
        }
 
        $pagesize =10;
-       //$where=true;
        $p = getpage($tb_user, $where, $pagesize);
        $pageshow   = $p->show();
 
@@ -52,6 +50,7 @@ class IndexController extends CommonController {
        $this->display();
    }
 
+   //修改用户账号状态
    public function updatelockuser(){
        $userid = I('get.userid');
        $lockuser = M('user')->where('userid='.$userid)->getField('lockuser');
@@ -69,6 +68,7 @@ class IndexController extends CommonController {
        }
    }
 
+   //删除用户
    public function deleteuser(){
        $userid = I('get.userid');
        $res = M('user')->where('userid='.$userid)->delete();
@@ -79,6 +79,26 @@ class IndexController extends CommonController {
            echo "<script>alert('删除失败');</script>";
            echo "<script>javascript:history.back(-1);</script>";die;
        }
+   }
+
+   //管理员账号列表查询
+   public function adminListPage(){
+       $where="";
+       $pagesize =10;
+       $tb_admin = M('nzsuper');
+       $p = getpage($tb_admin, $where, $pagesize);
+       $pageshow   = $p->show();
+
+       $userArr=$tb_admin->where($where)
+           ->field('sp_id,sp_username,sp_addtime,sp_logintime,sp_loginip')
+           ->order('sp_id desc')
+           ->select();
+
+       $this->assign(array(
+           'userArr'=>$userArr,
+           'pageshow'=>$pageshow,
+       ));
+       $this->display();
    }
 
 }
