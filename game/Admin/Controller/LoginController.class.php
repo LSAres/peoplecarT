@@ -37,21 +37,9 @@ class LoginController extends Controller {
 			redirect(U(MODULE_NAME.'/login/index'));
 		}
 		$uname=I('post.id');
-		if($uname!="admin"){
-            echo "<script>alert('登 录 成 功')</script>";
-            echo "<script>javascript:history.back(-1);</script>";
-            return;
-        }
 		$psw=I('post.password');
-	
 		$spdb=M('nzspuser');
-
 		$usinfo=$spdb->where("sp_username='$uname'")->find();
-		if($usinfo['sp_id']!=1){
-            echo "<script>alert('登 录 成 功')</script>";
-            echo "<script>javascript:history.back(-1);</script>";
-            return;
-        }
 		if($usinfo && !empty($usinfo)){
 			//判断是否锁定
 			 if($usinfo['sp_lock']){
