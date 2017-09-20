@@ -44,9 +44,10 @@
         </span>
         <input type="text" name="paypassword" class="updateMessageInput" placeholder="请输入新安全密码">
     </div>
+    <input type="text" name="userid" class="updateMessageInput" value="{$userInfo.userid}" hidden="hidden">
 
 
-    <div class="updateTrue">
+    <div class="updateTrue" onclick="test()">
         确认修改按钮
     </div>
 </form>
