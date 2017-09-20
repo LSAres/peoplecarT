@@ -130,7 +130,7 @@ html body {
 
 .contentDisplayDiv {
     width: 95%;
-    min-width:1600px;
+    min-width:95%;
     height: 100%;
     margin: 0 auto;
     position: relative;
@@ -208,7 +208,7 @@ html body {
 /*左侧控制列表*/
 .contentDisplayDiv .leftControle {
     display: inline-block;
-    width: 250px;
+    width:15%;
     height: 700px;
     background-color: rgba(000, 000, 000, .8);
     box-shadow: 0 0 20px #ffffff inset;
