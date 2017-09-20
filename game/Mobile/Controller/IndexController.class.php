@@ -118,7 +118,6 @@ class IndexController extends CommonController {
 			echo "<script>alert('注册失败');location.href='".U('Index/copyPageTwo')."'</script>";
 			exit();
 		}
-		dump($res);die;
 	}
 	
 	//验证身份证

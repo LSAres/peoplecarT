@@ -7,56 +7,31 @@
     <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
 </head>
 <body>
-<!--顶部搜索DIV-->
-<!--<div class="topSearchDiv" style="display:none;">-->
-    <!--<label class="searchTitelDate" for="searchTitelOrStartDate">-->
-        <!--开始日期-->
-    <!--</label>-->
-    <!--<input type="date" class="searchDataStyle" id="searchTitelOrStartDate">-->
-    <!--<label class="searchTitelDate" for="searchTitelOrEndDate"> 结束日期</label>-->
-    <!--<input type="date" class="searchDataStyle" id="searchTitelOrEndDate">-->
-    <!--<label class="searchTitelDate" for="searchConditionSelect"> 搜索条件选择</label>-->
-    <!--<select name="" class="searchConditionSelect" id="searchConditionSelect">-->
-        <!--<option value="" selected="selected">请选择搜索条件</option>-->
-        <!--<option value="1111">1111111</option>-->
-        <!--<option value="2222">22222222222</option>-->
-        <!--<option value="3333">3333333</option>-->
-        <!--<option value="444">444444444</option>-->
-        <!--<option value="555">555555555</option>-->
-        <!--<option value="666">666666666件</option>-->
-    <!--</select>-->
-    <!--<input type="text" class="searchDataStyle searchInputStyle" placeholder="请输入搜索条件">-->
-    <!--<div class="conditionEndSearchStart">开始搜索</div>-->
-<!--</div>-->
 
 <table>
     <tr>
-        <th>管理员帐号</th>
-        <th>帐号添加时间</th>
-        <th>操作</th>
-        <th>操作</th>
-        <th>操作</th>
+        <th>管理员编号</th>
+        <th>管理员账号</th>
+        <th>登陆时间</th>
+        <th>注册时间</th>
+        <th>登陆IP</th>
     </tr>
-    <tr>
-        <td>13J43Q56AAA</td>
-        <td>2015-01-28</td>
-        <td>操作</td>
-        <td>操作</td>
-        <td>操作</td>
-
-    </tr>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.sp_id}</td>
+            <td>{$value.sp_username}</td>
+            <td>{$value.sp_logintime|date="Y-m-d h:i:s",###}</td>
+            <td>{$value.sp_addtime|date="Y-m-d h:i:s",###}</td>
+            <td>{$value.sp_loginip}</td>
+        </tr>
+    </foreach>
 	
 
 </table>
 
 <!--底部页面切换选项卡-->
 <div class="bottomPageSelect">
-    <span class="userMessageUp">|<</span>
-    <!--<span class="bottomPageSelectActive">1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>-->
-    <span class="userMessageDown">>|</span>
+    {$pageshow}
 </div>
 </body>
 <script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
