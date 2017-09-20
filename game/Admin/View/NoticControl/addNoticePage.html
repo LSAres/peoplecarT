@@ -16,22 +16,24 @@
         添加系统公告
     </div>
 </div>
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        公告名称:
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入公告名称">
-    <!--添加系统公告输入框  本页特有 使用页内样式-->
-    <textarea class="addNoticeDiv">
+<form action="{:U(MODULE_NAME.'/NoticControl/addNotice')}" method="post" id="myform">
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            公告名称:
+        </span>
+        <input type="text" name="title" class="updateMessageInput" placeholder="请输入公告名称">
+        <!--添加系统公告输入框  本页特有 使用页内样式-->
+        <textarea class="addNoticeDiv" name="content">
 
-    </textarea>
-</div>
+        </textarea>
+    </div>
 
 
 
-<div class="updateTrue">
-    确认添加
-</div>
+    <div class="updateTrue"   onClick="test()">
+        确认添加
+    </div>
+</form>
 
 
 </body>
@@ -52,7 +54,10 @@
         });
     })
 
-
+    function test()
+    {
+        document.getElementById("myform").submit();
+    }
 
 
 </script>
