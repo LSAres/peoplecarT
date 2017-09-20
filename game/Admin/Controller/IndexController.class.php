@@ -80,6 +80,7 @@ class IndexController extends CommonController {
            'userArr'=>$userArr,
            'pageshow'=>$pageshow,
        ));
+       $this->display();
    }
 
 }
