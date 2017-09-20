@@ -76,7 +76,7 @@ $(function () {
 
     });
     $('.refundAplyHistory').click(function(){
-        $('iframe').attr('src', 'index.php?s=/super/refundAplyHistory/bonusDetails.html');
+        $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/refundAplyHistory.html');
     });
     //公告选项
     $(".addNoticePage").click(function () {

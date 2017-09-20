@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加汇款记录</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+</head>
+<body>
+<!--顶部搜索DIV-->
+<!--<div class="topSearchDiv">-->
+    <!--<div class="updateTitleMessage">-->
+        <!--修改功能参数请慎重修改！！！-->
+    <!--</div>-->
+<!--</div>-->
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+        汇款人
+    </span>
+    <input type="text" class="updateMessageInput" placeholder="请输入管理员帐号">
+</div>
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+        参数名称2
+    </span>
+    <input type="text" class="updateMessageInput" placeholder="请输入管理员密码">
+</div>
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+        参数名称4
+    </span>
+    <input type="text" class="updateMessageInput" placeholder="请输入管理员密码">
+</div>
+
+
+<div class="updateTrue">
+    添加
+</div>
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
+<script>
+    $(function(){
+        var testListData =$('#testList option');
+        function textFor() {
+            for(var i=0; i<testListData.length;i++){
+                alert(testListData[i].val());
+
+            }
+            return 1;
+        }
+        $('.updateTrue').click(function(){
+
+            textFor()
+        });
+    })
+
+
+
+
+</script>
+</html>

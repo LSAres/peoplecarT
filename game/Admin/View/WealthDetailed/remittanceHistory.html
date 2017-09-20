@@ -5,6 +5,20 @@
     <title>用户汇款登记</title>
     <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+    <style>
+        .appendNewMessageButton{
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: solid 1px #dedede;
+            color: #dedede;
+            border-radius: 15px;
+            background: rgba(0,0,0,.5);
+            margin: 10px 0 10px 10px;
+            box-shadow: 0 0 20px 5px rgba(255,255,255,.5) inset;
+        }
+
+    </style>
 </head>
 <body>
 <!--顶部搜索DIV
@@ -30,7 +44,10 @@
 </div>
 -->
 
-
+<!--添加新纪录-->
+<a href="index.php?s=/super/WealthDetailed/appendNewMessageButton.html" class="appendNewMessageButton">
+    添加新记录
+</a>
 <table>
     <tr>
         <th>汇款账号</th>
@@ -64,6 +81,7 @@
     <span>4</span>-->
     <span class="userMessageDown">>|</span>
 </div>
+
 </body>
 <script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
 </html>

@@ -197,7 +197,9 @@ html body {
     margin: 0 10px;
     box-shadow: 0 0 20px rgba(255, 255, 255, .5) inset;
 }
-
+.contentDisplayDiv .loginOut a{
+    text-decoration: none;
+}
 .contentDisplayDiv .loginOut:hover {
     color: red;
     background-color: rgba(255, 255, 255, .0);
@@ -503,6 +505,7 @@ table td {
 }
 
 .upadateMessageDisplay .updateMessageTitle {
+    width: 150px;
     color: #ffffff;
     display: inline-block;
     padding: 5px 10px;
