@@ -19,7 +19,7 @@ $(function(){
         var divWidth=$('.leftControle').css('width');
         if(divWidth != '0px'){
             $(this).removeClass('leftControDiv');
-            $(this).addClass('rightControDiv')
+            $(this).addClass('rightControDiv');
             $('.leftControle').css({
                 'width':'0px',
                 'transition':'1s'
