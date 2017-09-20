@@ -109,6 +109,7 @@ class IndexController extends CommonController {
 		$data['paypassword'] = $two_password;
 		$data['lockuser'] = 0;
 		$data['leve'] = 1;
+		$data['time'] = time();
 		$res = M('user')->data($data)->add();
 		if($res){
 			echo "<script>alert('注册成功');location.href='".U('Index/copyPageTwo')."'</script>";
