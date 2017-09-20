@@ -37,7 +37,9 @@
         <th>会员账号</th>
         <th>身份证号码</th>
         <th>手机号</th>
+        <th>注册时间</th>
         <th>锁定状态</th>
+        <th>操作</th>
     </tr>
     <foreach name="userArr" item="value" key="key">
     <tr>
@@ -46,12 +48,18 @@
         <td>{$value.account}</td>
         <td>{$value.identity_card}</td>
         <td>{$value.phone}</td>
+        <td>{$value.time|date="Y-m-d H:i:s",###}</td>
         <td>
             <if condition="$value.lockuser eq 0">
                     <a href="{:U(MODULE_NAME.'/Index/updatelockuser',array('userid'=>$value['userid']))}" style="color:blue">未锁定</a>
                 <else/>
-                    <a href="{:U(MODULE_NAME.'/User/updatelockuser',array('userid'=>$value['userid']))}" style="color:blue">已锁定</a>
+                    <a href="{:U(MODULE_NAME.'/Index/updatelockuser',array('userid'=>$value['userid']))}" style="color:blue">已锁定</a>
             </if>
+        </td>
+        <td>
+            <a href="">进入用户</a>
+            <a href="{:U(MODULE_NAME.'/Index/deleteuser',array('userid'=>$value['userid']))}" style="color:blue">删除用户</a>
+            <a href="">修改资料</a>
         </td>
 
     </tr>
