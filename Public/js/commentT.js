@@ -57,6 +57,12 @@ $(function(){
         $('iframe').attr('src','index.php?s=/super/Index/addNoticePage.html');
 
     });
+	$('.noticeListPage').click(function(){
+        $('iframe').attr('src','index.php?s=/super/Index/noticeListPage.html');
+    });
+	$('.emailToUserPage').click(function(){
+        $('iframe').attr('src','index.php?s=/super/Index/emailToUserPage.html');
+    });
 	//参数概率
 	$('.functionValueReset').click(function(){
 		$('iframe').attr('src','index.php?s=/super/Index/functionValueResetPage.html');									
