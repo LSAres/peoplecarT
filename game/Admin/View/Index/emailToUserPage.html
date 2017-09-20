@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发送用户邮件</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<!--顶部搜索DIV-->
+<div class="topSearchDiv">
+    <div class="updateTitleMessage">
+        向指定用户发送邮件
+    </div>
+</div>
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+        用户账号:
+    </span>
+    <input type="text" class="updateMessageInput" placeholder="请输入用户帐号">
+</div>
+<div class="upadateMessageDisplay">
+    <span class="updateMessageTitle">
+        公告名称:
+    </span>
+    <input type="text" class="updateMessageInput" placeholder="请输入公告名称">
+    <!--添加系统公告输入框  本页特有 使用页内样式-->
+    <textarea class="addNoticeDiv">
+
+    </textarea>
+</div>
+
+
+
+<div class="updateTrue">
+    确认发送
+</div>
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
+<script>
+    $(function(){
+        var testListData =$('#testList option');
+        function textFor() {
+            for(var i=0; i<testListData.length;i++){
+                alert(testListData[i].val());
+
+            }
+            return 1;
+        }
+        $('.updateTrue').click(function(){
+
+            textFor()
+        });
+    })
+
+
+
+
+</script>
+</html>
