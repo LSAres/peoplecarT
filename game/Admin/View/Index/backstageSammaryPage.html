@@ -40,13 +40,13 @@
         <div class="liDiv">
             <div class=" liTitle">财富汇总明细</div>
             <ul class="ulDiv">
-                <li >会员收支明细</li>
-                <li >会员充值记录</li>
-                <li>会员资金冲减</li>
-                <li>汇款登记管理</li>
-                <li>提现管理</li>
-                <li>奖金明细</li>
-				<li>申请退款管理</li>
+                <li class="userDetails">会员收支明细</li>
+                <li class="userChargeHistory">会员充值记录</li>
+                <li class="userCapitalOffset">会员资金冲减</li>
+                <li class="remittanceHistory">汇款登记管理</li>
+                <li class="cashHistory">提现管理</li>
+                <li class="bonusDetails">奖金明细</li>
+                <li class="refundAplyHistory">申请退款管理</li>
             </ul>
         </div>
         <div class="liDiv">
@@ -100,9 +100,10 @@
     <div class="leftControDiv" id="controDiv"></div>
     <!--右方页面切换DIV-->
     <div class="rightPageChange">
-       <iframe align="center" width="100%" height="100%" src="{:U(MODULE_NAME.'/Index/gameNotice')}" style="border: none;">
+        <iframe align="center" width="100%" height="100%" src="{:U(MODULE_NAME.'/Index/gameNotice')}"
+                style="border: none;">
 
-       </iframe>
+        </iframe>
     </div>
 
 </div>
