@@ -52,14 +52,14 @@
         <td>{$value.time|date="Y-m-d H:i:s",###}</td>
         <td>
             <if condition="$value.lockuser eq 0">
-                    <a href="{:U(MODULE_NAME.'/Index/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">未锁定</a>
+                    <a href="{:U(MODULE_NAME.'/UserAdministration/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">未锁定</a>
                 <else/>
-                    <a href="{:U(MODULE_NAME.'/Index/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">已锁定</a>
+                    <a href="{:U(MODULE_NAME.'/UserAdministration/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">已锁定</a>
             </if>
         </td>
         <td>
             <a href="" style="color:white">进入用户</a></br>
-            <a href="{:U(MODULE_NAME.'/Index/deleteuser',array('userid'=>$value['userid']))}" style="color:white">删除用户</a></br>
+            <a href="{:U(MODULE_NAME.'/UserAdministration/deleteuser',array('userid'=>$value['userid']))}" style="color:white">删除用户</a></br>
             <a href="{:U(MODULE_NAME.'/UserAdministration/updateUserDataPage',array('userid'=>$value['userid']))}" style="color:white">修改资料</a>
         </td>
 

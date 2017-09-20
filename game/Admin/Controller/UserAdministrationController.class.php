@@ -70,4 +70,17 @@ class UserAdministrationController extends CommonController {
        }
    }
 
+   //修改用户资料界面
+    public function updateUserDataPage(){
+       $userid = I('get.userid');
+       $userInfo = M('user')->where('userid='.$userid)->find();
+       $this->assign('userInfo',$userInfo);
+       $this->display();
+    }
+
+    //接收修改的用户资料
+    public function edituserInfo(){
+
+    }
+
 }

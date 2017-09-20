@@ -13,29 +13,43 @@
         请慎重修改信息！
     </div>
 </div>
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        用户名：
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入修改信息">
-</div>
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        电话号：
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入修改信息">
-</div>
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        密码：
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入修改信息">
-</div>
+<form action="{:U(MODULE_NAME.'/UserAdministration/edituserInfo')}" method="post" id="myform">
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            用户姓名：
+        </span>
+        <input type="text" name="username" class="updateMessageInput" placeholder="{$userInfo.username}">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            手机号：
+        </span>
+        <input type="text" name="phone" class="updateMessageInput" placeholder="{$userInfo.phone}">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            身份证号：
+        </span>
+        <input type="text" name="identity_card" class="updateMessageInput" placeholder="{$userInfo.identity_card}">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            密码：
+        </span>
+        <input type="text" name="password" class="updateMessageInput" placeholder="请输入新密码">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            安全密码：
+        </span>
+        <input type="text" name="paypassword" class="updateMessageInput" placeholder="请输入新安全密码">
+    </div>
 
 
-<div class="updateTrue">
-    确认修改按钮
-</div>
+    <div class="updateTrue">
+        确认修改按钮
+    </div>
+</form>
 
 
 </body>
@@ -55,6 +69,11 @@
             textFor()
         });
     })
+
+    function test()
+    {
+        document.getElementById("myform").submit();
+    }
 
 
 
