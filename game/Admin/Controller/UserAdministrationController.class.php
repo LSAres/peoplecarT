@@ -50,7 +50,7 @@ class UserAdministrationController extends CommonController {
        }
        if($res){
            echo "<script>alert('修改成功');</script>";
-           echo "<script>window.location.href='".U('Index/administrationPage')."'</script>";
+           echo "<script>window.location.href='".U('UserAdministration/administrationPage')."'</script>";
        }else{
            echo "<script>alert('修改失败');</script>";
            echo "<script>javascript:history.back(-1);</script>";die;
@@ -63,7 +63,7 @@ class UserAdministrationController extends CommonController {
        $res = M('user')->where('userid='.$userid)->delete();
        if($res){
            echo "<script>alert('删除成功');</script>";
-           echo "<script>window.location.href='".U('Index/administrationPage')."'</script>";
+           echo "<script>window.location.href='".U('UserAdministration/administrationPage')."'</script>";
        }else{
            echo "<script>alert('删除失败');</script>";
            echo "<script>javascript:history.back(-1);</script>";die;
@@ -80,7 +80,49 @@ class UserAdministrationController extends CommonController {
 
     //接收修改的用户资料
     public function edituserInfo(){
+        $userid = I('post.userid');
+        $username = I('post.username');
+        $phone = I('post.phone');
+        $identity_card = I('post.identity_card');
+        $password = I('post.password');
+        $paypassword = I('post.paypassword');
+        if($username==null&&$phone==null&&$identity_card==null&&$password==null&&$paypassword==null){
+            echo "<script>alert('无任何修改');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        if($username!=null){
+            $data['username']=$username;
+        }
+        if($phone!=null){
+            $data['phone']=$phone;
+        }
+        if($identity_card!=null){
+            $data['identity_card']=$identity_card;
+        }
+        if($password!=null){
+            //=============登录密码加密==============
+            $salt= substr(md5(time()),0,3);
+            $password=md5(md5(trim($password)).$salt);
+            $data['salt']=$salt;
+            $data['password']=$password;
+        }
+        if($paypassword!=null){
+            //=============安全密码加密==============
+            $two_salt= substr(md5(time()),0,3);
+            $two_password=md5(md5(trim($paypassword)).$two_salt);
+            $data['safety_salt'] = $two_salt;
+            $data['paypassword'] = $two_password;
+        }
 
+        //向用户表修改用户资料
+        $res = M('user')->where('userid='.$userid)->save($data);
+        if($res){
+            echo "<script>alert('修改成功');</script>";
+            echo "<script>window.location.href='".U('UserAdministration/administrationPage')."'</script>";
+        }else{
+            echo "<script>alert('修改失败');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
     }
 
 }
