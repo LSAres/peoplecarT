@@ -47,31 +47,31 @@ $(function(){
 	**/
 	//会员管理功能
     $('.testOne').click(function(){
-        $('iframe').attr('src','index.php?s=/super/Index/administrationPage.html');
+        $('iframe').attr('src','index.php?s=/super/UserAdministration/administrationPage.html');
     });
     $('.testTwo').click(function(){
         $('iframe').attr('src','index.php?s=/super/Index/updateMessagePage.html');
     });
     //公告选项
 	$(".addNoticePage").click(function(){
-        $('iframe').attr('src','index.php?s=/super/Index/addNoticePage.html');
+        $('iframe').attr('src','index.php?s=/super/NoticControl/addNoticePage.html');
 
     });
 	$('.noticeListPage').click(function(){
-        $('iframe').attr('src','index.php?s=/super/Index/noticeListPage.html');
+        $('iframe').attr('src','index.php?s=/super/NoticControl/noticeListPage.html');
     });
 	$('.emailToUserPage').click(function(){
-        $('iframe').attr('src','index.php?s=/super/Index/emailToUserPage.html');
+        $('iframe').attr('src','index.php?s=/super/NoticControl/emailToUserPage.html');
     });
 	//参数概率
 	$('.functionValueReset').click(function(){
-		$('iframe').attr('src','index.php?s=/super/Index/functionValueResetPage.html');									
+		$('iframe').attr('src','index.php?s=/super/ParameterProbability/functionValueResetPage.html');
 	});
 	$('.operationLog').click(function(){
-		$('iframe').attr('src','index.php?s=/super/Index/operationLogPage.html');							  
+		$('iframe').attr('src','index.php?s=/super/ParameterProbability/operationLogPage.html');
 	 });
 	$('.helpDocument').click(function(){
-		$('iframe').attr('src','index.php?s=/super/Index/helpDocumentList.html');
+		$('iframe').attr('src','index.php?s=/super/ParameterProbability/helpDocumentList.html');
 	});
 	//参数概率-点击查看文章
 	$('.documentSelect').click(function(){
@@ -93,14 +93,14 @@ $(function(){
 	});
 	//后台管理
 	$('.websiteSwitch').click(function(){
-		$('iframe').attr("src","index.php?s=/super/Index/websiteSwitchPage.html");
+		$('iframe').attr("src","index.php?s=/super/BackstageControl/websiteSwitchPage.html");
 	});
 	//管理员选项
 	$('.adminAppend').click(function(){
-		 $('iframe').attr('src','index.php?s=/super/Index/adminAppendPage.html');							 
+		 $('iframe').attr('src','index.php?s=/super/AdminControl/adminAppendPage.html');
 	});
 	$('.adminList').click(function(){
-		 $('iframe').attr('src','index.php?s=/super/Index/adminListPage.html');							 
+		 $('iframe').attr('src','index.php?s=/super/AdminControl/adminListPage.html');
 	});
 	/**
 	*
