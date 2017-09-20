@@ -51,15 +51,15 @@
         <td>{$value.time|date="Y-m-d H:i:s",###}</td>
         <td>
             <if condition="$value.lockuser eq 0">
-                    <a href="{:U(MODULE_NAME.'/Index/updatelockuser',array('userid'=>$value['userid']))}" style="color:blue">未锁定</a>
+                    <a href="{:U(MODULE_NAME.'/Index/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">未锁定</a>
                 <else/>
-                    <a href="{:U(MODULE_NAME.'/Index/updatelockuser',array('userid'=>$value['userid']))}" style="color:blue">已锁定</a>
+                    <a href="{:U(MODULE_NAME.'/Index/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">已锁定</a>
             </if>
         </td>
         <td>
-            <a href="">进入用户</a>
-            <a href="{:U(MODULE_NAME.'/Index/deleteuser',array('userid'=>$value['userid']))}" style="color:blue">删除用户</a>
-            <a href="">修改资料</a>
+            <a href="" style="color:white">进入用户</a></br>
+            <a href="{:U(MODULE_NAME.'/Index/deleteuser',array('userid'=>$value['userid']))}" style="color:white">删除用户</a></br>
+            <a href="" style="color:white">修改资料</a>
         </td>
 
     </tr>
@@ -68,12 +68,13 @@
 
 <!--底部页面切换选项卡-->
 <div class="bottomPageSelect">
-    <span class="userMessageUp">|<</span>
-    <!--<span class="bottomPageSelectActive">1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>-->
-    <span class="userMessageDown">>|</span>
+    <!--<span class="userMessageUp">|<</span>-->
+    <!--&lt;!&ndash;<span class="bottomPageSelectActive">1</span>-->
+    <!--<span>2</span>-->
+    <!--<span>3</span>-->
+    <!--<span>4</span>&ndash;&gt;-->
+    <!--<span class="userMessageDown">>|</span>-->
+    {$pageshow}
 </div>
 </body>
 <script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>

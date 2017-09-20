@@ -66,7 +66,7 @@ class IndexController extends CommonController {
            $tb_user->where(array('userid'=>$userid))->save($up_lockuser);
 
        }
-       $pagesize =20;
+       $pagesize =10;
        //$where=true;
        $p = getpage($tb_user, $where, $pagesize);
        $pageshow   = $p->show();
