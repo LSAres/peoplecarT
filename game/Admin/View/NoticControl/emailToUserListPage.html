@@ -10,16 +10,19 @@
 
 <table>
     <tr>
-        <th>文档标题</th>
+        <th>邮件标题</th>
+        <th>接收人账号</th>
+        <th>接收人姓名</th>
         <th>添加时间</th>
         <th>操作</th>
         <th>操作</th>
-        <th>操作</th>
     </tr>
-    <foreach name="userArr" item="value" key="key">
+    <foreach name="emailArr" item="value" key="key">
         <tr>
             <td>{$value.title}</td>
-            <td>{$value.add_time|date="Y-m-d H:i:s",###}</td>
+            <td>{$value.account}</td>
+            <td>{$value.username}</td>
+            <td>{$value.time|date="Y-m-d H:i:s",###}</td>
             <td>
                 <span class="documentCall documentSelect">查看公告</span>
                 <textarea  class=" documentDisplay documentReadonly" readonly="readonly"    >
@@ -28,17 +31,7 @@
                 <input type="button" value="关闭" class="documentButtonStyle documentClose">
             </td>
             <td>
-                <form action="{:U(MODULE_NAME.'/NoticControl/editNotice')}" method="post" id="myform">
-                    <span class="documentCall documentUpdata">修改公告</span>
-                    <textarea  class="documentDisplay documentRechange" name="content"   >
-                       {$value.content}
-                    </textarea>
-                    <input type="text" value="{$value.id}" class="documentButtonStyle documentChange" name="id" hidden="hidden">
-                    <input type="button" value="提交修改" class="documentButtonStyle documentChange" onclick="test()">
-                </form>
-            </td>
-            <td>
-                <a href="{:U(MODULE_NAME.'/NoticControl/deletenew',array('id'=>$value['id']))}" style="color:white">删除公告</a>
+                <a href="{:U(MODULE_NAME.'/NoticControl/deleteemail',array('id'=>$value['id']))}" style="color:white">删除邮件</a>
             </td>
 
         </tr>

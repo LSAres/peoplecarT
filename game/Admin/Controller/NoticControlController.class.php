@@ -102,9 +102,45 @@ class NoticControlController extends CommonController{
         $res = M('useremail')->data($data)->add();
         if($res){
             echo "<script>alert('发送成功');</script>";
-            echo "<script>window.location.href='".U('NoticControl/noticeListPage')."'</script>";
+            echo "<script>window.location.href='".U('NoticControl/emailToUserListPage')."'</script>";
         }else{
             echo "<script>alert('发送失败');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+    }
+
+    public function emailToUserListPage(){
+        $where = null;
+        $tb_email = M('useremail');
+        $pagesize =10;
+        $p = getpage($tb_email, $where, $pagesize);
+        $pageshow   = $p->show();
+
+        $emailArr=$tb_email->where($where)
+            ->field('id,sp_id,title,content,time,status,uid')
+            ->order('id desc ')
+            ->select();
+        foreach ($emailArr as $k=>$v){
+            $userInfo = M('user')->where('userid='.$v['uid'])->find();
+            $emailArr[$k]['account']=$userInfo['account'];
+            $emailArr[$k]['username']=$userInfo['username'];
+        }
+
+        $this->assign(array(
+            'emailArr'=>$emailArr,
+            'pageshow'=>$pageshow,
+        ));
+        $this->display();
+    }
+
+    public function deleteemail(){
+        $id = I('get.id');
+        $res = M('useremail')->where('id='.$id)->delete();
+        if($res){
+            echo "<script>alert('删除成功');</script>";
+            echo "<script>window.location.href='".U('NoticControl/emailToUserListPage')."'</script>";
+        }else{
+            echo "<script>alert('删除失败');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;
         }
     }
