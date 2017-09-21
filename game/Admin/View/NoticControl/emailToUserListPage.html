@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>站内信息列表</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>文档标题</th>
+        <th>添加时间</th>
+        <th>操作</th>
+        <th>操作</th>
+        <th>操作</th>
+    </tr>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.title}</td>
+            <td>{$value.add_time|date="Y-m-d H:i:s",###}</td>
+            <td>
+                <span class="documentCall documentSelect">查看公告</span>
+                <textarea  class=" documentDisplay documentReadonly" readonly="readonly"    >
+                  {$value.content}
+                </textarea>
+                <input type="button" value="关闭" class="documentButtonStyle documentClose">
+            </td>
+            <td>
+                <form action="{:U(MODULE_NAME.'/NoticControl/editNotice')}" method="post" id="myform">
+                    <span class="documentCall documentUpdata">修改公告</span>
+                    <textarea  class="documentDisplay documentRechange" name="content"   >
+                       {$value.content}
+                    </textarea>
+                    <input type="text" value="{$value.id}" class="documentButtonStyle documentChange" name="id" hidden="hidden">
+                    <input type="button" value="提交修改" class="documentButtonStyle documentChange" onclick="test()">
+                </form>
+            </td>
+            <td>
+                <a href="{:U(MODULE_NAME.'/NoticControl/deletenew',array('id'=>$value['id']))}" style="color:white">删除公告</a>
+            </td>
+
+        </tr>
+    </foreach>
+	
+
+</table>
+
+<!--底部页面切换选项卡-->
+<div class="bottomPageSelect">
+    {$pageshow}
+</div>
+</body>
+<script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
+<script>
+    function test()
+    {
+        document.getElementById("myform").submit();
+    }
+</script>
+</html>

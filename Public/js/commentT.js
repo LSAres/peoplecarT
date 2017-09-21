@@ -92,6 +92,10 @@ $(function () {
     $('.emailToUserPage').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/NoticControl/emailToUserPage.html');
     });
+    $('.emailToUserListPage').click(function(){
+        $('iframe').attr('src', 'index.php?s=/super/NoticControl/emailToUserListPage.html');
+
+    });
     //参数概率
     $('.functionValueReset').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/ParameterProbability/functionValueResetPage.html');
