@@ -3,7 +3,8 @@ $(function(){
 	$('.bodyHeight').css('height',($(document).outerHeight()+'px'));
 
 	$('.backButton').click(function(){
-		window.history.back();
+        window.location.href="index.php?s=/Index/copyPageTwo.html";
+		// window.history.back();
 	})
 
 	
