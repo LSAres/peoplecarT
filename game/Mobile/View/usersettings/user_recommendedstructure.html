@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	<link rel="stylesheet" href="__PUBLIC__/css/stylesheet.css">
+	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+	<script src="__PUBLIC__/js/comment.js"></script>
+    <style>
+		.recommend_OuterDiv{
+			/*perspective:1000px;
+			perspective-origin:50% 50%;
+			transform-style:presrve-3d;*/
+			width:100%;
+			padding:5px 10px;
+			
+		}
+		.recommend_Row{
+			display:flex;
+		}
+		.recommend_RowBlock{
+			flex:1;
+			text-align:center;
+			padding:20px 0;
+		}
+		.recommend_Point{
+			background:radial-gradient(rgba(255,255,255,1),rgba(255,255,255,.2));
+			width: 60px;
+    		height: 60px;
+    		border-radius: 100%;
+    		display: inline-block;
+			font-size:4rem;
+		}
+	</style>
+</head>
+<body  class="bodyHeight">
+<!--topTitle -->
+<div class="pageTitleDiv">
+	<div class="backButton">
+		返回
+	</div>
+	<span class="pageTitleText">
+		推荐结构
+	</span>
+</div>
+
+
+<!--推荐结构外围DIV-->
+<div class="recommend_OuterDiv">
+	<!--1-->
+	<div class="recommend_Row">
+		<!--点阵结构 -->
+		<div class="recommend_RowBlock">
+			<!--点-->
+			<div class="recommend_Point"></div>
+		</div>
+	</div>
+	<!--2-->
+	<div class="recommend_Row">
+		<!--点阵结构 -->
+		<div class="recommend_RowBlock">
+			<!--点-->
+			<div class="recommend_Point"></div>
+		</div>
+		<!--点阵结构 -->
+		<div class="recommend_RowBlock">
+			<!--点-->
+			<div class="recommend_Point"></div>
+		</div>
+	</div>
+</div>
+
+
+
+</body>
+
+<script>
+function clickPoint(e){
+	alert(e.screenX);
+  alert(e.screenY);
+}
+  document.getElementsByClassName('bodyHeight')[0].addEventListener('click',clickPoint,false);
+  
+
+</script>
+</html>

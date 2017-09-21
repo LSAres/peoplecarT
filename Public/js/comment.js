@@ -41,11 +41,10 @@ $(function(){
 				$('.selected_3').slideDown();
 			}
 	});
-	////����ͨ�� ���ʱ�� ��ʾ��ϸ��Ϣ	
 	$('.details_Data').click(function(){
 		$(this).parent().find('.details_MessageRow').slideToggle();
 	})
-	//����ͨ�� ���input ��ʾѡ���б�
+
 	$('.forInputSelect').click(function(){
 		$('.inputSelectOuterDiv').css({'display':'block'});
 		setTimeout(function(){
