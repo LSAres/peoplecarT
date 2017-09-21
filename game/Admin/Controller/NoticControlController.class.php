@@ -73,4 +73,39 @@ class NoticControlController extends CommonController{
             echo "<script>javascript:history.back(-1);</script>";die;
         }
     }
+
+    public function addUserEmail(){
+        $sp_id = session('sp_user');
+        $t=I('post.');
+        foreach($t as $v){
+            if($v == ''){
+                echo "<script>alert('请确认输入完成');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
+        $account = I('post.account');
+        $title = I('post.title');
+        $content = I('post.content');
+
+        //判断是否存在此账号
+        $is_account = M('user')->where("account='".$account."'")->find();
+        if(!$is_account){
+            echo "<script>alert('用户账号不存在');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        $userid = M('user')->where("account='".$account."'")->getField('userid');
+        $data['uid']=$userid;
+        $data['sp_id']=$sp_id;
+        $data['title']=$title;
+        $data['content']=$content;
+        $data['time']=time();
+        $res = M('useremail')->data($data)->add();
+        if($res){
+            echo "<script>alert('发送成功');</script>";
+            echo "<script>window.location.href='".U('NoticControl/noticeListPage')."'</script>";
+        }else{
+            echo "<script>alert('发送失败');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+    }
 }
