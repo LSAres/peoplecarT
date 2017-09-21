@@ -106,6 +106,10 @@ $(function () {
     $('.helpDocument').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/ParameterProbability/helpDocumentList.html');
     });
+    $('.addHelpDocument').click(function(){
+        $('iframe').attr('src', 'index.php?s=/super/ParameterProbability/addHelpDocument.html');
+
+    })
     //参数概率-点击查看文章
     $('.documentSelect').click(function () {
         $('.documentReadonly').slideDown();
