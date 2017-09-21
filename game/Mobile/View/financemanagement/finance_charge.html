@@ -19,33 +19,38 @@
 	</span>
 </div>
 
-<!---->
-<div class="messageDidsplayDiv">
-	<div class="leftMessage">充值金额:</div>
-	<input type="text" placeholder="请输入充值金额"  readonly="readonly"  class="rightMessage" />
-	
-</div>
-<!---->
-<div class="messageDidsplayDiv">
-	<div class="leftMessage">手机号码:</div>
-	<input type="text"  placeholder="请输入手机号"    class="rightMessage" />
-	
-</div>
-<!---->
-<div class="messageDidsplayDiv">
-	<div class="leftMessage">微信号码:</div>
-	<input type="text"  placeholder="请输入微信号"    class="rightMessage" />
-	
-</div>
+<form action="{:U(MODULE_NAME.'/Financemanagement/addcharge')}" method="post" id="myform">
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">充值金额:</div>
+		<input type="number" placeholder="请输入充值金额" name="money"  class="rightMessage" />
 
-<!--确认按钮-->
-<div class="etermineButton">
-	确认
-</div>
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">手机号码:</div>
+		<input type="number"  placeholder="请输入手机号" name="phone"    class="rightMessage" />
+
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">微信号码:</div>
+		<input type="text"  placeholder="请输入微信号" name="wx_no"    class="rightMessage" />
+
+	</div>
+
+	<!--确认按钮-->
+	<div class="etermineButton"  onClick="test()">
+		确认
+	</div>
+</form>
 </body>
 
 <script>
-   
+    function test()
+    {
+        document.getElementById("myform").submit();
+    }
 
 </script>
 </html>
