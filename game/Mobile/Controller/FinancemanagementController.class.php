@@ -47,6 +47,21 @@ class FinancemanagementController extends CommonController {
         $data['time'] = time();
         $data['status'] = 0;
         $res = M('charge')->data($data)->add();
+        if($res){
+            echo "<script>alert('充值申请成功，请等待工作人员与您联系');</script>";
+            echo "<script>window.location.href='".U('Financemanagement/finance_chargeHistory')."'</script>";
+        }else{
+            echo "<script>alert('充值申请失败');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
 
+    }
+
+    public function finance_chargeHistory(){
+        $userid = session('userid');
+        $condition['uid'] = $userid;
+        $chargelist = M('charge')->where($condition)->select();
+        $this->assign('chargelist',$chargelist);
+        $this->display();
     }
 }
