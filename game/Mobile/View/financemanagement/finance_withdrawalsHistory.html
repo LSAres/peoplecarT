@@ -24,7 +24,7 @@
 
 <!--奖金记录-->
 <div class="selectedDiv selected_1">
-	<foreach name="chargelist" item="value" key="key">
+	<foreach name="withdrawlist" item="value" key="key">
 		<!--信息块-->
 		<div class="detailsDiv">
 			<div class="details_Data">
@@ -48,7 +48,7 @@
 					提现状态：
 				</span>
 				<span class="details_RightMessage">
-					<if condition="$value.status">
+					<if condition="$value.status eq 0">
 							申请中
 						<else/>
 							已审核
