@@ -34,35 +34,39 @@
 <table>
     <tr>
         <th>充值帐号</th>
+        <th>账号姓名</th>
+        <th>手机号</th>
+        <th>微信</th>
         <th>充值时间</th>
         <th>充值数量</th>
         <th>充值状态</th>
         <th>操作</th>
     </tr>
-    <tr>
-        <td>老人与海鲜</td>
-        <td>2015-01-28</td>
-        <td>
-			哈利波特大
-		</td>
-        <td>
-			死神不来了
-		</td>
-        <td>删除</td>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.account}</td>
+            <td>{$value.username}</td>
+            <td>{$value.phone}</td>
+            <td>{$value.wx_no}</td>
+            <td>{$value.time|date="Y-m-d H:i:s",###}</td>
+            <td>{$value.money}</td>
+            <td>
+               <if condition="$value.status eq 0">
+                        申请中
+                   <else/>
+                        充值完成
+               </if>
+            </td>
+            <td>删除</td>
 
-    </tr>
-	
+        </tr>
+    </foreach>
 
 </table>
 
 <!--底部页面切换选项卡-->
 <div class="bottomPageSelect">
-    <span class="userMessageUp">|<</span>
-    <!--<span class="bottomPageSelectActive">1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>-->
-    <span class="userMessageDown">>|</span>
+    {$pageshow}
 </div>
 </body>
 <script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
