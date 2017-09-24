@@ -52,9 +52,13 @@
         <td>{$value.time|date="Y-m-d H:i:s",###}</td>
         <td>
             <if condition="$value.lockuser eq 0">
-                    <a href="{:U(MODULE_NAME.'/UserAdministration/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">未锁定</a>
-                <else/>
-                    <a href="{:U(MODULE_NAME.'/UserAdministration/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">已锁定</a>
+                <a href="{:U(MODULE_NAME.'/UserAdministration/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">未锁定</a>
+            </if>
+            <if condition="$value.lockuser eq 1">
+                <a href="{:U(MODULE_NAME.'/UserAdministration/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">未激活</a>
+            </if>
+            <if condition="$value.lockuser eq 2">
+                <a href="{:U(MODULE_NAME.'/UserAdministration/updatelockuser',array('userid'=>$value['userid']))}" style="color:white">冻结</a>
             </if>
         </td>
         <td>

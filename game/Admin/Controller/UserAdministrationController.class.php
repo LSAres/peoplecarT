@@ -44,9 +44,29 @@ class UserAdministrationController extends CommonController {
        $userid = I('get.userid');
        $lockuser = M('user')->where('userid='.$userid)->getField('lockuser');
        if($lockuser==0){
-           $res = M('user')->where('userid='.$userid)->setField('lockuser',1);
+           $res = M('user')->where('userid='.$userid)->setField('lockuser',2);
        }else{
-           $res = M('user')->where('userid='.$userid)->setField('lockuser',0);
+           if($lockuser==1){
+               $recommend_id = M('user')->where('userid='.$userid)->getField('recommend_id');
+               $rs=M('store')->where('uid='.$recommend_id)->setInc('buycar_money',6000);
+               $re=M('store')->where('uid='.$recommend_id)->setInc('money',6000);
+               if(!$re||!$rs){
+                   echo "<script>alert('奖励发放失败，请重新操作');</script>";
+                   echo "<script>javascript:history.back(-1);</script>";die;
+               }
+               $is_top_id = M('group')->where('one_id='.$recommend_id)->find();
+               if($is_top_id){
+                   $two_group = M('user')->where('parent_id='.$recommend_id)->count();
+                   if($two_group<2){
+                       M('user')->where('userid='.$userid)->setField('parent_id',$recommend_id);
+                   }else{
+                       $two_group_id = M('user')->where('parent_id='.$recommend_id)->getField('userid',true);
+                   }
+               }
+               $res = M('user')->where('userid='.$userid)->setField('lockuser',0);
+           }else{
+               $res = M('user')->where('userid='.$userid)->setField('lockuser',0);
+           }
        }
        if($res){
            echo "<script>alert('修改成功');</script>";
@@ -86,7 +106,8 @@ class UserAdministrationController extends CommonController {
         $identity_card = I('post.identity_card');
         $password = I('post.password');
         $paypassword = I('post.paypassword');
-        if($username==null&&$phone==null&&$identity_card==null&&$password==null&&$paypassword==null){
+        $leve = I('post.leve');
+        if($username==null&&$phone==null&&$identity_card==null&&$password==null&&$paypassword==null&&$leve==null){
             echo "<script>alert('无任何修改');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;
         }
@@ -98,6 +119,9 @@ class UserAdministrationController extends CommonController {
         }
         if($identity_card!=null){
             $data['identity_card']=$identity_card;
+        }
+        if($leve!=null){
+            $data['leve']=$leve;
         }
         if($password!=null){
             //=============登录密码加密==============
