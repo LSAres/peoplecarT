@@ -107,7 +107,7 @@ class IndexController extends CommonController {
 		$data['password'] = $password;
 		$data['safety_salt'] = $two_salt;
 		$data['paypassword'] = $two_password;
-		$data['lockuser'] = 0;
+		$data['lockuser'] = 1;
 		$data['leve'] = 1;
 		$data['time'] = time();
 		$res = M('user')->data($data)->add();

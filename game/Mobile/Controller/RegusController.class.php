@@ -181,14 +181,7 @@ class RegusController extends Controller {
 				session('userid',$usinfo['userid'],1296000);
 				session('account',$account,1296000);
 			    $browser = cookie('browser');
-			    if ($browser == 'pc') {
-					dump(111);die;
-				    echo "<script>window.top.location.href='".U('Pc/Index/index')."'</script>";
-				    exit();
-			    } else {
-				
-				   redirect(U(MODULE_NAME.'/Index/copyPageTwo'));
-			    }
+                redirect(U(MODULE_NAME.'/Index/copyPageTwo'));
 			}else{
 				echo "<script>alert('密码错误');location.href='".U('Regus/login')."'</script>";
 			}
