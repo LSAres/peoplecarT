@@ -56,12 +56,20 @@ class UserAdministrationController extends CommonController {
                }
                $is_top_id = M('group')->where('one_id='.$recommend_id)->find();
                if($is_top_id){
-                   $two_group = M('user')->where('parent_id='.$recommend_id)->count();
-                   if($two_group<2){
-                       M('user')->where('userid='.$userid)->setField('parent_id',$recommend_id);
-                   }else{
-                       $two_group_id = M('user')->where('parent_id='.$recommend_id)->getField('userid',true);
+                   $this->group($recommend_id,$userid);
+               }else {
+                   $recommend_id_two = M('user')->where('userid=' . $recommend_id)->getField('parent_id');
+                   $is_top_id = M('group')->where('one_id=' . $recommend_id_two)->find();
+                   if ($is_top_id) {
+                       $this->group($recommend_id_two, $userid);
+                   }else {
+                       $recommend_id_three = M('user')->where('userid=' . $recommend_id_two)->getField('parent_id');
+                       $is_top_id = M('group')->where('one_id=' . $recommend_id_three)->find();
+                       if ($is_top_id) {
+                           $this->group($recommend_id_three, $userid);
+                       }
                    }
+
                }
                $res = M('user')->where('userid='.$userid)->setField('lockuser',0);
            }else{
@@ -146,6 +154,96 @@ class UserAdministrationController extends CommonController {
         }else{
             echo "<script>alert('修改失败');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;
+        }
+    }
+
+    //分组
+    public function group($top_id=null,$userid=null){
+        $two_group = M('user')->where('parent_id='.$top_id)->count();
+        $group = M('group')->where('one_id='.$top_id)->find();
+        if($two_group<2){
+            M('user')->where('userid='.$userid)->setField('parent_id',$top_id);
+            if($group['two_id']==null){
+                M('group')->where('one_id='.$top_id)->setField('two_id',$userid);
+                M('group')->where('one_id='.$top_id)->setField('two_time',time());
+            }else{
+                M('group')->where('one_id='.$top_id)->setField('three_id',$userid);
+                M('group')->where('one_id='.$top_id)->setField('three_time',time());
+            }
+        }else{
+            if($group['four_id']==null){
+                M('user')->where('userid='.$userid)->setField('parent_id',$group['two_id']);
+                M('group')->where('one_id='.$top_id)->setField('four_id',$userid);
+                M('group')->where('one_id='.$top_id)->setField('four_time',time());
+            }else{
+                if($group['five_id']==null){
+                    M('user')->where('userid='.$userid)->setField('parent_id',$group['two_id']);
+                    M('group')->where('one_id='.$top_id)->setField('five_id',$userid);
+                    M('group')->where('one_id='.$top_id)->setField('five_time',time());
+                }else{
+                    if ($group['six_id']==null){
+                        M('user')->where('userid='.$userid)->setField('parent_id',$group['three_id']);
+                        M('group')->where('one_id='.$top_id)->setField('six_id',$userid);
+                        M('group')->where('one_id='.$top_id)->setField('six_time',time());
+                    }else{
+                        $data['one_id']=$group['two_id'];
+                        $data['one_time']=time();
+                        M('group')->data($data)->add();
+                        M('group')->where('one_id='.$group['two_id'])->setField('two_id',$group['four_id']);
+                        M('group')->where('one_id='.$group['two_id'])->setField('two_time',time());
+                        M('user')->where('userid='.$group['four_id'])->setField('parent_id',$group['two_id']);
+                        M('group')->where('one_id='.$group['two_id'])->setField('three_id',$group['five_id']);
+                        M('group')->where('one_id='.$group['two_id'])->setField('three_time',time());
+                        M('user')->where('userid='.$group['five_id'])->setField('parent_id',$group['two_id']);
+                        $dbtb['one_id']=$group['three_id'];
+                        $dbtb['one_time']=time();
+                        M('group')->data($dbtb)->add();
+                        M('group')->where('one_id='.$group['three_id'])->setField('two_id',$group['six_id']);
+                        M('group')->where('one_id='.$group['three_id'])->setField('two_time',time());
+                        M('user')->where('userid='.$group['six_id'])->setField('parent_id',$group['three_id']);
+                        M('group')->where('one_id='.$group['three_id'])->setField('three_id',$userid);
+                        M('group')->where('one_id='.$group['three_id'])->setField('three_time',time());
+                        M('user')->where('userid='.$userid)->setField('parent_id',$group['three_id']);
+                        M('group')->where('one_id='.$top_id)->delete();
+                        M('group')->where('userid='.$top_id)->setField('parent_id',null);
+
+                        $res=$this->recombination($group['one_id']);
+                    }
+                }
+            }
+        }
+    }
+
+    //顶端出局重组
+    public function recombination($top_id=null){
+        $recommend_id = M('user')->where('userid='.$top_id)->getField('recommend_id');
+        M('store')->where('uid='.$top_id)->setInc('bonus',2000);
+        if($recommend_id==1){
+            $data['one_id']=$top_id;
+            $data['one_time']=time();
+            $res = M('group')->data($data)->add();
+            if($res){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            $is_top_id = M('group')->where('one_id='.$recommend_id)->find();
+            if($is_top_id){
+                $this->group($recommend_id,$top_id);
+            }else {
+                $recommend_id_two = M('user')->where('userid=' . $recommend_id)->getField('parent_id');
+                $is_top_id = M('group')->where('one_id=' . $recommend_id_two)->find();
+                if ($is_top_id) {
+                    $this->group($recommend_id_two, $top_id);
+                }else {
+                    $recommend_id_three = M('user')->where('userid=' . $recommend_id_two)->getField('parent_id');
+                    $is_top_id = M('group')->where('one_id=' . $recommend_id_three)->find();
+                    if ($is_top_id) {
+                        $this->group($recommend_id_three, $top_id);
+                    }
+                }
+            }
         }
     }
 

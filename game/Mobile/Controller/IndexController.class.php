@@ -75,11 +75,11 @@ class IndexController extends CommonController {
 			echo "<script>alert('该手机号已经存在');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;
 		}
-		$res=$this->validation_filter_id_card($identity_card);
-		if($res==false){
-			echo "<script>alert('身份证号格式不正确');</script>";
-            echo "<script>javascript:history.back(-1);</script>";die;
-		}
+//		$res=$this->validation_filter_id_card($identity_card);
+//		if($res==false){
+//			echo "<script>alert('身份证号格式不正确');</script>";
+//            echo "<script>javascript:history.back(-1);</script>";die;
+//		}
 		if($password!=$passwordT){
 			echo "<script>alert('两次输入的登陆密码不一致');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;
