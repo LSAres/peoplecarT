@@ -43,26 +43,37 @@ class UserAdministrationController extends CommonController {
    public function updatelockuser(){
        $userid = I('get.userid');
        $lockuser = M('user')->where('userid='.$userid)->getField('lockuser');
+       //判断是否为第一次激活，等于1为刚注册用户，等于0为已激活用户，等于2为封停账号
        if($lockuser==0){
+           //老用户修改锁定状态，封停
            $res = M('user')->where('userid='.$userid)->setField('lockuser',2);
        }else{
+           //新用户后台激活，进行分组
            if($lockuser==1){
+               //查询上级，将购车基金返给上级，并将金额计算到总金额中
                $recommend_id = M('user')->where('userid='.$userid)->getField('recommend_id');
                $rs=M('store')->where('uid='.$recommend_id)->setInc('buycar_money',6000);
                $re=M('store')->where('uid='.$recommend_id)->setInc('money',6000);
+               //判断奖励是否发放成功
                if(!$re||!$rs){
                    echo "<script>alert('奖励发放失败，请重新操作');</script>";
                    echo "<script>javascript:history.back(-1);</script>";die;
                }
+               //查询推荐人是否为小组顶端
                $is_top_id = M('group')->where('one_id='.$recommend_id)->find();
+               //推荐人为小组顶端时将注册用户进行分组
                if($is_top_id){
+                   //分组
                    $this->group($recommend_id,$userid);
                }else {
+                   //查询推荐人的上级，并判断推荐人的上级是否为小组顶端，如果是，将注册用户分组
                    $recommend_id_two = M('user')->where('userid=' . $recommend_id)->getField('parent_id');
                    $is_top_id = M('group')->where('one_id=' . $recommend_id_two)->find();
                    if ($is_top_id) {
+                       //进行分组
                        $this->group($recommend_id_two, $userid);
                    }else {
+                       //查询推荐人上两级，并判断是否为小组顶端，如果是，将注册用户进行分组
                        $recommend_id_three = M('user')->where('userid=' . $recommend_id_two)->getField('parent_id');
                        $is_top_id = M('group')->where('one_id=' . $recommend_id_three)->find();
                        if ($is_top_id) {
@@ -159,10 +170,15 @@ class UserAdministrationController extends CommonController {
 
     //分组
     public function group($top_id=null,$userid=null){
+        //统计小组内第二层的人数
         $two_group = M('user')->where('parent_id='.$top_id)->count();
+        //查询小组数据
         $group = M('group')->where('one_id='.$top_id)->find();
+        //如果小组第二层人数小于2，将新用户放入小组第二层
         if($two_group<2){
+            //将组长设置为新成员的父级
             M('user')->where('userid='.$userid)->setField('parent_id',$top_id);
+            //判断二号组员是否为空，如果为空，将新用户放置到2号成员。如果不为空，将新用户放置到3号成员
             if($group['two_id']==null){
                 M('group')->where('one_id='.$top_id)->setField('two_id',$userid);
                 M('group')->where('one_id='.$top_id)->setField('two_time',time());
@@ -171,6 +187,7 @@ class UserAdministrationController extends CommonController {
                 M('group')->where('one_id='.$top_id)->setField('three_time',time());
             }
         }else{
+            //判断三层4-7号位置哪个为空，查找为空位置，将新成员放置
             if($group['four_id']==null){
                 M('user')->where('userid='.$userid)->setField('parent_id',$group['two_id']);
                 M('group')->where('one_id='.$top_id)->setField('four_id',$userid);
@@ -186,6 +203,7 @@ class UserAdministrationController extends CommonController {
                         M('group')->where('one_id='.$top_id)->setField('six_id',$userid);
                         M('group')->where('one_id='.$top_id)->setField('six_time',time());
                     }else{
+                        //如果7号位置为空，将原小组打散，顶端出局，其余组员组成两个新小组
                         $data['one_id']=$group['two_id'];
                         $data['one_time']=time();
                         M('group')->data($data)->add();
