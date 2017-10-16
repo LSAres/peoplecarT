@@ -10,6 +10,10 @@
     <script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
     <script src="__PUBLIC__/js/commentT.js"></script>
     <style>
+        .tableTitle{
+            background-color:#000000;
+            color: #fff;
+        }
     </style>
 </head>
 <body class="bodyHeight">
@@ -36,7 +40,7 @@
 </div>
 <table cellspacing="0" class="table1">
     <tr>
-        <td colspan="2">1</td>
+        <td colspan="2" class="tableTitle">1</td>
     </tr>
     <tr>
         <td colspan="2">2</td>
@@ -49,7 +53,7 @@
         <td>5</td>
     </tr>
     <tr>
-        <td colspan="2">6</td>
+        <td colspan="2" class="tableTime">6</td>
     </tr>
 </table>
 <div>
@@ -58,7 +62,7 @@
 </div>
 <table cellspacing="0" class="table2">
     <tr>
-        <td colspan="2">1</td>
+        <td colspan="2" class="tableTitle">1</td>
     </tr>
     <tr>
         <td colspan="2">2</td>
@@ -71,14 +75,14 @@
         <td>5</td>
     </tr>
     <tr>
-        <td colspan="2">6</td>
+        <td colspan="2" class="tableTime">6</td>
     </tr>
 </table>
 
 
 <table cellspacing="0" class="table3">
     <tr>
-        <td colspan="2">1</td>
+        <td colspan="2" class="tableTitle">1</td>
     </tr>
     <tr>
         <td colspan="2">2</td>
@@ -91,7 +95,7 @@
         <td>5</td>
     </tr>
     <tr>
-        <td colspan="2">6</td>
+        <td colspan="2" class="tableTime">6</td>
     </tr>
 </table>
 <div>
@@ -104,7 +108,7 @@
 
 <table cellspacing="0" class="table4">
     <tr>
-        <td colspan="2">1</td>
+        <td colspan="2" class="tableTitle">1</td>
     </tr>
     <tr>
         <td colspan="2">2</td>
@@ -117,14 +121,14 @@
         <td>5</td>
     </tr>
     <tr>
-        <td colspan="2">6</td>
+        <td colspan="2" class="tableTime">6</td>
     </tr>
 </table>
 
 
 <table cellspacing="0" class="table5">
     <tr>
-        <td colspan="2">1</td>
+        <td colspan="2" class="tableTitle">1</td>
     </tr>
     <tr>
         <td colspan="2">2</td>
@@ -137,14 +141,14 @@
         <td>5</td>
     </tr>
     <tr>
-        <td colspan="2">6</td>
+        <td colspan="2" class="tableTime">6</td>
     </tr>
 </table>
 
 
 <table cellspacing="0" class="table6">
     <tr>
-        <td colspan="2">1</td>
+        <td colspan="2" class="tableTitle">1</td>
     </tr>
     <tr>
         <td colspan="2">2</td>
@@ -157,14 +161,14 @@
         <td>5</td>
     </tr>
     <tr>
-        <td colspan="2">6</td>
+        <td colspan="2" class="tableTime">6</td>
     </tr>
 </table>
 
 
 <table cellspacing="0" class="table7">
     <tr>
-        <td colspan="2">1</td>
+        <td colspan="2" class="tableTitle">1</td>
     </tr>
     <tr>
         <td colspan="2">2</td>
@@ -177,7 +181,7 @@
         <td>5</td>
     </tr>
     <tr>
-        <td colspan="2">6</td>
+        <td colspan="2" class="tableTime">6</td>
     </tr>
 </table>
 
@@ -185,8 +189,24 @@
 </body>
 
 <script>
-    function test() {
-        document.getElementById("myform").submit();
+
+    window.onload = function(){
+        function test() {
+            document.getElementById("myform").submit();
+        }
+        /*检测日期是否未设置 如果开始为1970 则设置内容为空*/
+        var tableTime = document.getElementsByClassName("tableTime");
+        /*循环判断内容*/
+        function  tableTime_check() {
+            for(var i=0; i < tableTime.length; i++ ){
+                var tableTime_Text = tableTime[i].innerHTML;
+                if(tableTime_Text.indexOf("1970") >=  0){
+                    tableTime[i].innerHTML = "";
+                }
+            }
+        }
+        tableTime_check();
+
     }
 
 </script>
