@@ -19,41 +19,34 @@
 <body class="bodyHeight">
 <!--顶部搜索DIV -->
 <div class="topSearchDiv" >
-    <label class="searchTitelDate" for="searchTitelOrStartDate">
-        开始日期
-    </label>
-    <input type="date" class="searchDataStyle" id="searchTitelOrStartDate">
-    <label class="searchTitelDate" for="searchTitelOrEndDate"> 结束日期</label>
-    <input type="date" class="searchDataStyle" id="searchTitelOrEndDate">
-    <label class="searchTitelDate" for="searchConditionSelect"> 搜索条件选择</label>
-    <select name="" class="searchConditionSelect" id="searchConditionSelect">
-        <option value="" selected="selected">请选择搜索条件</option>
-        <option value="1111">1111111</option>
-        <option value="2222">22222222222</option>
-        <option value="3333">3333333</option>
-        <option value="444">444444444</option>
-        <option value="555">555555555</option>
-        <option value="666">666666666件</option>
-    </select>
-    <input type="text" class="searchDataStyle searchInputStyle" placeholder="请输入搜索条件">
-    <div class="conditionEndSearchStart">开始搜索</div>
+
+    <!--<select name="account" class="searchConditionSelect" id="searchConditionSelect">-->
+        <!--<option value="" selected="selected">请选择搜索条件</option>-->
+        <!--<option value="1111">1111111</option>-->
+        <!--<option value="2222">22222222222</option>-->
+        <!--<option value="3333">3333333</option>-->
+        <!--<option value="444">444444444</option>-->
+        <!--<option value="555">555555555</option>-->
+        <!--<option value="666">666666666件</option>-->
+    <!--</select>-->
+    <form action="{:U(MODULE_NAME.'/UserAdministration/userRecommendStructure')}" method="post" id="myform">
+        <label style="display: inline-block;color:#fff;margin-right: 30px;">会员账号</label>
+        <input type="text" class="searchDataStyle searchInputStyle" placeholder="请输入搜索条件" name="account">
+        <div class="conditionEndSearchStart" onclick="test()">开始搜索</div>
+    </form>
 </div>
 <table cellspacing="0" class="table1">
     <tr>
-        <td colspan="2" class="tableTitle">1</td>
+        <td colspan="2" class="tableTitle">{$structureInfo.one_account}</td>
     </tr>
     <tr>
-        <td colspan="2">2</td>
+        <td colspan="2">{$structureInfo.one_username}</td>
     </tr>
     <tr>
-        <td colspan="2">3</td>
+        <td colspan="2">推荐：{$structureInfo.one_parent_account}（{$structureInfo.one_parent_username}）</td>
     </tr>
     <tr>
-        <td>4</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="tableTime">6</td>
+        <td colspan="2" class="tableTime">{$structureInfo.one_time|date="Y-m-d H:i:s",###}</td>
     </tr>
 </table>
 <div>
@@ -62,40 +55,32 @@
 </div>
 <table cellspacing="0" class="table2">
     <tr>
-        <td colspan="2" class="tableTitle">1</td>
+        <td colspan="2" class="tableTitle">{$structureInfo.two_account|default=注册}</td>
     </tr>
     <tr>
-        <td colspan="2">2</td>
+        <td colspan="2">{$structureInfo.two_username}</td>
     </tr>
     <tr>
-        <td colspan="2">3</td>
+        <td colspan="2">推荐：{$structureInfo.two_parent_account}（{$structureInfo.two_parent_username}）</td>
     </tr>
     <tr>
-        <td>4</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="tableTime">6</td>
+        <td colspan="2" class="tableTime">{$structureInfo.two_time|date="Y-m-d H:i:s",###}</td>
     </tr>
 </table>
 
 
 <table cellspacing="0" class="table3">
     <tr>
-        <td colspan="2" class="tableTitle">1</td>
+        <td colspan="2" class="tableTitle">{$structureInfo.three_account|default=注册}</td>
     </tr>
     <tr>
-        <td colspan="2">2</td>
+        <td colspan="2">{$structureInfo.three_username}</td>
     </tr>
     <tr>
-        <td colspan="2">3</td>
+        <td colspan="2">推荐：{$structureInfo.three_parent_account}（{$structureInfo.three_parent_username}）</td>
     </tr>
     <tr>
-        <td>4</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="tableTime">6</td>
+        <td colspan="2" class="tableTime">{$structureInfo.three_time|date="Y-m-d H:i:s",###}</td>
     </tr>
 </table>
 <div>
@@ -108,80 +93,63 @@
 
 <table cellspacing="0" class="table4">
     <tr>
-        <td colspan="2" class="tableTitle">1</td>
+        <td colspan="2" class="tableTitle">{$structureInfo.four_account|default=注册}</td>
     </tr>
     <tr>
-        <td colspan="2">2</td>
+        <td colspan="2">{$structureInfo.four_username}</td>
     </tr>
     <tr>
-        <td colspan="2">3</td>
+        <td colspan="2">推荐：{$structureInfo.four_parent_account}（{$structureInfo.four_parent_username}）</td>
     </tr>
     <tr>
-        <td>4</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="tableTime">6</td>
+        <td colspan="2" class="tableTime">{$structureInfo.four_time|date="Y-m-d H:i:s",###}</td>
     </tr>
 </table>
 
 
 <table cellspacing="0" class="table5">
     <tr>
-        <td colspan="2" class="tableTitle">1</td>
+        <td colspan="2" class="tableTitle">{$structureInfo.five_account|default=注册}</td>
     </tr>
     <tr>
-        <td colspan="2">2</td>
+        <td colspan="2">{$structureInfo.five_username}</td>
     </tr>
     <tr>
-        <td colspan="2">3</td>
+        <td colspan="2">推荐：{$structureInfo.five_parent_account}（{$structureInfo.five_parent_username}）</td>
     </tr>
     <tr>
-        <td>4</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="tableTime">6</td>
+        <td colspan="2" class="tableTime">{$structureInfo.five_time|date="Y-m-d H:i:s",###}</td>
     </tr>
 </table>
 
-
 <table cellspacing="0" class="table6">
     <tr>
-        <td colspan="2" class="tableTitle">1</td>
+        <td colspan="2" class="tableTitle">{$structureInfo.six_account|default=注册}</td>
     </tr>
     <tr>
-        <td colspan="2">2</td>
+        <td colspan="2">{$structureInfo.six_username}</td>
     </tr>
     <tr>
-        <td colspan="2">3</td>
+        <td colspan="2">推荐：{$structureInfo.six_parent_account}（{$structureInfo.six_parent_username}）</td>
     </tr>
     <tr>
-        <td>4</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="tableTime">6</td>
+        <td colspan="2" class="tableTime">{$structureInfo.six_time|date="Y-m-d H:i:s",###}</td>
     </tr>
 </table>
 
 
 <table cellspacing="0" class="table7">
     <tr>
-        <td colspan="2" class="tableTitle">1</td>
+        <td colspan="2" class="tableTitle">注册</td>
     </tr>
     <tr>
-        <td colspan="2">2</td>
+        <td colspan="2"></td>
     </tr>
     <tr>
-        <td colspan="2">3</td>
+        <td colspan="2">推荐：（）</td>
     </tr>
     <tr>
-        <td>4</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td colspan="2" class="tableTime">6</td>
+        <td colspan="2" class="tableTime"></td>
     </tr>
 </table>
 
@@ -189,11 +157,10 @@
 </body>
 
 <script>
-
+    function test() {
+        document.getElementById("myform").submit();
+    }
     window.onload = function(){
-        function test() {
-            document.getElementById("myform").submit();
-        }
         /*检测日期是否未设置 如果开始为1970 则设置内容为空*/
         var tableTime = document.getElementsByClassName("tableTime");
         /*循环判断内容*/

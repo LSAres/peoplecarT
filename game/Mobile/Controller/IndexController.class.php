@@ -8,6 +8,7 @@ class IndexController extends CommonController {
 		$userid = session('userid');
 		$dbu = M('user');
 		$userInfo = $dbu->where('userid='.$userid)->find();
+		$storeInfo = M('store')->where('uid='.$userid)->find();
 		if($userInfo['leve']==1){
 			$userInfo['levename']="平民";
 		}
@@ -17,6 +18,7 @@ class IndexController extends CommonController {
 		if($userInfo['leve']==3){
 			$userInfo['levename']="管理员";
 		}
+		$this->assign('storeInfo',$storeInfo);
 		$this->assign('userInfo',$userInfo);
 		$this->display();
 	}

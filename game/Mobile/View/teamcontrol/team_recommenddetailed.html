@@ -24,75 +24,69 @@
 
 <!--推荐列表-->
 <div class="selectedDiv selected_1">
-	<!--信息块-->
-	<div class="detailsDiv">
-		<div class="details_Data">
-			注册时间：2014-04-41
-			<!--向下三角形-->
-			<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
+	<foreach name="childInfo" item="value" key="key">
+		<!--信息块-->
+		<div class="detailsDiv">
+			<div class="details_Data">
+				注册时间：{$value.time|date="Y-m-d H:i:s",###}
+				<!--向下三角形-->
+				<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
+			</div>
+			<!--信息显示块-->
+			<div class="details_MessageRow">
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					会员帐号：
+				</span>
+				<span class="details_RightMessage">
+					{$value.account}
+				</span>
+				<!--一条信息 END-->
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					会员姓名：
+				</span>
+				<span class="details_RightMessage">
+					{$value.username}
+				</span>
+				<!--一条信息 END-->
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					手机号码：
+				</span>
+				<span class="details_RightMessage">
+					{$value.phone}
+				</span>
+				<!--一条信息 END-->
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					推荐人数：
+				</span>
+				<span class="details_RightMessage">
+					{$value.recommend_count}
+				</span>
+				<!--一条信息 END-->
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					分盘轮数：
+				</span>
+				<span class="details_RightMessage">
+					0
+				</span>
+				<!--一条信息 END-->
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					资格所属：
+				</span>
+				<span class="details_RightMessage">
+					{$username}
+				</span>
+				<!--一条信息 END-->
+			</div>
+			<!--信息显示块 END-->
 		</div>
-		<!--信息显示块-->
-		<div class="details_MessageRow">
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				会员帐号：
-			</span>
-			<span class="details_RightMessage">
-				133xxxxxxxx
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				会员姓名：
-			</span>
-			<span class="details_RightMessage">
-				大哥大
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				手机号码：
-			</span>
-			<span class="details_RightMessage">
-				13666666666
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				手机号码：
-			</span>
-			<span class="details_RightMessage">
-				13666666666
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				推荐人数：
-			</span>
-			<span class="details_RightMessage">
-				0
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				分盘轮数：
-			</span>
-			<span class="details_RightMessage">
-				0
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				资格所属：
-			</span>
-			<span class="details_RightMessage">
-				大哥大
-			</span>
-			<!--一条信息 END-->
-		</div>
-		<!--信息显示块 END-->
-	</div>
-	<!--信息块 END-->
+		<!--信息块 END-->
+	</foreach>
 	
 	
 </div>

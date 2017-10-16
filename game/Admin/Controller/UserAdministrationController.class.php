@@ -269,8 +269,85 @@ class UserAdministrationController extends CommonController {
         if(I('post.')){
             $account = I('post.account');
             $userid = M('user')->where("account='".$account."'")->getField('userid');
+            $db_group = M('group');
+            $is_top = $db_group->where('one_id='.$userid)->find();
+            if($is_top){
+                $structureInfo=$this->getstructureInfo($is_top);
+                //dump($structureInfo);die;
+            }else {
+                $parent_id = M('user')->where('userid=' . $userid)->getField('parent_id');
+                $is_top = $db_group->where('one_id=' . $parent_id)->find();
+                if ($is_top) {
+                    $structureInfo = $this->getstructureInfo($is_top);
+                    //dump($structureInfo);die;
+                } else {
+                    $parent_id_two = M('user')->where('userid=' . $parent_id)->getField('parent_id');
+                    $is_top = $db_group->where('one_id=' . $parent_id_two)->find();
+                    $structureInfo = $this->getstructureInfo($is_top);
+                    //dump($structureInfo);die;
+                }
+            }
+            $this->assign('structureInfo',$structureInfo);
         }
         $this->display();
+    }
+
+    //查询分组结构
+    public function getstructureInfo($is_top){
+        $one_userInfo=M('user')->where('userid='.$is_top['one_id'])->find();
+        $one_parent_userInfo = M('user')->where('userid='.$one_userInfo['recommend_id'])->find();
+        $is_top['one_account']=$one_userInfo['account'];
+        $is_top['one_username']=$one_userInfo['username'];
+        $is_top['one_time']=$one_userInfo['time'];
+        $is_top['one_parent_account']=$one_parent_userInfo['account'];
+        $is_top['one_parent_username']=$one_parent_userInfo['username'];
+        if($is_top['two_id']!=null){
+            $two_userInfo=M('user')->where('userid='.$is_top['two_id'])->find();
+            $two_parent_userInfo=M('user')->where('userid='.$two_userInfo['recommend_id'])->find();
+            $is_top['two_account']=$two_userInfo['account'];
+            $is_top['two_username']=$two_userInfo['username'];
+            $is_top['two_time']=$two_userInfo['time'];
+            $is_top['two_parent_account']=$two_parent_userInfo['account'];
+            $is_top['two_parent_username']=$two_parent_userInfo['username'];
+        }
+        if($is_top['three_id']!=null){
+            $three_userInfo=M('user')->where('userid='.$is_top['three_id'])->find();
+            $three_parent_userInfo=M('user')->where('userid='.$three_userInfo['recommend_id'])->find();
+            $is_top['three_account']=$three_userInfo['account'];
+            $is_top['three_username']=$three_userInfo['username'];
+            $is_top['three_time']=$three_userInfo['time'];
+            $is_top['three_parent_account']=$three_parent_userInfo['account'];
+            $is_top['three_parent_username']=$three_parent_userInfo['username'];
+        }
+        if($is_top['four_id']!=null){
+            $four_userInfo=M('user')->where('userid='.$is_top['four_id'])->find();
+            $four_parent_userInfo=M('user')->where('userid='.$four_userInfo['recommend_id'])->find();
+            $is_top['four_account']=$four_userInfo['account'];
+            $is_top['four_username']=$four_userInfo['username'];
+            $is_top['four_time']=$four_userInfo['time'];
+            $is_top['four_parent_account']=$four_parent_userInfo['account'];
+            $is_top['four_parent_username']=$four_parent_userInfo['username'];
+        }
+        if($is_top['five_id']!=null){
+            $five_userInfo=M('user')->where('userid='.$is_top['five_id'])->find();
+            $five_parent_userInfo=M('user')->where('userid='.$five_userInfo['recommend_id'])->find();
+            $is_top['five_account']=$five_userInfo['account'];
+            $is_top['five_username']=$five_userInfo['username'];
+            $is_top['five_time']=$five_userInfo['time'];
+            $is_top['five_parent_account']=$five_parent_userInfo['account'];
+            $is_top['five_parent_username']=$five_parent_userInfo['username'];
+        }
+        if($is_top['six_id']!=null){
+            $six_userInfo=M('user')->where('userid='.$is_top['six_id'])->find();
+            $six_parent_userInfo=M('user')->where('userid='.$six_userInfo['recommend_id'])->find();
+            $is_top['six_account']=$six_userInfo['account'];
+            $is_top['six_username']=$six_userInfo['username'];
+            $is_top['six_time']=$six_userInfo['time'];
+            $is_top['six_parent_account']=$six_parent_userInfo['account'];
+            $is_top['six_parent_username']=$six_parent_userInfo['username'];
+        }
+        return $is_top;
+
     }
 
 }

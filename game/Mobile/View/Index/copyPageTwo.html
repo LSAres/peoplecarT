@@ -30,26 +30,26 @@
     <div class="pageTwoTitleDiv-Row">
         <div class="pageTwoTitleDiv-RowLeftDiv oneRowLeft" style="background-color: rgb(0, 193, 239);">
             <div class="pageTwoTitleDiv-RowTitle oneRowLeftSkew">现金币余额</div>
-            <div class="pageTwoTitleDiv-RowMessage oneRowLeftSkew">10000000</div>
+            <div class="pageTwoTitleDiv-RowMessage oneRowLeftSkew">{$storeInfo.gold|default=0}</div>
         </div>
         <div class="pageTwoTitleDiv-RowRightDiv oneRowRight" style="background-color: rgba(243, 157, 18, 0.98);">
             <div class="pageTwoTitleDiv-RowTitle oneRowRightSkew">报单币</div>
-            <div class="pageTwoTitleDiv-RowMessage oneRowRightSkew">10000000</div>
+            <div class="pageTwoTitleDiv-RowMessage oneRowRightSkew">{$storeInfo.report_money|default=0}</div>
         </div>
     </div>
     <div class="pageTwoTitleDiv-Row">
         <div class="pageTwoTitleDiv-RowLeftDiv twoRowLeft" style="background-color:rgba(0, 167, 90, 0.98);">
-            <div class="pageTwoTitleDiv-RowMessage twoRowLeftSkew">10000000</div>
+            <div class="pageTwoTitleDiv-RowMessage twoRowLeftSkew">{$storeInfo.buycar_money|default=0}</div>
             <div class="pageTwoTitleDiv-RowTitle twoRowLeftSkew">购车基金</div>
         </div>
         <div class="pageTwoTitleDiv-RowRightDiv twoRowRight" style="background-color: rgb(221, 74, 56);">
-            <div class="pageTwoTitleDiv-RowMessage twoRowRightSkew">10000000</div>
+            <div class="pageTwoTitleDiv-RowMessage twoRowRightSkew">{$storeInfo.bonus|default=0}</div>
             <div class="pageTwoTitleDiv-RowTitle twoRowRightSkew">奖金累计</div>
 
         </div>
     </div>
-    <div class="shoujihao">1111</div>
-    <div class="xingming">222</div>
+    <div class="shoujihao">{$userInfo.account}</div>
+    <div class="xingming">{$userInfo.username}</div>
     <div class="shenfen">{$userInfo.levename}</div>
 </div>
 <div class="body_control_functions">

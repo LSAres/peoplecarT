@@ -124,7 +124,7 @@ class DatamodifyController extends CommonController{
               $structureInfo=$this->getstructureInfo($is_top);
               //dump($structureInfo);die;
           }else{
-              $parent_id_two = M('user')->where('userid='.$userid)->getField('parent_id');
+              $parent_id_two = M('user')->where('userid='.$parent_id)->getField('parent_id');
               $is_top = $db_group->where('one_id='.$parent_id_two)->find();
               $structureInfo=$this->getstructureInfo($is_top);
               //dump($structureInfo);die;
