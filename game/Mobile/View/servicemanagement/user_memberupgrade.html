@@ -22,45 +22,49 @@
 <!---->
 <div class="messageDidsplayDiv">
 	<div class="leftMessage">当前级别:</div>
-	<input type="text"  value="super vip" readonly="readonly" class="rightMessage" />
+	<input type="text"  value="{$userInfo.shenfen}" readonly="readonly" class="rightMessage" />
 	
 </div>
 <!---->
-<div class="messageDidsplayDiv">
-	<div class="leftMessage">当前余额:</div>
-	<input type="text"  value="100000000" readonly="readonly" class="rightMessage" />
-	
-</div>
+<!--<div class="messageDidsplayDiv">-->
+	<!--<div class="leftMessage">当前余额:</div>-->
+	<!--<input type="text"  value="100000000" readonly="readonly" class="rightMessage" />-->
+	<!---->
+<!--</div>-->
 
 <!---->
-<div class="messageDidsplayDiv">
-	<div class="leftMessage">转换类型:</div>
-	<input type="text" value="-----请选择-----"  readonly="readonly"  class="rightMessage forInputSelect" />
-	
-</div>
+<form action="{:U(MODULE_NAME.'/Servicemanagement/user_memberupgrade')}" method="post" id="myform">
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">转换类型:</div>
+		<input type="text" value="管理员" name="degree"  readonly="readonly"  class="rightMessage forInputSelect" />
+	</div>
+</form>
 
 
 
 <!--确认按钮-->
-<div class="etermineButton">
+<div class="etermineButton" onclick="test()">
 	确认升级
 </div>
 
 <!--input选择列表-->
-<div class="inputSelectOuterDiv">
-	<div class="inputSelectDiv">
-		<div class="inputSelecList" >
-			<span class="inputSelectValue">代理商</span>
-			<div style="border-left: solid 50px #fff; border-bottom: solid 23px transparent; border-top: solid 23px transparent;display: inline-block; float: right;"></div>
-		</div>
-		
-	</div>
-</div>
+<!--<div class="inputSelectOuterDiv">-->
+	<!--<div class="inputSelectDiv">-->
+		<!--<div class="inputSelecList" >-->
+			<!--<span class="inputSelectValue">代理商</span>-->
+			<!--<div style="border-left: solid 50px #fff; border-bottom: solid 23px transparent; border-top: solid 23px transparent;display: inline-block; float: right;"></div>-->
+		<!--</div>-->
+		<!---->
+	<!--</div>-->
+<!--</div>-->
 
 </body>
 
 <script>
-   
+    function test()
+    {
+        document.getElementById("myform").submit();
+    }
 
 </script>
 </html>
