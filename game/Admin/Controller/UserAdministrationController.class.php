@@ -265,4 +265,12 @@ class UserAdministrationController extends CommonController {
         }
     }
 
+    public function userRecommendStructure(){
+        if(I('post.')){
+            $account = I('post.account');
+            $userid = M('user')->where("account='".$account."'")->getField('userid');
+        }
+        $this->display();
+    }
+
 }
