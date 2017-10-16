@@ -1,13 +1,17 @@
 $(function () {
     $('.liTitle').click(function () {
-        if ($(this).hasClass('liTitleActive')) {
-
-            return;
+        if ($(this).next().css("display") == "block") {
+            $(this).removeClass('liTitleActive');
+            $('.ulDiv ').slideUp();
+        }else{
+            $('.liTitle').removeClass('liTitleActive');
+            $(this).addClass('liTitleActive');
+            $('.ulDiv ').slideUp();
+            $(this).next().slideDown(1000);
         }
-        $('.liTitle').removeClass('liTitleActive');
-        $(this).addClass('liTitleActive');
-        $('.ulDiv ').slideUp();
-        $(this).next().slideDown(1000);
+
+
+
     });
     $('.ulDiv li').click(function () {
         $('.ulDiv li').removeClass('liActive');
@@ -53,7 +57,7 @@ $(function () {
     $('.testTwo').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/Index/updateMessagePage.html');
     });
-    $('.userRecommendStructure').click(function(){
+    $('.userRecommendStructure').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/UserAdministration/userRecommendStructure.html');
     });
     //财富汇总明细
@@ -71,14 +75,14 @@ $(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/remittanceHistory.html');
 
     });
-    $('.cashHistory').click(function(){
+    $('.cashHistory').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/cashHistory.html');
     });
-    $('.bonusDetails').click(function(){
+    $('.bonusDetails').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/bonusDetails.html');
 
     });
-    $('.refundAplyHistory').click(function(){
+    $('.refundAplyHistory').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/refundAplyHistory.html');
     });
     //公告选项
@@ -92,7 +96,7 @@ $(function () {
     $('.emailToUserPage').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/NoticControl/emailToUserPage.html');
     });
-    $('.emailToUserListPage').click(function(){
+    $('.emailToUserListPage').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/NoticControl/emailToUserListPage.html');
 
     });
@@ -106,7 +110,7 @@ $(function () {
     $('.helpDocument').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/ParameterProbability/helpDocumentList.html');
     });
-    $('.addHelpDocument').click(function(){
+    $('.addHelpDocument').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/ParameterProbability/addHelpDocument.html');
 
     })
