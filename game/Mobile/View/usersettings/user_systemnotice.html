@@ -24,30 +24,32 @@
 
 <!--推荐列表-->
 <div class="selectedDiv selected_1">
-	<!--信息块-->
-	<div class="detailsDiv">
-		<div class="details_Data">
-			公告时间：2014-04-41
-			<!--向下三角形-->
-			<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
+	<foreach name="new_list" item="value" key="key">
+		<!--信息块-->
+		<div class="detailsDiv">
+			<div class="details_Data">
+				公告时间：{$value.add_time|date="Y-m-d H:i:s",###}
+				<!--向下三角形-->
+				<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
+			</div>
+			<!--信息显示块-->
+			<div class="details_MessageRow">
+				<!--信息显示区域-->
+				<textarea class="details_noticeMessage" readonly="readonly">{$value.content}</textarea>
+
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					公告发布：
+				</span>
+				<span class="details_RightMessage">
+					运维中心
+				</span>
+				<!--一条信息 END-->
+			</div>
+			<!--信息显示块 END-->
 		</div>
-		<!--信息显示块-->
-		<div class="details_MessageRow">
-			<!--信息显示区域-->
-			<textarea class="details_noticeMessage">噫吁嚱，危乎高哉！蜀道之难，难于上青天！蚕丛及鱼凫，开国何茫然！尔来四万八千岁，不与秦塞通人烟。西当太白有鸟道，可以横绝峨眉巅。地崩山摧壮士死，然后天梯石栈相钩连。上有六龙回日之高标</textarea>
-			
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				公告发布：
-			</span>
-			<span class="details_RightMessage">
-				运维中心
-			</span>
-			<!--一条信息 END-->
-		</div>
-		<!--信息显示块 END-->
-	</div>
-	<!--信息块 END-->
+		<!--信息块 END-->
+	</foreach>
 	
 	
 </div>

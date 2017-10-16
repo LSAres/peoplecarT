@@ -148,8 +148,11 @@ tr,td{
     left:23.5%;
     display:inline-block;
 
-}		
-	
+}
+        .tableTitle{
+            background-color: #00ddff;
+            color:#fff;
+        }
 	
 	</style>
 </head>
@@ -167,20 +170,16 @@ tr,td{
 <br/><br/><br/>
 <table  cellspacing="0" class="table1" >
 <tr>
-<td colspan="2">1</td>
+<td colspan="2" class="tableTitle">{$structureInfo.one_account}</td>
 </tr>
 <tr>
-<td colspan="2">2</td>
+<td colspan="2">{$structureInfo.one_username}</td>
 </tr>
 <tr>
-<td colspan="2">3</td>
+<td colspan="2">推荐：{$structureInfo.one_parent_account}（{$structureInfo.one_parent_username}）</td>
 </tr>
 <tr>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td colspan="2">6</td>
+<td colspan="2">{$structureInfo.one_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>
 <div>
@@ -189,40 +188,32 @@ tr,td{
 </div>
 <table  cellspacing="0" class="table2" >
 <tr>
-<td colspan="2">1</td>
+<td colspan="2" class="tableTitle">{$structureInfo.two_account|default=注册}</td>
 </tr>
 <tr>
-<td colspan="2">2</td>
+<td colspan="2">{$structureInfo.two_username}</td>
 </tr>
 <tr>
-<td colspan="2">3</td>
+<td colspan="2">推荐：{$structureInfo.two_parent_account}（{$structureInfo.two_parent_username}）</td>
 </tr>
 <tr>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td colspan="2">6</td>
+<td colspan="2">{$structureInfo.two_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>	
 
 
 <table  cellspacing="0" class="table3" >
 <tr>
-<td colspan="2">1</td>
+<td colspan="2" class="tableTitle">{$structureInfo.three_account|default=注册}</td>
 </tr>
 <tr>
-<td colspan="2">2</td>
+<td colspan="2">{$structureInfo.three_username}</td>
 </tr>
 <tr>
-<td colspan="2">3</td>
+<td colspan="2">推荐：{$structureInfo.three_parent_account}（{$structureInfo.three_parent_username}）</td>
 </tr>
 <tr>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td colspan="2">6</td>
+<td colspan="2">{$structureInfo.three_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>
 <div>
@@ -235,20 +226,16 @@ tr,td{
 
 <table  cellspacing="0" class="table4" >
 <tr>
-<td colspan="2">1</td>
+<td colspan="2"class="tableTitle">{$structureInfo.four_account|default=注册}</td>
 </tr>
 <tr>
-<td colspan="2">2</td>
+<td colspan="2">{$structureInfo.four_username}</td>
 </tr>
 <tr>
-<td colspan="2">3</td>
+<td colspan="2">推荐：{$structureInfo.four_parent_account}（{$structureInfo.four_parent_username}）</td>
 </tr>
 <tr>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td colspan="2">6</td>
+<td colspan="2">{$structureInfo.four_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>	
 
@@ -257,20 +244,16 @@ tr,td{
 
 <table  cellspacing="0" class="table5" >
 <tr>
-<td colspan="2">1</td>
+<td colspan="2" class="tableTitle">{$structureInfo.five_account|default=注册}</td>
 </tr>
 <tr>
-<td colspan="2">2</td>
+<td colspan="2">{$structureInfo.five_username}</td>
 </tr>
 <tr>
-<td colspan="2">3</td>
+<td colspan="2">推荐：{$structureInfo.five_parent_account}（{$structureInfo.five_parent_username}）</td>
 </tr>
 <tr>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td colspan="2">6</td>
+<td colspan="2">{$structureInfo.five_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>	
 
@@ -278,20 +261,16 @@ tr,td{
 
 <table  cellspacing="0" class="table6" >
 <tr>
-<td colspan="2">1</td>
+<td colspan="2"class="tableTitle">{$structureInfo.six_account|default=注册}</td>
 </tr>
 <tr>
-<td colspan="2">2</td>
+<td colspan="2">{$structureInfo.six_username}</td>
 </tr>
 <tr>
-<td colspan="2">3</td>
+<td colspan="2">推荐：{$structureInfo.six_parent_account}（{$structureInfo.six_parent_username}）</td>
 </tr>
 <tr>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td colspan="2">6</td>
+<td colspan="2">{$structureInfo.six_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>	
 
@@ -299,20 +278,16 @@ tr,td{
 
 <table  cellspacing="0" class="table7" >
 <tr>
-<td colspan="2">1</td>
+<td colspan="2" class="tableTitle">注册</td>
 </tr>
 <tr>
-<td colspan="2">2</td>
+<td colspan="2"></td>
 </tr>
 <tr>
-<td colspan="2">3</td>
+<td colspan="2">推荐：（）</td>
 </tr>
 <tr>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td colspan="2">6</td>
+<td colspan="2"></td>
 </tr>
 </table>	
 
