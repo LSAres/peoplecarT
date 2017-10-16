@@ -179,7 +179,7 @@ tr,td{
 <td colspan="2">推荐：{$structureInfo.one_parent_account}（{$structureInfo.one_parent_username}）</td>
 </tr>
 <tr>
-<td colspan="2">{$structureInfo.one_time|date="Y-m-d H:i:s",###}</td>
+<td colspan="2" class="tableTime">{$structureInfo.one_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>
 <div>
@@ -197,7 +197,7 @@ tr,td{
 <td colspan="2">推荐：{$structureInfo.two_parent_account}（{$structureInfo.two_parent_username}）</td>
 </tr>
 <tr>
-<td colspan="2">{$structureInfo.two_time|date="Y-m-d H:i:s",###}</td>
+<td colspan="2" class="tableTime">{$structureInfo.two_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>	
 
@@ -213,7 +213,7 @@ tr,td{
 <td colspan="2">推荐：{$structureInfo.three_parent_account}（{$structureInfo.three_parent_username}）</td>
 </tr>
 <tr>
-<td colspan="2">{$structureInfo.three_time|date="Y-m-d H:i:s",###}</td>
+<td colspan="2" class="tableTime">{$structureInfo.three_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>
 <div>
@@ -235,7 +235,7 @@ tr,td{
 <td colspan="2">推荐：{$structureInfo.four_parent_account}（{$structureInfo.four_parent_username}）</td>
 </tr>
 <tr>
-<td colspan="2">{$structureInfo.four_time|date="Y-m-d H:i:s",###}</td>
+<td colspan="2" class="tableTime">{$structureInfo.four_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>	
 
@@ -253,7 +253,7 @@ tr,td{
 <td colspan="2">推荐：{$structureInfo.five_parent_account}（{$structureInfo.five_parent_username}）</td>
 </tr>
 <tr>
-<td colspan="2">{$structureInfo.five_time|date="Y-m-d H:i:s",###}</td>
+<td colspan="2" class="tableTime">{$structureInfo.five_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>	
 
@@ -270,7 +270,7 @@ tr,td{
 <td colspan="2">推荐：{$structureInfo.six_parent_account}（{$structureInfo.six_parent_username}）</td>
 </tr>
 <tr>
-<td colspan="2">{$structureInfo.six_time|date="Y-m-d H:i:s",###}</td>
+<td colspan="2" class="tableTime">{$structureInfo.six_time|date="Y-m-d H:i:s",###}</td>
 </tr>
 </table>	
 
@@ -287,7 +287,7 @@ tr,td{
 <td colspan="2">推荐：（）</td>
 </tr>
 <tr>
-<td colspan="2"></td>
+<td colspan="2" class="tableTime"></td>
 </tr>
 </table>	
 
@@ -296,10 +296,27 @@ tr,td{
 </body>
 
 <script>
-   function test()
-	{
-		document.getElementById("myform").submit();    
+	window.onload = function(){
+        function test()
+        {
+            document.getElementById("myform").submit();
+        }
+        /*检测日期是否未设置 如果开始为1970 则设置内容为空*/
+        var tableTime = document.getElementsByClassName("tableTime");
+        /*循环判断内容*/
+       function  tableTime_check() {
+           for(var i=0; i < tableTime.length; i++ ){
+               var tableTime_Text = tableTime[i].innerHTML;
+               if(tableTime_Text.indexOf("1970") >=  0){
+                   tableTime[i].innerHTML = "";
+               }
+           }
+       }
+        tableTime_check();
+
 	}
+
+
 
 </script>
 </html>
