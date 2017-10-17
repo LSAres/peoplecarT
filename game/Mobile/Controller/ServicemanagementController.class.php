@@ -17,6 +17,13 @@ class ServicemanagementController extends CommonController {
         }else{
             $degree=I('post.degree');
             $userid=session('userid');
+            $condition['uid']=$userid;
+            $condition['status']=0;
+            $is_have=M('change_degree')->where($condition)->find();
+            if($is_have){
+                echo "<script>alert('您已经发出申请，不可再次申请！');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
             $data['uid']=$userid;
             $data['degree']=$degree;
             $data['status']=0;
