@@ -4,24 +4,27 @@
     font-size: 10px;
     box-sizing: border-box;
 }
-html{
-	background-image: url(../img/pageBackImage.jpg);
+
+html {
+    background-image: url(../img/pageBackImage.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
 
-.bodyHeight{
-	background-color:rgba(0,0,0,.8);
-	
+.bodyHeight {
+    background-color: rgba(0, 0, 0, .8);
+
 }
-.pageTitleDiv{
-	border-bottom: solid 1px #fff;
+
+.pageTitleDiv {
+    border-bottom: solid 1px #fff;
     padding: 40px 5px;
     position: relative;
 }
-.backButton{
-	font-size: 5rem;
+
+.backButton {
+    font-size: 5rem;
     display: inline-block;
     position: absolute;
     left: 39px;
@@ -29,10 +32,11 @@ html{
     border: solid 1px #fff;
     color: #fff;
     border-radius: 15px;
-	box-shadow: 0 0 25px #fff;
+    box-shadow: 0 0 25px #fff;
 }
-.etermineButton{
-	font-size: 5rem;
+
+.etermineButton {
+    font-size: 5rem;
     color: #fff;
     text-align: center;
     border: solid 2px #fff;
@@ -42,102 +46,107 @@ html{
     padding: 15px 0;
     border-radius: 15px;
 }
-.pageTitleText{
-	font-size: 6rem;
+
+.pageTitleText {
+    font-size: 6rem;
     display: block;
     text-align: center;
     color: #fff;
 }
 
-.messageDidsplayDiv{
-	text-align: center;
+.messageDidsplayDiv {
+    text-align: center;
     margin: 5% 0;
 }
-.leftMessage{
-	display: inline-block;
+
+.leftMessage {
+    display: inline-block;
+    width: 22rem;
+    text-align: right;
     font-size: 4rem;
     color: #fff;
-	
 }
-.rightMessage{
-	width: 487px;
-	display: inline-block;
+
+.rightMessage {
+    width: 487px;
+    display: inline-block;
     font-size: 4rem;
     border: none;
     border-bottom: solid 2px #fff;
     padding: 10px 0;
-    text-align: center;
+    text-align: left;
+    text-indent: 4rem;
     background-color: transparent;
     color: #fff;
     margin-left: 50px;
 }
 
-
-
-
-.changeSelect{
-	width: 80%;
+.changeSelect {
+    width: 80%;
     margin: 20px auto;
     display: flex;
 }
-.changeTypeSelect{
-	color: #fff;
+
+.changeTypeSelect {
+    color: #fff;
     text-align: center;
     border: none;
     flex: 1;
     font-size: 4rem;
     padding: 20px;
     border-right: solid 1px #fff;
-	transition:all 1s;
-}
-.changeTypeSelect:nth-last-child(1){
-	border-right:none;
-}
-.changeTypeSelect_selected{
-	border-bottom:solid 2px #fff;
-	box-shadow: 0 0 40px rgba(255, 255, 255, 0.9) inset;
+    transition: all 1s;
 }
 
+.changeTypeSelect:nth-last-child(1) {
+    border-right: none;
+}
 
+.changeTypeSelect_selected {
+    border-bottom: solid 2px #fff;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.9) inset;
+}
 
-
-
-
-.detailsDiv{
-	color:#fff;
-	width: 90%;
+.detailsDiv {
+    color: #fff;
+    width: 90%;
     border-top: solid 1px #fff;
     border-bottom: solid 1px #fff;
     padding: 20px 0;
     margin: 20px auto;
 }
-.details_Data{
-	color: #fff;
+
+.details_Data {
+    color: #fff;
     font-size: 4rem;
     margin-bottom: 20px;
 }
-.details_MessageRow{
-	color: #fff;
+
+.details_MessageRow {
+    color: #fff;
     border-left: solid 2px #fff;
     border-right: solid 2px #fff;
-	display:none;
+    display: none;
 }
-.details_LeftMessage{
-	color: #fff;
+
+.details_LeftMessage {
+    color: #fff;
     width: 48%;
     display: inline-block;
     font-size: 4rem;
     text-align: right;
     padding-right: 8%;
 }
-.details_RightMessage{
-	color: #fff;
+
+.details_RightMessage {
+    color: #fff;
     width: 48%;
     display: inline-block;
     font-size: 4rem;
 }
-.details_noticeMessage{
-	width: 100%;
+
+.details_noticeMessage {
+    width: 100%;
     height: 610px;
     font-size: 4rem;
     background-color: transparent;
@@ -145,41 +154,74 @@ html{
     text-indent: 5rem;
     word-wrap: break-word;
     word-break: break-all;
-	resize:none;
+    resize: none;
 }
 
-
-
-.inputSelectOuterDiv{
-	width: 0%;
-	position: fixed;
+.inputSelectOuterDiv {
+    width: 0%;
+    position: fixed;
     top: 19%;
-	transition:all 1s;
-	overflow-x:hidden;
-	display:none;
+    transition: all 1s;
+    overflow-x: hidden;
+    display: none;
 }
-.inputSelectDiv{
-	border: solid 1px #fff;
+
+.inputSelectDiv {
+    border: solid 1px #fff;
     border-radius: 10px;
     width: 710px;
     height: 588px;
-    background-color: rgba(0,0,0,.8);
-	overflow-y: auto;
-	margin:0 auto;
+    background-color: rgba(0, 0, 0, .8);
+    overflow-y: auto;
+    margin: 0 auto;
 }
-.inputSelecList{
-	width: 85%;
+
+.inputSelecList {
+    width: 85%;
     color: #fff;
     margin: 50px auto;
     text-align: center;
     border-right: solid 4px #fff;
-   
-}
-.inputSelectValue{
-	font-size: 4rem;
+
 }
 
+.inputSelectValue {
+    font-size: 4rem;
+}
 
+/*省市区三级联动样式*/
+.citySelect {
+    padding: 2% 0;
+    text-align:center;
+}
+
+.citySelectLeftTitle {
+    display: inline-block;
+    height: 100%;
+    text-align: right;
+    font-size: 4rem;
+    width: 22rem;
+    color: #fff;
+    vertical-align: top;
+}
+
+.citySelectRightList {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 50px;
+    width:487px;
+}
+.citySelectRightList select{
+    width: 100%;
+    font-size: 4rem;
+    margin-bottom: 5%;
+    padding-left: 10%;
+    color: #999;
+    background: transparent;
+    border: none;
+    border-bottom: solid 2px #fff;
+    padding-bottom: 4%;
+}
 
 
 
