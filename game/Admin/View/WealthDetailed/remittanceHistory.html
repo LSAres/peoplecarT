@@ -50,36 +50,31 @@
 </a>
 <table>
     <tr>
-        <th>汇款账号</th>
+        <th>收款账号</th>
+        <th>收款人姓名</th>
         <th>汇款金额</th>
         <th>汇款银行</th>
         <th>汇款时间</th>
         <th>汇款人</th>
     </tr>
+    <foreach name="userArr" item="value" key="key">
     <tr>
-        <td>老人与海鲜</td>
-        <td>2015-01-28</td>
-        <td>
-			哈利波特大
-		</td>
-        <td>
-			死神不来了
-		</td>
-        <td>删除</td>
+        <td>{$value.receivables_account}</td>
+        <td>{$value.receivables_username}</td>
+        <td>{$value.remittance_money}</td>
+        <td>{$value.remittance_bank}</td>
+        <td>{$value.time|date="Y-m-d H:i:s",###}</td>
+        <td>{$value.remittance_user}</td>
 
     </tr>
+    </foreach>
 	
 
 </table>
 
 <!--底部页面切换选项卡-->
 <div class="bottomPageSelect">
-    <span class="userMessageUp">|<</span>
-    <!--<span class="bottomPageSelectActive">1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>-->
-    <span class="userMessageDown">>|</span>
+    {$pageshow}
 </div>
 
 </body>
