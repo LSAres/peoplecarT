@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区域代理</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+</head>
+<body>
+<!--顶部搜索DIV-->
+<div class="topSearchDiv">
+    <form id="form_search" action="{:U('Index/administrationPage')}" method="post">
+        <label class="searchTitelDate" for="searchTitelOrStartDate">
+            开始日期
+        </label>
+        <input type="date" class="searchDataStyle" name="start_time" id="searchTitelOrStartDate">
+        <label class="searchTitelDate" for="searchTitelOrEndDate"> 结束日期</label>
+        <input type="date" class="searchDataStyle" name="end_time" id="searchTitelOrEndDate">
+        <label class="searchTitelDate" for="searchConditionSelect"> 搜索条件选择</label>
+        <select name="condition" class="searchConditionSelect" id="searchConditionSelect">
+            <option value="" selected="selected">请选择搜索条件</option>
+            <option value="userid">会员编号</option>
+            <option value="account">会员账号</option>
+            <option value="username">会员姓名</option>
+            <option value="identity_card">身份证</option>
+            <option value="phone">手机号</option>
+        </select>
+        <input type="text" name="text" class="searchDataStyle searchInputStyle" placeholder="请输入搜索条件">
+        <div class="conditionEndSearchStart" onClick="test()">开始搜索</div>
+    </form>
+</div>
+
+<table>
+
+    <tr>
+        <th>代理名称</th>
+        <th>代理区域</th>
+        <th>代理区域内人数</th>
+        <th>代理区域内总资金</th>
+        <th>奖励总数</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+</table>
+
+<!--底部页面切换选项卡-->
+<div class="bottomPageSelect">
+    {$pageshow}
+</div>
+</body>
+<script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
+<script>
+    function test() {
+        document.getElementById("form_search").submit();
+    }
+</script>
+</html>

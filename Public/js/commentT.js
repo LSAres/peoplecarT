@@ -60,6 +60,18 @@ $(function () {
     $('.userRecommendStructure').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/UserAdministration/userRecommendStructure.html');
     });
+    $(".agentExamine").click(function(){
+        $('iframe').attr('src', 'index.php?s=/super/UserAdministration/agentExamine.html');
+    });
+    $(".regionAgent").click(function(){
+        $('iframe').attr('src', 'index.php?s=/super/UserAdministration/regionAgent.html');
+    });
+    $(".buyCarApply").click(function(){
+        $('iframe').attr('src', 'index.php?s=/super/UserAdministration/buyCarApply.html');
+    });
+    $(".deadAgent").click(function(){
+        $('iframe').attr('src', 'index.php?s=/super/UserAdministration/deadAgent.html');
+    });
     //财富汇总明细
     $('.userDetails').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/userDetails.html');

@@ -8,7 +8,10 @@ html body {
     margin:0;
     padding:0;
 }
-
+a{
+    text-decoration: none;
+    color:#fff;
+}
 /********************************管理登录首页*/
 /*外围背景*/
 .loginPageBackGroundImg {
