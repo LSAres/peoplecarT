@@ -53,9 +53,9 @@
     <div class="shenfen">{$userInfo.levename}</div>
 </div>
 <div class="body_control_functions">
-    <div class="body_control_functions_div">
+    <div class="body_control_functions_div buyCarApply">
         <img src="__PUBLIC__/img/5.png" alt="" class="body_control_functions_divImageTitle">
-        <div class="body_control_functions_divBottomTitle">系统首页</div>
+        <div class="body_control_functions_divBottomTitle">购车申请</div>
     </div>
     <a href="{:U('Usersettings/user_systemnotice')}" class="body_control_functions_div">
         <img src="__PUBLIC__/img/2.png" alt="" class="body_control_functions_divImageTitle">
@@ -71,7 +71,8 @@
     </div>
 
 </div>
-<div class="body_control_selectDiv">
+
+<div class="">
 
     <div class="body_control_Div">
         <img src="__PUBLIC__/img/14.png" alt="" class="body_control_titleImage">
@@ -90,7 +91,8 @@
                 <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
             </div>
         </div>
-        <a href="{:U('teamcontrol/team_recommenddetailed')}" class="body_control_Div listTwoColor" style="margin-top:0;">
+        <a href="{:U('teamcontrol/team_recommenddetailed')}" class="body_control_Div listTwoColor"
+           style="margin-top:0;">
             <img src="__PUBLIC__/img/22.png" alt="" class="body_control_titleImage">
             <span class="body_control_message">推荐列表</span>
             <div class="body_control_titleRight">
@@ -149,6 +151,31 @@
                 <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
             </div>
         </div>
+        <a href="{:U('servicemanagement/user_provinceapply')}" class="body_control_Div listTwoColor"
+           style="margin-top:0;">
+            <img src="__PUBLIC__/img/26.png" alt="" class="body_control_titleImage">
+            <span class="body_control_message">省级代理申请</span>
+            <div class="body_control_titleRight">
+                <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            </div>
+        </a>
+        <a href="{:U('servicemanagement/user_cityapply')}" class="body_control_Div listTwoColor"
+           style="margin-top:0;">
+            <img src="__PUBLIC__/img/26.png" alt="" class="body_control_titleImage">
+            <span class="body_control_message">市级代理申请</span>
+            <div class="body_control_titleRight">
+                <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            </div>
+        </a>
+        <a href="{:U('servicemanagement/user_areaapply')}" class="body_control_Div listTwoColor"
+           style="margin-top:0;">
+            <img src="__PUBLIC__/img/26.png" alt="" class="body_control_titleImage">
+            <span class="body_control_message">区级代理申请</span>
+            <div class="body_control_titleRight">
+                <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+            </div>
+        </a>
+
     </div>
     <!--业务管理二级菜单   end-->
     <div class="body_control_Div" style="margin-top: 0;border-top:none;">
@@ -268,6 +295,25 @@
     <img src="__PUBLIC__/img/loginBottom.gif" alt="">
     联系在线客服
 </div>
+
+<!--购车申请点击提醒-->
+<div class="messagePrompt">
+    <!--提示框题头-->
+    <div class="messagePrompt_TitleDiv">
+        提示
+    </div>
+    <!--提示信息-->
+    <div class="messagePrompt_MessageDiv">
+        sdfsfsdfsfsdsdf
+    </div>
+    <!--下方关闭按钮-->
+    <div class="messagePrompt_ControlButton">
+        确认
+    </div>
+    <div class="messagePrompt_ControlButton">
+        取消
+    </div>
+</div>
 </body>
 <script>
     function pageReload() {
@@ -287,48 +333,38 @@
         var moveDeg_right = 70;
         $('.zuobiaopan .xuanzhuanzhongxin').css('transform', 'rotateZ(' + (moveDeg_left) + 'deg)')
         $('.youbiaopan .xuanzhuanzhongxin').css('transform', 'rotateZ(' + (moveDeg_right) + 'deg)')
-
-        $('.body_control_Div').click(function () {
-            $(this).siblings().removeClass('body_control_Div_Click');
-            $(this).addClass('body_control_Div_Click');
-            if ($(this).find('.body_control_message').text() == "团队管理") {
-                if ($('.tuanduiguanli').css('display') == 'block') {
-                    $('.listTwoColor').parent().slideUp();
-                    $('.body_control_Div').removeClass('body_control_Div_Click');
-                    return;
-                }
-                $('.listTwoColor').parent().slideUp();
-                $('.tuanduiguanli').slideDown();
-            } else if ($(this).find('.body_control_message').text() == "业务管理") {
-                if ($('.yewuguanli').css('display') == 'block') {
-                    $('.listTwoColor').parent().slideUp();
-                    $('.body_control_Div').removeClass('body_control_Div_Click');
-                    return;
-                }
-                $('.listTwoColor').parent().slideUp();
-                $('.yewuguanli').slideDown();
-            } else if ($(this).find('.body_control_message').text() == "财务管理") {
-                if ($('.caiwuguanli').css('display') == 'block') {
-                    $('.listTwoColor').parent().slideUp();
-                    $('.body_control_Div').removeClass('body_control_Div_Click');
-                    return;
-                }
-                $('.listTwoColor').parent().slideUp();
-                $('.caiwuguanli').slideDown();
-            } else if ($(this).find('.body_control_message').text() == "个人设置") {
-                if ($('.gerenshezhi').css('display') == 'block') {
-                    $('.listTwoColor').parent().slideUp();
-                    $('.body_control_Div').removeClass('body_control_Div_Click');
-                    return;
-                }
-                $('.listTwoColor').parent().slideUp();
-                $('.gerenshezhi').slideDown();
+        //点击呼出对应二级菜单
+        $('.body_control_Div').click(function(){
+            if($(this).next().css("display") == "none"){
+                $('.body_control_Div').removeClass("body_control_Div_Click");
+                $(this).addClass("body_control_Div_Click");
+                $(this).next().slideDown();
+            }else{
+                $(this).next().slideUp();
             }
-        })
+        });
+        //500毫秒后加载动画
         setTimeout(function () {
             $('.pageTwoTitleDiv-RowLeftDiv').addClass('pageTwoTitleDiv-loadLeftMove');
             $('.pageTwoTitleDiv-RowRightDiv').addClass('pageTwoTitleDiv-loadRightMove');
         }, 500);
+        //呼出提示窗方法
+        function messageDivShow(message){
+            $(".messagePrompt .messagePrompt_MessageDiv").text(message);
+            $(".messagePrompt").fadeIn();
+            $(".messagePrompt_ControlButton").click(function(){
+                if($(this).index() == 0){
+                    $(".messagePrompt").fadeOut();
+                }else{
+                    $(".messagePrompt").fadeOut();
+                    return;
+                }
+            });
+        }
+        //点击购车申请呼出提示 方法
+        $(".buyCarApply").click(function(){
+            messageDivShow("是否发出提车申请？");
+        });
     })
 
 </script>
