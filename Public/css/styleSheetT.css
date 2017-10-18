@@ -143,7 +143,7 @@ a{
 .contentDisplayDiv .contentTitelDiv {
     /*width: 100%;*/
     padding: 20px;
-    background-color: rgba(000, 000, 000, .8);
+    background-color: rgba(6, 20, 70, 0.8);
     box-shadow: 0 0 20px #ffffff inset;
 }
 
@@ -213,12 +213,13 @@ a{
 /*左侧控制列表*/
 .contentDisplayDiv .leftControle {
     display: inline-block;
-    width:15%;
+    width: 15%;
     height: 700px;
-    background-color: rgba(000, 000, 000, .8);
+    background-color: rgba(241, 236, 236, 0.8);
     box-shadow: 0 0 20px #ffffff inset;
     overflow: hidden;
     transition: all 1s;
+    border-left: solid 1px #999;
 }
 
 .contentDisplayDiv .leftControle .liDiv {
@@ -227,26 +228,26 @@ a{
 }
 
 .contentDisplayDiv .leftControle .liDiv .liTitle {
-    color: #dedede;
+    color: #000;
     font-size: 16px;
     padding: 20px 20px;
-    /*border-top: solid 1px #dedede;*/
-    border-bottom: solid 1px #dedede;
+    /* border-top: solid 1px #dedede; */
+    border-bottom: solid 1px #999;
     cursor: pointer;
     transition: all 1s;
 }
 
 .contentDisplayDiv .leftControle .liDiv .liTitle:hover {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.5);
     border-bottom: solid 1px rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 20px #ffffff inset;
     transition: all 1s;
 }
 
 .contentDisplayDiv .leftControle .liDiv .liTitle.liTitleActive {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(25, 23, 23, 0.9);
     border-bottom: solid 1px rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 20px #ffffff inset;
+    box-shadow: 0 0 50px #113e0d inset;
     transition: all 1s;
 }
 
@@ -255,14 +256,14 @@ a{
     display: block;
     margin: 0;
     padding: 0;
-    border-bottom: solid 1px #dedede;
+    border-bottom: solid 1px #000;
     display: none;
 }
 
 .contentDisplayDiv .leftControle .ulDiv li {
     list-style: none;
     width: 100%;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(14, 14, 14, 1);
     font-size: 14px;
     text-align: center;
     cursor: pointer;
@@ -273,14 +274,14 @@ a{
 }
 
 .contentDisplayDiv .leftControle .ulDiv li:hover {
-    color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 20px #ffffff inset;
+    color: rgba(0, 255, 255, 0.9);
+    box-shadow: 0 0 20px #000 inset;
     transition: all 1s;
 }
 
 .contentDisplayDiv .leftControle .ulDiv li.liActive {
-    color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 20px #ffffff inset;
+    color: rgb(18, 76, 66);
+    box-shadow: 0 0 20px #0e0e0e inset;
     transition: all 1s;
 }
 
@@ -318,10 +319,10 @@ a{
     width: 84.5%;
     height: 700px;
     display: inline-block;
-    margin-left: -8px;
+    margin-left: 0px;
     vertical-align: top;
     box-sizing: border-box;
-    background-color: rgba(000, 000, 000, .5);
+    border: solid 1px #999;
     box-shadow: 0 0 50px rgba(255, 255, 255, .8) inset;
 }
 .rightPageChange iframe body{
@@ -331,15 +332,15 @@ a{
 /*顶部搜索框*/
 .topSearchDiv {
     text-align: center;
-    background-color: rgba(000, 000, 000, .7);
+    /* background-color: rgba(255, 255, 255, .7); */
     box-sizing: border-box;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 1) inset;
     padding: 16px 0;
+    border-bottom:solid 1px #999;
 }
 
 .topSearchDiv .searchTitelDate {
     font-size: 14px;
-    color: #ffffff;
+    color: #000;
     font-weight: bold;
     text-align: center;
     display: inline-block;
@@ -374,7 +375,7 @@ a{
 }
 
 .topSearchDiv .conditionEndSearchStart {
-    color: #dedede;
+    color: #000;
     border-radius: 5px;
     padding: 4px 5px;
     border: none;
@@ -402,19 +403,19 @@ table {
     font-size: 12px;
     width: 100%;
     max-height: 100%;
-    color: #ffffff;
+    color: #000;
     padding: 10px 5px;
-    background-color: rgba(000, 000, 000, .5);
-    box-shadow: 0 0 20px rgba(255, 255, 255, .8) inset;
+    /* background-color: rgba(000, 000, 000, .5); */
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, .8) inset; */
 }
 
 table th {
-    color: #dedede;
+    color: #000;
     text-align: center;
     box-shadow: 0 0 10px rgba(000, 000, 000, 1);
     padding: 0;
     box-sizing: border-box;
-	height:41px;
+    height: 41px;
 }
 table tr{
 	
@@ -422,8 +423,8 @@ table tr{
 table td {
     text-align: center;
     font-size: 12px;
-    border-bottom: solid 0.5px #ffffff;
-    box-shadow: 0 0 30px rgba(000, 000, 000, 1) inset;
+    border: solid 0.5px #999;
+    /* box-shadow: 0 0 30px rgba(000, 000, 000, 1) inset; */
     padding: 7px 0;
     box-sizing: border-box;
 	
@@ -494,22 +495,22 @@ table td {
 
 /*****************修改信息的页面 顶部DIV公用*/
 .topSearchDiv .updateTitleMessage {
-    color: #ffffff;
-    text-shadow: 5px 5px 5px #dedede;
+    color: #000;
+    text-shadow: 5px 5px 5px #999;
     font-size: 28px;
 }
 
 /*中间信息显示*/
 .upadateMessageDisplay {
     padding: 10px;
-    background-color: rgba(000, 000, 000, .5);
+    /* background-color: rgba(000, 000, 000, .5); */
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5) inset;
     text-align: center;
 }
 
 .upadateMessageDisplay .updateMessageTitle {
     width: 150px;
-    color: #ffffff;
+    color: #000;
     display: inline-block;
     padding: 5px 10px;
     border-radius: 5px 0 0 5px;
@@ -517,13 +518,13 @@ table td {
 
 .upadateMessageDisplay .updateMessageInput {
     border: none;
-    color: #ffffff;
+    color: #999;
     text-align: center;
     border-radius: 10px;
     padding: 5px 10px;
     display: inline-block;
-    background-color: rgba(000, 000, 000, .5);
-    box-shadow: 0 0 15px rgba(255, 255, 255, .6) inset;
+    /* background-color: rgba(000, 000, 000, .5); */
+    box-shadow: 0 0 15px rgba(0, 0, 0, .6) inset;
 
 }
 /*公告输入框*/
@@ -531,50 +532,50 @@ table td {
     display: block;
     width: 70%;
     height: 500px;
-    background: rgba(0,0,0,.6);
+    /* background: rgba(0,0,0,.6); */
     border-radius: 30px;
-    color: #fff;
+    color: #000;
     font-size: 16px;
     margin: 0 auto;
     resize: none;
     word-break: break-all;
     word-wrap: break-word;
     text-indent: 20px;
-    border: solid 1px #dedede;
+    border: solid 1px #999;
 }
 input::-webkit-input-placeholder { /* WebKit browsers */
-    color: #fff;
+    color: #999;
 }
 
 input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #fff;
+    color: #999;
 }
 
 input::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #fff;
+    color: #999;
 }
 
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #fff;
+    color: #999;
 }
 
 /*不确认修改按钮*/
 .updateTrue {
-    color: #ffffff;
+    color: #000;
     font-size: 20px;
     font-weight: bolder;
     text-align: center;
-    background-color: rgba(000, 000, 000, .5);
+    /* background-color: rgba(000, 000, 000, .5); */
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(255, 255, 255, .8) inset;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .8) inset;
     padding: 15px 0;
     margin-bottom: -15px;
     transition: all 1s;
 }
 
 .updateTrue:hover {
-    color: #cccccc;
-    box-shadow: 0 0 50px rgba(255, 255, 255, .8) inset;
+    color: #999;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .8) inset;
     transition: all 1s;
 
 }
@@ -688,15 +689,15 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     padding-top: 10%;
 }
 .maintainMessageDiv_Head{
-    font-size:36px;
-    font-weight:bolder;
-    color:#dedede;
+    font-size: 36px;
+    font-weight: bolder;
+    color: #000;
     text-align: center;
 }
 .maintainMessageDiv_body{
     font-size: 18px;
     margin-top: 50px;
-    color: #dedede;
+    color: #000;
 }
 .maintainMessageDiv_body_Ul{
     width: 100%;
@@ -707,7 +708,17 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     text-align: center;
     margin: 10px 0;
 }
-
+ .appendNewMessageButton{
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: solid 1px #999;
+    color: #000;
+    border-radius: 15px;
+    /* background: rgba(0,0,0,.5); */
+    margin: 10px 0 10px 10px;
+    box-shadow: 0 0 20px 5px rgba(177, 165, 165, 0.5) inset;
+}
 
 
 
