@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/stylesheet.css">
+	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+	<script src="__PUBLIC__/js/comment.js"></script>
+	<!--引用三级联动列表所需JS-->
+	<script src="__PUBLIC__/js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/js/distpicker.data.js"></script>
+	<script src="__PUBLIC__/js/distpicker.js"></script>
+	<script src="__PUBLIC__/js/citymain.js"></script>
+	<!--引用三级联动列表所需JS END-->
+    <style>
+
+	</style>
+</head>
+<body  class="bodyHeight">
+<!--topTitle -->
+<div class="pageTitleDiv">
+	<div class="backButton">
+		返回
+	</div>
+	<span class="pageTitleText">
+		省级代理申请
+	</span>
+</div>
+<form action="{:U(MODULE_NAME.'/Index/register')}" method="post" id="myform">
+	<!--省市区三级联动列表-->
+	<div  class="citySelect">
+		<div class="citySelectLeftTitle">
+			请选择省:
+		</div>
+		<div data-toggle="distpicker" class="citySelectRightList">
+			<select></select>
+			<!--<select ></select>-->
+			<!--<select></select>-->
+		</div>
+	</div>
+	
+	
+	<!--
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">转换类型:</div>
+		<input type="text" value="-----请选择-----"  readonly="readonly"  class="rightMessage forInputSelect" />
+		
+	</div>
+	-->
+	
+	
+	<!--确认按钮-->
+	<div class="etermineButton" onClick="test()">
+		确认申请
+	</div>
+</form>
+
+<!--input选择列表
+<div class="inputSelectOuterDiv">
+	<div class="inputSelectDiv">
+		<div class="inputSelecList" >
+			<span class="inputSelectValue">现金币转报单币</span>
+			<div style="border-left: solid 50px #fff; border-bottom: solid 23px transparent; border-top: solid 23px transparent;display: inline-block; float: right;"></div>
+		</div>
+		<div class="inputSelecList" >
+			<span class="inputSelectValue">购车基金转现金币</span>
+			<div style="border-left: solid 50px #fff; border-bottom: solid 23px transparent; border-top: solid 23px transparent;display: inline-block; float: right;"></div>
+		</div>
+	</div>
+</div>
+-->
+</body>
+
+<script>
+   function test()
+	{
+		document.getElementById("myform").submit();    
+	}
+
+</script>
+</html>

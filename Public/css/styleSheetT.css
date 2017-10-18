@@ -10,7 +10,7 @@ html body {
 }
 a{
     text-decoration: none;
-    color:#fff;
+    color:#000;
 }
 /********************************管理登录首页*/
 /*外围背景*/
@@ -426,6 +426,7 @@ table td {
     border: solid 0.5px #999;
     /* box-shadow: 0 0 30px rgba(000, 000, 000, 1) inset; */
     padding: 7px 0;
+    color: #000;
     box-sizing: border-box;
 	
 }
