@@ -33,8 +33,10 @@
 			请选择市:
 		</div>
 		<div data-toggle="distpicker" class="citySelectRightList">
-			<select></select>
-			<select></select>
+			<select name="province"></select>
+			<input name="provinceDataCode" type="text" style="display:none;" value="">
+			<select name="city"></select>
+			<input name="cityDataCode" type="text" style="display:none;" value="">
 			<!--<select></select>-->
 		</div>
 	</div>
@@ -76,6 +78,16 @@
 	{
 		document.getElementById("myform").submit();    
 	}
+   /*代理申请 提取 选择值 data-code属性值 */
+   //省级提取
+   $("select[name='province']").change(function () {
+       $("input[name='provinceDataCode']").val($(this).find("option:selected").attr("data-code"));
+   });
+   //市级提取
+   $("select[name='city']").change(function () {
+       alert($(this).find("option:selected").attr("data-code"));
+       $("input[name='cityDataCode']").val($(this).find("option:selected").attr("data-code"));
+   });
 
 </script>
 </html>
