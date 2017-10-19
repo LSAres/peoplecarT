@@ -82,10 +82,15 @@
    //省级提取
    $("select[name='province']").change(function () {
        $("input[name='provinceDataCode']").val($(this).find("option:selected").attr("data-code"));
+       //考虑用户不点选下级菜单情况，改变省级一秒后 自动提取市级value值
+       setTimeout(function(){
+           $("input[name='cityDataCode']").val( $("select[name='city']").find("option:selected").attr("data-code"));
+       },500);
+
+
    });
    //市级提取
    $("select[name='city']").change(function () {
-       alert($(this).find("option:selected").attr("data-code"));
        $("input[name='cityDataCode']").val($(this).find("option:selected").attr("data-code"));
    });
    //设置初始省级选择框

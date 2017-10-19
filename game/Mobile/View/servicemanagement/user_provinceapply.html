@@ -78,6 +78,7 @@
 		document.getElementById("myform").submit();    
 	}
 	/*代理申请 提取 选择值 data-code属性值 */
+
 	//省级提取
 	$("select[name='province']").change(function () {
 	    alert($(this).find("option:selected").attr("data-code"))
