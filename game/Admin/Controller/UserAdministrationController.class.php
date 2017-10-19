@@ -385,6 +385,7 @@ class UserAdministrationController extends CommonController {
         $this->display();
     }
 
+    //申请购车审核
     public function examine(){
         $id =I('get.id');
         $res = M('applycar')->where('id='.$id)->setField('status',1);
@@ -396,6 +397,42 @@ class UserAdministrationController extends CommonController {
             exit();
         }
 
+    }
+
+    public function agentExamine(){
+        $start_time = strtotime(I('start_time'));
+        $end_time = strtotime(I('end_time'));
+
+        if($start_time && $end_time){
+            $where['time'] = array('between',"$start_time,$end_time");
+        }
+        $tb_user=M('apply_agent');
+        if(I('condition')){
+            $we = I('condition');
+            $value=trim(I('text'));
+            if($we=="username"){
+                $where[$we] =array('like',"%$value%");
+            }else {
+                $where[$we] = $value;
+            }
+        }
+
+        $pagesize =10;
+        $p = getpage($tb_user, $where, $pagesize);
+        $pageshow   = $p->show();
+
+        $userArr=$tb_user->where($where)
+            ->field('id,uid,type,province,city,area,time,status')
+            ->order('id desc ')
+            ->select();
+        foreach ($userArr as $k=>$v){
+            $userInfo = M('user')->where('userid='.$v['uid'])->find();
+        }
+        $this->assign(array(
+            'userArr'=>$userArr,
+            'pageshow'=>$pageshow,
+        ));
+        $this->display();
     }
 
 }

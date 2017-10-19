@@ -33,7 +33,7 @@
 <table>
 
     <tr>
-        <th>会员编号</th>
+        <th>编号</th>
         <th>会员姓名</th>
         <th>会员账号</th>
         <th>手机号</th>
@@ -41,19 +41,21 @@
         <th>申请时间</th>
         <th>操作</th>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <a href="" >提升该会员为代理</a>
-            <a href="index.php?s=/super/UserAdministration/agentExamine_userMessage.html" >查看该会员信息</a>
-        </td>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.id}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="" >提升该会员为代理</a>
+                <a href="index.php?s=/super/UserAdministration/agentExamine_userMessage.html" >查看该会员信息</a>
+            </td>
 
-    </tr>
+        </tr>
+    </foreach>
 </table>
 
 <!--底部页面切换选项卡-->

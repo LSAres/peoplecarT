@@ -85,7 +85,6 @@ class ServicemanagementController extends CommonController {
             $provinceDataCode = I('post.provinceDataCode');
             $city = I('post.city');
             $cityDataCode = I('post.cityDataCode');
-
             if(!$province){
                 echo "<script>alert('请选择要代理的省份');</script>";
                 echo "<script>javascript:history.back(-1);</script>";die;
@@ -131,8 +130,7 @@ class ServicemanagementController extends CommonController {
             $city = I('post.city');
             $cityDataCode = I('post.cityDataCode');
             $area = I('post.area');
-            $area = I('post.areaDataCode');
-            dump(I('post.'));die;
+            $areaDataCode = I('post.areaDataCode');
             if(!$province){
                 echo "<script>alert('请选择要代理的省份');</script>";
                 echo "<script>javascript:history.back(-1);</script>";die;
@@ -149,13 +147,23 @@ class ServicemanagementController extends CommonController {
                 echo "<script>alert('系统出错，请重新选择要代理的省份');</script>";
                 echo "<script>javascript:history.back(-1);</script>";die;
             }
+            if(!$area){
+                echo "<script>alert('请选择要代理的区');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if(!$cityDataCode){
+                echo "<script>alert('系统出错，请重新选择要代理的区');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
             $userid = session('userid');
             $data['uid']=$userid;
-            $data['type']=2;
+            $data['type']=3;
             $data['province']=$province;
             $data['province_code']=$provinceDataCode;
             $data['city']=$city;
             $data['city_code']=$cityDataCode;
+            $data['area']=$area;
+            $data['area_code']=$areaDataCode;
             $date['time']=time();
             $data['status']=0;
             $res = M('apply_agent')->data($data)->add();
