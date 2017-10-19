@@ -26,7 +26,7 @@
 		区级代理申请
 	</span>
 </div>
-<form action="{:U(MODULE_NAME.'/Index/register')}" method="post" id="myform">
+<form action="{:U(MODULE_NAME.'/Servicemanagement/user_areaapply')}" method="post" id="myform">
 	<!--省市区三级联动列表-->
 	<div  class="citySelect">
 		<div class="citySelectLeftTitle">
@@ -93,6 +93,11 @@
    $("select[name='area']").change(function () {
        $("input[name='areaDataCode']").val($(this).find("option:selected").attr("data-code"));
    });
-
+   //设置初始省级选择框
+   $(function(){
+       $("select[name='province']").val("");
+       $("select[name='city']").val("");
+       $("select[name='area']").val("");
+   })
 </script>
 </html>

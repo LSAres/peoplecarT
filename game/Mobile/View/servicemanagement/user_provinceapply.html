@@ -34,7 +34,7 @@
 		</div>
 		<div data-toggle="distpicker" class="citySelectRightList">
 			<select name="province"></select>
-			<input name="provinceDataCode" type="text" style="display:none;" value="">
+			<input name="provinceDataCode" type="text" style=""  >
 			<!--<select ></select>-->
 			<!--<select></select>-->
 		</div>
@@ -80,8 +80,13 @@
 	/*代理申请 提取 选择值 data-code属性值 */
 	//省级提取
 	$("select[name='province']").change(function () {
+	    alert($(this).find("option:selected").attr("data-code"))
 		$("input[name='provinceDataCode']").val($(this).find("option:selected").attr("data-code"));
     });
+	//设置初始省级选择框
+   $(function(){
+       $("select[name='province']").val("");
+   })
 
 </script>
 </html>
