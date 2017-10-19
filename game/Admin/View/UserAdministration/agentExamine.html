@@ -44,14 +44,14 @@
     <foreach name="userArr" item="value" key="key">
         <tr>
             <td>{$value.id}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{$value.username}</td>
+            <td>{$value.account}</td>
+            <td>{$value.phone}</td>
+            <td>{$value.province}{$value.city}{$value.area}</td>
+            <td>{$value.time|date="Y-m-d H:i:s",###}</td>
             <td>
                 <a href="" >提升该会员为代理</a>
-                <a href="index.php?s=/super/UserAdministration/agentExamine_userMessage.html" >查看该会员信息</a>
+                <a href="{:U(MODULE_NAME.'/UserAdministration/agentExamine_userMessage',array('id'=>$value['id']))}" >查看该会员信息</a>
             </td>
 
         </tr>

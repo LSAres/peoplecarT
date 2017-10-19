@@ -64,7 +64,7 @@ class ServicemanagementController extends CommonController {
             $data['type']=1;
             $data['province']=$province;
             $data['province_code']=$provinceDataCode;
-            $date['time']=time();
+            $data['time']=time();
             $data['status']=0;
             $res = M('apply_agent')->data($data)->add();
             if($res){
@@ -108,7 +108,7 @@ class ServicemanagementController extends CommonController {
             $data['province_code']=$provinceDataCode;
             $data['city']=$city;
             $data['city_code']=$cityDataCode;
-            $date['time']=time();
+            $data['time']=time();
             $data['status']=0;
             $res = M('apply_agent')->data($data)->add();
             if($res){
@@ -164,7 +164,7 @@ class ServicemanagementController extends CommonController {
             $data['city_code']=$cityDataCode;
             $data['area']=$area;
             $data['area_code']=$areaDataCode;
-            $date['time']=time();
+            $data['time']=time();
             $data['status']=0;
             $res = M('apply_agent')->data($data)->add();
             if($res){

@@ -21,13 +21,13 @@
         <th>用户资产</th>
     </tr>
     <tr>
-        <td>1311111</td>
-        <td>13111111111</td>
-        <td>13333333333</td>
-        <td>2015-12-31</td>
-        <td>牡丹江市华尔顿县嘎拉哈屯</td>
-        <td>2015-12-31</td>
-        <td>1999999</td>
+        <td>{$userInfo.uid}</td>
+        <td>{$userInfo.account}</td>
+        <td>{$userInfo.phone}</td>
+        <td>{$userInfo.register_time|date="Y-m-d H:i:s",###}</td>
+        <td>{$userInfo.province}{$userInfo.city}{$userInfo.area}</td>
+        <td>{$userInfo.time|date="Y-m-d H:i:s",###}</td>
+        <td>{$userInfo.money}</td>
     </tr>
 
 </table>

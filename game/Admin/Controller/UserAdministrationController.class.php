@@ -427,11 +427,28 @@ class UserAdministrationController extends CommonController {
             ->select();
         foreach ($userArr as $k=>$v){
             $userInfo = M('user')->where('userid='.$v['uid'])->find();
+            $userArr[$k]['username']=$userInfo['username'];
+            $userArr[$k]['account']=$userInfo['account'];
+            $userArr[$k]['phone']=$userInfo['phone'];
         }
         $this->assign(array(
             'userArr'=>$userArr,
             'pageshow'=>$pageshow,
         ));
+        $this->display();
+    }
+
+    public function agentExamine_userMessage(){
+        $id = I('get.id');
+        $orderInfo = M('apply_agent')->where('id='.$id)->find();
+        $user = M('user');
+        $userInfo = $user->where("userid=".$orderInfo['uid'])->find();
+        $storeInfo = M('store')->where('uid='.$orderInfo['uid'])->find();
+        $orderInfo['account']=$userInfo['account'];
+        $orderInfo['phone']=$userInfo['phone'];
+        $orderInfo['register_time']=$userInfo['time'];
+        $orderInfo['money']=$storeInfo['buycar_money'];
+        $this->assign('userInfo',$orderInfo);
         $this->display();
     }
 
