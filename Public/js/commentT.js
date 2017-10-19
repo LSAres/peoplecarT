@@ -155,6 +155,21 @@ $(function () {
     $('.adminList').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/AdminControl/adminListPage.html');
     });
+
+    //显示列表选择按钮 class:tableSelectButton
+    $(".tableSelectButton").click(function(){
+        var tableList = $("table");
+        $("table").hide();
+        if($(this).index() == 0){
+            $(tableList[$(this).index()]).fadeIn();
+        }
+        if($(this).index() == 1){
+            $(tableList[$(this).index()]).fadeIn();
+        }
+        if($(this).index() == 2){
+            $(tableList[$(this).index()]).fadeIn();
+        }
+    });
     /**
      *
      *用户列表 下方 切换数据显示页面

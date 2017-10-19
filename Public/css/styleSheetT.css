@@ -720,9 +720,24 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     margin: 10px 0 10px 10px;
     box-shadow: 0 0 20px 5px rgba(177, 165, 165, 0.5) inset;
 }
+/*顶部选择显示列表按钮*/
+.topTableSelectDiv{
+    text-align: center;
+    padding:1% 0;
 
-
-
+}
+.tableSelectButton{
+    color: #000;
+    border-radius: 5px;
+    padding: 4px 5px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    box-shadow: 0 0 10px rgba(000, 000, 000, 1) inset;
+    transition: all 1s;
+    margin:0 5%;
+}
 
 
 
