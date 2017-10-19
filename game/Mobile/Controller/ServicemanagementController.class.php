@@ -44,4 +44,12 @@ class ServicemanagementController extends CommonController {
     public function user_reportcenter(){
         $this->display();
     }
+
+    public function user_provinceapply(){
+        if(!I('post.')){
+            $this->display();
+        }else{
+
+        }
+    }
 }

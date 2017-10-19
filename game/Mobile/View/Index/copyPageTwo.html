@@ -353,7 +353,8 @@
             $(".messagePrompt .messagePrompt_MessageDiv").text(message);
             $(".messagePrompt").fadeIn();
             $(".messagePrompt_ControlButton").click(function(){
-                if($(this).index() == 0){
+                if($(this).index() == 2){
+                    location.href ="{:U('Index/applyCar')}";
                     $(".messagePrompt").fadeOut();
                 }else{
                     $(".messagePrompt").fadeOut();

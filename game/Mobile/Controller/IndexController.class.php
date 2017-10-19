@@ -181,6 +181,31 @@ class IndexController extends CommonController {
 		 }else{ 
 		 	return true; 
 		 } 
-	} 
+	}
 
+	public function applyCar(){
+	    $userid=session('userid');
+	    $userInfo = M('user')->where('userid='.$userid)->find();
+	    $condition['uid']=$userid;
+	    $condition['status']=0;
+	    $is_have=M('applycar')->where($condition)->find();
+	    if($is_have){
+            echo "<script>alert('已存在审核中订单，不可再次申请');location.href='".U('Index/copyPageTwo')."'</script>";
+            exit();
+        }
+	    $data['uid']=$userid;
+	    $data['username']=$userInfo['username'];
+	    $data['phone']=$userInfo['phone'];
+	    $data['account']=$userInfo['account'];
+	    $data['time']=time();
+	    $data['status']=0;
+	    $res = M('applycar')->data($data)->add();
+	    if($res){
+            echo "<script>alert('申请成功');location.href='".U('Index/copyPageTwo')."'</script>";
+            exit();
+        }else{
+            echo "<script>alert('申请失败');location.href='".U('Index/copyPageTwo')."'</script>";
+            exit();
+        }
+    }
 }

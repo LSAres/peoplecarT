@@ -350,4 +350,52 @@ class UserAdministrationController extends CommonController {
 
     }
 
+    public function buyCarApply(){
+        $start_time = strtotime(I('start_time'));
+        $end_time = strtotime(I('end_time'));
+
+        if($start_time && $end_time){
+            $where['time'] = array('between',"$start_time,$end_time");
+        }
+        $tb_user=M('applycar');
+
+        if(I('condition')){
+            $we = I('condition');
+            $value=trim(I('text'));
+            if($we=="username"){
+                $where[$we] =array('like',"%$value%");
+            }else {
+                $where[$we] = $value;
+            }
+        }
+
+        $pagesize =10;
+        $p = getpage($tb_user, $where, $pagesize);
+        $pageshow   = $p->show();
+
+        $userArr=$tb_user->where($where)
+            ->field('id,uid,username,phone,account,time,status')
+            ->order('id desc ')
+            ->select();
+
+        $this->assign(array(
+            'userArr'=>$userArr,
+            'pageshow'=>$pageshow,
+        ));
+        $this->display();
+    }
+
+    public function examine(){
+        $id =I('get.id');
+        $res = M('applycar')->where('id='.$id)->setField('status',1);
+        if($res){
+            echo "<script>alert('审核成功');location.href='".U('UserAdministration/buyCarApply')."'</script>";
+            exit();
+        }else{
+            echo "<script>alert('审核失败');location.href='".U('UserAdministration/buyCarApply')."'</script>";
+            exit();
+        }
+
+    }
+
 }

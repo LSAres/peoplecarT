@@ -26,14 +26,14 @@
 		省级代理申请
 	</span>
 </div>
-<form action="{:U(MODULE_NAME.'/Index/register')}" method="post" id="myform">
+<form action="{:U(MODULE_NAME.'/Servicemanagement/user_provinceapply')}" method="post" id="myform">
 	<!--省市区三级联动列表-->
 	<div  class="citySelect">
 		<div class="citySelectLeftTitle">
 			请选择省:
 		</div>
 		<div data-toggle="distpicker" class="citySelectRightList">
-			<select></select>
+			<select name="province"></select>
 			<!--<select ></select>-->
 			<!--<select></select>-->
 		</div>

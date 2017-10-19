@@ -39,14 +39,22 @@
         <th>申请时间</th>
         <th>申请状态</th>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.account}</td>
+            <td>{$value.phone}</td>
+            <td>{$value.username}</td>
+            <td>{$value.time|date="Y-m-d H:i:s",###}</td>
+            <td>
+                <if condition="$value.status eq 0">
+                        <a href="{:U(MODULE_NAME.'/UserAdministration/examine',array('id'=>$value['id']))}"> 未审核</a>
+                    <else/>
+                        已审核
+                </if>
+            </td>
 
-    </tr>
+        </tr>
+    </foreach>
 </table>
 
 <!--底部页面切换选项卡-->
