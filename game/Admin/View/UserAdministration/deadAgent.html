@@ -33,24 +33,27 @@
 <table>
 
     <tr>
-        <th>代理名称</th>
-        <th>代理区域</th>
-        <th>代理区域内人数</th>
+        <th>小组编号</th>
+        <th>组长账号</th>
+        <th>组长姓名</th>
         <th>最后加入新成员日期</th>
         <th>查看所有成员</th>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-            <a href="index.php?s=/super/UserAdministration/deadAgent_HrefPage.html" >
-                查看
-            </a>
-        </td>
 
-    </tr>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.id}</td>
+            <td>{$value.account}</td>
+            <td>{$value.username}</td>
+            <td>{$value.last_time|date="Y-m-d H:i:s",###}</td>
+            <td>
+                <a href="{:U(MODULE_NAME.'/UserAdministration/agentExamine_userMessage',array('id'=>$value['id']))}" >
+                    查看
+                </a>
+            </td>
+
+        </tr>
+    </foreach>
 </table>
 
 <!--底部页面切换选项卡-->

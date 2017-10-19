@@ -182,9 +182,11 @@ class UserAdministrationController extends CommonController {
             if($group['two_id']==null){
                 M('group')->where('one_id='.$top_id)->setField('two_id',$userid);
                 M('group')->where('one_id='.$top_id)->setField('two_time',time());
+                M('group')->where('one_id='.$top_id)->setField('last_time',time());
             }else{
                 M('group')->where('one_id='.$top_id)->setField('three_id',$userid);
                 M('group')->where('one_id='.$top_id)->setField('three_time',time());
+                M('group')->where('one_id='.$top_id)->setField('last_time',time());
             }
         }else{
             //判断三层4-7号位置哪个为空，查找为空位置，将新成员放置
@@ -192,16 +194,19 @@ class UserAdministrationController extends CommonController {
                 M('user')->where('userid='.$userid)->setField('parent_id',$group['two_id']);
                 M('group')->where('one_id='.$top_id)->setField('four_id',$userid);
                 M('group')->where('one_id='.$top_id)->setField('four_time',time());
+                M('group')->where('one_id='.$top_id)->setField('last_time',time());
             }else{
                 if($group['five_id']==null){
                     M('user')->where('userid='.$userid)->setField('parent_id',$group['two_id']);
                     M('group')->where('one_id='.$top_id)->setField('five_id',$userid);
                     M('group')->where('one_id='.$top_id)->setField('five_time',time());
+                    M('group')->where('one_id='.$top_id)->setField('last_time',time());
                 }else{
                     if ($group['six_id']==null){
                         M('user')->where('userid='.$userid)->setField('parent_id',$group['three_id']);
                         M('group')->where('one_id='.$top_id)->setField('six_id',$userid);
                         M('group')->where('one_id='.$top_id)->setField('six_time',time());
+                        M('group')->where('one_id='.$top_id)->setField('last_time',time());
                     }else{
                         //如果7号位置为空，将原小组打散，顶端出局，其余组员组成两个新小组
                         $data['one_id']=$group['two_id'];
@@ -213,6 +218,7 @@ class UserAdministrationController extends CommonController {
                         M('group')->where('one_id='.$group['two_id'])->setField('three_id',$group['five_id']);
                         M('group')->where('one_id='.$group['two_id'])->setField('three_time',time());
                         M('user')->where('userid='.$group['five_id'])->setField('parent_id',$group['two_id']);
+                        M('group')->where('one_id='.$group['two_id'])->setField('last_time',time());
                         $dbtb['one_id']=$group['three_id'];
                         $dbtb['one_time']=time();
                         M('group')->data($dbtb)->add();
@@ -222,6 +228,7 @@ class UserAdministrationController extends CommonController {
                         M('group')->where('one_id='.$group['three_id'])->setField('three_id',$userid);
                         M('group')->where('one_id='.$group['three_id'])->setField('three_time',time());
                         M('user')->where('userid='.$userid)->setField('parent_id',$group['three_id']);
+                        M('group')->where('one_id='.$group['three_id'])->setField('last_time',time());
                         M('group')->where('one_id='.$top_id)->delete();
                         M('group')->where('userid='.$top_id)->setField('parent_id',null);
 
@@ -239,6 +246,7 @@ class UserAdministrationController extends CommonController {
         if($recommend_id==1){
             $data['one_id']=$top_id;
             $data['one_time']=time();
+            $data['last_time']=time();
             $res = M('group')->data($data)->add();
             if($res){
                 return true;
@@ -279,12 +287,10 @@ class UserAdministrationController extends CommonController {
                 $is_top = $db_group->where('one_id=' . $parent_id)->find();
                 if ($is_top) {
                     $structureInfo = $this->getstructureInfo($is_top);
-                    //dump($structureInfo);die;
                 } else {
                     $parent_id_two = M('user')->where('userid=' . $parent_id)->getField('parent_id');
                     $is_top = $db_group->where('one_id=' . $parent_id_two)->find();
                     $structureInfo = $this->getstructureInfo($is_top);
-                    //dump($structureInfo);die;
                 }
             }
             $this->assign('structureInfo',$structureInfo);
@@ -452,4 +458,42 @@ class UserAdministrationController extends CommonController {
         $this->display();
     }
 
+    public function deadAgent(){
+        $now_time = time();
+        $limit_time = $now_time-86400*60;
+        $start_time = strtotime(I('start_time'));
+        $end_time = strtotime(I('end_time'));
+
+        if($start_time && $end_time){
+            $where['time'] = array('between',"$start_time,$end_time");
+        }
+        $tb_user=M('group');
+        if(I('condition')){
+            $we = I('condition');
+            $value=trim(I('text'));
+            if($we=="username"){
+                $where[$we] =array('like',"%$value%");
+            }else {
+                $where[$we] = $value;
+            }
+        }
+        $where['last_time'] = array('lt',$limit_time);
+        $pagesize =10;
+        $p = getpage($tb_user, $where, $pagesize);
+        $pageshow   = $p->show();
+
+        $userArr=$tb_user->where($where)
+            ->order('last_time desc ')
+            ->select();
+        foreach($userArr as $k=>$v){
+            $userInfo = M('user')->where('userid='.$v['one_id'])->find();
+            $userArr[$k]['account']=$userInfo['account'];
+            $userArr[$k]['username']=$userInfo['username'];
+        }
+        $this->assign(array(
+            'userArr'=>$userArr,
+            'pageshow'=>$pageshow,
+        ));
+        $this->display();
+    }
 }
