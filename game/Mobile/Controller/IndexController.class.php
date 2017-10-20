@@ -47,7 +47,20 @@ class IndexController extends CommonController {
 	//用户提交注册信息完成注册
 	public function register(){
 		$t=I('post.');
-        dump(I('post.'));die;
+		if($t['provinceDataCode']==710000){
+		    $t['city']="无";
+		    $t['cityDataCode']=1;
+		    $t['area']="无";
+		    $t['areaDataCode']=1;
+        }
+        if($t['provinceDataCode']==810000){
+            $t['area']="无";
+            $t['areaDataCode']=1;
+        }
+        if($t['provinceDataCode']==820000){
+            $t['area']="无";
+            $t['areaDataCode']=1;
+        }
 		foreach($t as $v){
 			if($v == ''){
 				echo "<script>alert('请确认输入完成');</script>";
@@ -63,7 +76,35 @@ class IndexController extends CommonController {
 		$passwordT = I('post.passwordT');
 		$paypassword = I('post.paypassword');
 		$paypasswordT = I('post.paypasswordT');
+		$province = I('post.province');
+		$provinceDataCode = I('post.provinceDataCode');
+		$city = I('post.city');
+		$cityDataCode = I('post.cityDataCode');
+		$area = I('post.area');
+		$areaDataCode = I('post.areaDataCode');
 		$parent_id = M('user')->where("account='".$parent_account."'")->getField('userid');
+        if($provinceDataCode==710000){
+            $city=" ";
+            $cityDataCode=1;
+            $area=" ";
+            $areaDataCode=1;
+        }
+        if($provinceDataCode==810000){
+            $area=" ";
+            $areaDataCode=1;
+        }
+        if($provinceDataCode==820000){
+            $area=" ";
+            $areaDataCode=1;
+        }
+		if(!$province||!$city||!$area){
+            echo "<script>alert('请选择省市区');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        if(!$provinceDataCode||!$cityDataCode||!$areaDataCode){
+            echo "<script>alert('系统错误，请重新注册');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
 		if($parent_id==null){
 			echo "<script>alert('推荐人不存在');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;
@@ -113,6 +154,12 @@ class IndexController extends CommonController {
 		$data['lockuser'] = 1;
 		$data['leve'] = 1;
 		$data['time'] = time();
+		$data['province']=$province;
+		$data['province_code']=$provinceDataCode;
+		$data['city']=$city;
+		$data['city_code']=$cityDataCode;
+		$data['area']=$area;
+		$data['area_code']=$areaDataCode;
 		$res = M('user')->data($data)->add();
 
 		$userid = M('user')->where("account='".$account."'")->getField('userid');
