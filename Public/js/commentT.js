@@ -29,7 +29,7 @@ $(function () {
                 'transition': '1s'
             });
             $('.rightPageChange').css({
-                'width': '100%',
+                'width': '99%',
                 'transition': '1s'
             });
         } else {
