@@ -47,6 +47,7 @@ class IndexController extends CommonController {
 	//用户提交注册信息完成注册
 	public function register(){
 		$t=I('post.');
+        dump(I('post.'));die;
 		foreach($t as $v){
 			if($v == ''){
 				echo "<script>alert('请确认输入完成');</script>";
