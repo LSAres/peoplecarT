@@ -76,7 +76,7 @@ input:-moz-placeholder { color:#fff; }
     background-color: #ff3a30;
     border: solid 2px #fff;
     text-align: center;
-    position: absolute; 
+    position: fixed;
     bottom: 0;
     padding: 55px 0;
    background-color: rgba(255,255,255,.3);

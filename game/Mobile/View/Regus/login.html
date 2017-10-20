@@ -87,6 +87,17 @@
 <script>
 	$(function(){
    		$('.outerDiv').css('height',$(window).outerHeight() + "px")
+        /*因为安卓手机输入法会将定位元素顶起 所以Input获得焦点时将底部联系客服DIV隐藏*/
+        var pageInputAll = document.getElementsByTagName("input");
+        for(var i=0; i<pageInputAll.length ;i++){
+            pageInputAll[i].onfocus = function(){
+                document.getElementsByClassName("loginBottomMessage")[0].style.display = "none";
+            }
+            pageInputAll[i].onblur = function(){
+                document.getElementsByClassName("loginBottomMessage")[0].style.display = "block";
+            }
+        }
+
 	})
 </script>
 
