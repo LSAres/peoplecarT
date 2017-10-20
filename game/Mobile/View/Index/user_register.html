@@ -63,6 +63,20 @@
         <input type="text"  placeholder="请输报单中心号"  class="rightMessage" />
 
     </div>-->
+    <!--省市区三级联动列表-->
+    <div class="citySelect">
+        <div class="citySelectLeftTitle">
+            请选择市区:
+        </div>
+        <div data-toggle="distpicker" class="citySelectRightList">
+            <select name="province"></select>
+            <input type="text" style="display:none;" name="provinceDataCode">
+            <select name="city"></select>
+            <input type="text" style="display:none;" name="cityDataCode">
+            <select name="area"></select>
+            <input type="text" style="display:none;" name="areaDataCode">
+        </div>
+    </div>
     <!---->
     <div class="messageDidsplayDiv">
         <div class="leftMessage">登陆密码:</div>
@@ -86,20 +100,7 @@
         <div class="leftMessage">确认安全密码:</div>
         <input type="text" placeholder="请输入安全密码" name="paypasswordT" class="rightMessage"/>
     </div>
-    <!--省市区三级联动列表-->
-    <div class="citySelect">
-        <div class="citySelectLeftTitle">
-            请选择市区:
-        </div>
-        <div data-toggle="distpicker" class="citySelectRightList">
-            <select name="province"></select>
-            <input type="text" style="display:none;" name="provinceDataCode">
-            <select name="city"></select>
-            <input type="text" style="display:none;" name="cityDataCode">
-            <select name="area"></select>
-            <input type="text" style="display:none;" name="areaDataCode">
-        </div>
-    </div>
+
 
 
     <!--
