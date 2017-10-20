@@ -422,7 +422,7 @@ class UserAdministrationController extends CommonController {
                 $where[$we] = $value;
             }
         }
-
+        $where['status']=0;
         $pagesize =10;
         $p = getpage($tb_user, $where, $pagesize);
         $pageshow   = $p->show();
@@ -495,5 +495,86 @@ class UserAdministrationController extends CommonController {
             'pageshow'=>$pageshow,
         ));
         $this->display();
+    }
+
+    public function deadAgent_HrefPage(){
+        $id = I('get.id');
+        $groupInfo = M('group')->where('id='.$id)->find();
+        $one_userInfo = M('user')->where('userid='.$groupInfo['one_id'])->find();
+        $groupInfo['one_account']=$one_userInfo['account'];
+        $groupInfo['one_username']=$one_userInfo['username'];
+        if($groupInfo['two_id']){
+            $two_userInfo = M('user')->where('userid='.$groupInfo['two_id'])->find();
+            $groupInfo['two_account'] = $two_userInfo['account'];
+            $groupInfo['two_username'] = $two_userInfo['username'];
+        }
+        if($groupInfo['three_id']){
+            $three_userInfo = M('user')->where('userid='.$groupInfo['three_id'])->find();
+            $groupInfo['three_account'] = $three_userInfo['account'];
+            $groupInfo['three_username'] = $three_userInfo['username'];
+        }
+        if($groupInfo['four_id']){
+            $four_userInfo = M('user')->where('userid='.$groupInfo['four_id'])->find();
+            $groupInfo['four_account'] = $four_userInfo['account'];
+            $groupInfo['four_username'] = $four_userInfo['username'];
+        }
+        if($groupInfo['five_id']){
+            $five_userInfo = M('user')->where('userid='.$groupInfo['five_id'])->find();
+            $groupInfo['five_account'] = $five_userInfo['account'];
+            $groupInfo['five_username'] = $five_userInfo['username'];
+        }
+        if($groupInfo['six_id']){
+            $six_userInfo = M('user')->where('userid='.$groupInfo['six_id'])->find();
+            $groupInfo['six_account'] = $six_userInfo['account'];
+            $groupInfo['six_username'] = $six_userInfo['username'];
+        }
+
+        $this->assign('groupInfo',$groupInfo);
+        $this->display();
+    }
+
+    public function develop_agent(){
+        $id = I('get.id');
+        $agentInfo = M('apply_agent')->where('id='.$id)->find();
+        if($agentInfo['type']==1){
+            $data['uid']=$agentInfo['uid'];
+            $data['province']=$agentInfo['province'];
+            $data['province_code']=$agentInfo['province_code'];
+            $data['time']=time();
+            $res = M('agent_province')->data($data)->add();
+            $rem = M('user')->where('userid='.$agentInfo['uid'])->setField('agent_leve',1);
+            $rec = M('apply_agent')->where('id='.$id)->setField('status',1);
+        }
+        if($agentInfo['type']==2){
+            $data['uid']=$agentInfo['uid'];
+            $data['province']=$agentInfo['province'];
+            $data['province_code']=$agentInfo['province_code'];
+            $data['city']=$agentInfo['city'];
+            $data['city_code']=$agentInfo['city_code'];
+            $data['time']=time();
+            $res = M('agent_city')->data($data)->add();
+            $rem = M('user')->where('userid='.$agentInfo['uid'])->setField('agent_leve',2);
+            $rec = M('apply_agent')->where('id='.$id)->setField('status',1);
+        }
+        if($agentInfo['type']==3){
+            $data['uid']=$agentInfo['uid'];
+            $data['province']=$agentInfo['province'];
+            $data['province_code']=$agentInfo['province_code'];
+            $data['city']=$agentInfo['city'];
+            $data['city_code']=$agentInfo['city_code'];
+            $data['area']=$agentInfo['area'];
+            $data['area_code']=$agentInfo['area_code'];
+            $data['time']=time();
+            $res = M('agent_area')->data($data)->add();
+            $rem = M('user')->where('userid='.$agentInfo['uid'])->setField('agent_leve',3);
+            $rec = M('apply_agent')->where('id='.$id)->setField('status',1);
+        }
+        if($res&&$rem&&$rec){
+            echo "<script>alert('提升代理成功');location.href='".U('UserAdministration/agentExamine')."'</script>";
+            exit();
+        }else{
+            echo "<script>alert('提升代理失败');location.href='".U('UserAdministration/agentExamine')."'</script>";
+            exit();
+        }
     }
 }

@@ -37,12 +37,48 @@
         <th>成员账号</th>
         <th>加入日期</th>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-
-    </tr>
+    <if condition="$groupInfo.one_id gt 0">
+        <tr>
+            <td>{$groupInfo.one_username}</td>
+            <td>{$groupInfo.one_account}</td>
+            <td>{$groupInfo.one_time|date="Y-m-d H:i:s",###}</td>
+        </tr>
+    </if>
+    <if condition="$groupInfo.two_id gt 0">
+        <tr>
+            <td>{$groupInfo.two_username}</td>
+            <td>{$groupInfo.two_account}</td>
+            <td>{$groupInfo.two_time|date="Y-m-d H:i:s",###}</td>
+        </tr>
+    </if>
+    <if condition="$groupInfo.three_id gt 0">
+        <tr>
+            <td>{$groupInfo.three_username}</td>
+            <td>{$groupInfo.three_account}</td>
+            <td>{$groupInfo.three_time|date="Y-m-d H:i:s",###}</td>
+        </tr>
+    </if>
+    <if condition="$groupInfo.four_id gt 0">
+        <tr>
+            <td>{$groupInfo.four_username}</td>
+            <td>{$groupInfo.four_account}</td>
+            <td>{$groupInfo.four_time|date="Y-m-d H:i:s",###}</td>
+        </tr>
+    </if>
+    <if condition="$groupInfo.five_id gt 0">
+        <tr>
+            <td>{$groupInfo.five_username}</td>
+            <td>{$groupInfo.five_account}</td>
+            <td>{$groupInfo.five_time|date="Y-m-d H:i:s",###}</td>
+        </tr>
+    </if>
+    <if condition="$groupInfo.six_id gt 0">
+        <tr>
+            <td>{$groupInfo.six_username}</td>
+            <td>{$groupInfo.six_account}</td>
+            <td>{$groupInfo.six_time|date="Y-m-d H:i:s",###}</td>
+        </tr>
+    </if>
 </table>
 
 <!--底部页面切换选项卡-->
