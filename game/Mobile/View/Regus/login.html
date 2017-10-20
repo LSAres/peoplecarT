@@ -6,17 +6,13 @@
     <link rel="stylesheet" href="__PUBLIC__/css/copypagestyle.css">
 	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
     <style>
-
-        @media only screen and (min-width : 1000px) {
-            iframe{
-                width: 500px;
-                height: 100%;
-                border: solid 1px red;
-                position: absolute;
-                top:0;
-                left: 35%;
-            }
-        }
+		.outerDiv{
+			background-color:rgba(0,0,0,.8);
+			background-image:url('__PUBLIC__/img/111.png');
+			background-size:100% 100%;
+			background-position:center;
+			background-repeat:no-repeat;
+		}
 	</style>
 </head>
 <body>
@@ -90,7 +86,7 @@
 </script>
 <script>
 	$(function(){
-   		$('.outerDiv').css('height',$(window).outerHeight() + "px")
+   		$('.outerDiv').css('height',$(window).outerHeight() + "px");
         /*因为安卓手机输入法会将定位元素顶起 所以Input获得焦点时将底部联系客服DIV隐藏*/
         var pageInputAll = document.getElementsByTagName("input");
         for(var i=0; i<pageInputAll.length ;i++){
@@ -101,7 +97,6 @@
                 document.getElementsByClassName("loginBottomMessage")[0].style.display = "block";
             }
         }
-
 	})
 </script>
 
