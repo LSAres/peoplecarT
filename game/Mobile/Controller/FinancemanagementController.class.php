@@ -22,25 +22,62 @@ class FinancemanagementController extends CommonController {
     }
 
     public function addcharge(){
-        $t=I('post.');
-        foreach($t as $v){
-            if($v == ''){
-                echo "<script>alert('请确认输入完成');</script>";
-                echo "<script>javascript:history.back(-1);</script>";die;
-            }
-        }
         $userid = session('userid');
         $money = I('post.money');
         $phone = I('post.phone');
+        $order_no = I('post.order_no');
         $wx_no = I('post.wx_no');
         $alipay_no = I('post.alipay_no');
         $bank_name = I('post.bank_name');
         $bank_no = I('post.bank_no');
         $card_name = I('post.card_name');
-        if(!$wx_no&&!$alipay_no&&!$bank_no&&!$bank_name&&!$bank_no&&!$card_name){
+        if(!$phone){
+            echo "<script>alert('手机号不可为空');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        if(!$order_no){
+            echo "<script>alert('订单号不可为空');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        if(!$phone){
+            echo "<script>alert('手机号不可为空');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        if(!$wx_no&&!$alipay_no&&!$bank_no&&!$bank_name&&!$card_name){
             echo "<script>alert('请填写充值方式');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;
         }
+        if($bank_no){
+            if(!$bank_name){
+                echo "<script>alert('请填写银行名称');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if(!$card_name){
+                echo "<script>alert('请填写持卡人姓名');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
+        if($bank_name){
+            if(!$bank_no){
+                echo "<script>alert('请填写银行卡号');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if(!$card_name){
+                echo "<script>alert('请填写持卡人姓名');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
+        if($card_name){
+            if(!$bank_no){
+                echo "<script>alert('请填写银行卡号');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if(!$bank_name){
+                echo "<script>alert('请填写银行名称');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
+
         if($money<=0){
             echo "<script>alert('金额数值错误');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;
@@ -48,7 +85,12 @@ class FinancemanagementController extends CommonController {
         $data['uid']=$userid;
         $data['money'] = $money;
         $data['phone'] = $phone;
+        $data['order_no'] = $order_no;
         $data['wx_no'] = $wx_no;
+        $data['alipay_no'] = $alipay_no;
+        $data['bank_name'] = $bank_name;
+        $data['bank_no'] = $bank_no;
+        $data['card_name'] = $card_name;
         $data['time'] = time();
         $data['status'] = 0;
         $res = M('charge')->data($data)->add();

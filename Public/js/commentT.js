@@ -98,6 +98,10 @@ $(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/bonusDetails.html');
 
     });
+    $('.userTransactionHistory').click(function () {
+        $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/userTransactionHistory.html');
+
+    });
 
     //公告选项
     $(".addNoticePage").click(function () {

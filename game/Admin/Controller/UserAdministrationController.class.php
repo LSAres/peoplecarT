@@ -50,12 +50,28 @@ class UserAdministrationController extends CommonController {
        }else{
            //新用户后台激活，进行分组
            if($lockuser==1){
+               $userInfo = M('user')->where('userid='.$userid)->find();
+               $data['uid']=$userid;
+               $data['account']=$userInfo['account'];
+               $data['username']=$userInfo['username'];
+               $data['time']=time();
+               $cc = M('activation_record')->data($data)->add();
+               if(!$cc){
+                   echo "<script>alert('操作失败，请重新激活');</script>";
+                   echo "<script>javascript:history.back(-1);</script>";die;
+               }
                //查询上级，将购车基金返给上级，并将金额计算到总金额中
                $recommend_id = M('user')->where('userid='.$userid)->getField('recommend_id');
-               $rs=M('store')->where('uid='.$recommend_id)->setInc('buycar_money',6000);
-               $re=M('store')->where('uid='.$recommend_id)->setInc('money',6000);
+               $rs=M('store')->where('uid='.$recommend_id)->setInc('frozen_money',7000);
+               if($rs){
+                   $information['uid']=$userid;
+                   $information['money']=6000;
+                   $information['reason']="直推奖励购车基金";
+                   $information['time']=time();
+                   $rc = M('bonus_record')->data($data)->add();
+               }
                //判断奖励是否发放成功
-               if(!$re||!$rs){
+               if(!$rs||!$rc){
                    echo "<script>alert('奖励发放失败，请重新操作');</script>";
                    echo "<script>javascript:history.back(-1);</script>";die;
                }
@@ -242,7 +258,14 @@ class UserAdministrationController extends CommonController {
     //顶端出局重组
     public function recombination($top_id=null){
         $recommend_id = M('user')->where('userid='.$top_id)->getField('recommend_id');
-        M('store')->where('uid='.$top_id)->setInc('bonus',2000);
+        $ree=M('store')->where('uid='.$top_id)->setInc('bonus',2000);
+        if($ree){
+            $information['uid']=$top_id;
+            $information['money']=2000;
+            $information['reason']="出局奖励";
+            $information['time']=time();
+            $rcm = M('bonus_record')->data($information)->add();
+        }
         if($recommend_id==1){
             $data['one_id']=$top_id;
             $data['one_time']=time();

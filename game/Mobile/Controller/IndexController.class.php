@@ -172,6 +172,16 @@ class IndexController extends CommonController {
 		$information['account']=$account;
 		$information['time']=time();
 		$rec = M('registration_record')->data($information)->add();
+		if($res&&$rec&&$rem){
+		    $rom = M('store')->where('uid='.$parent_id)->setInc('gold',1000);
+		    if($rom){
+		        $nn['uid']=$parent_id;
+		        $nn['money']=1000;
+		        $nn['reason']="注册奖励";
+		        $nn['time']=time();
+		        M('bonus_record')->data($nn)->add();
+            }
+        }
 		if($res&&$rem&&$rec){
 			echo "<script>alert('注册成功');location.href='".U('Index/copyPageTwo')."'</script>";
 			exit();
