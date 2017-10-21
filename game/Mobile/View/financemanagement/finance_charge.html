@@ -3,54 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-	<link rel="stylesheet" href="__PUBLIC__/css/stylesheet.css">
-	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
-	<script src="__PUBLIC__/js/comment.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/stylesheet.css">
+    <script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+    <script src="__PUBLIC__/js/comment.js"></script>
     <style></style>
 </head>
-<body  class="bodyHeight">
+<body class="bodyHeight">
 <!--topTitle -->
 <div class="pageTitleDiv">
-	<div class="backButton">
-		返回
-	</div>
-	<span class="pageTitleText">
+    <div class="backButton">
+        返回
+    </div>
+    <span class="pageTitleText">
 		账户充值
 	</span>
 </div>
 
 <form action="{:U(MODULE_NAME.'/Financemanagement/addcharge')}" method="post" id="myform">
-	<!---->
-	<div class="messageDidsplayDiv">
-		<div class="leftMessage">充值金额:</div>
-		<input type="number" placeholder="请输入充值金额" name="money"  class="rightMessage" />
+    <!---->
+    <div class="messageDidsplayDiv">
+        <div class="leftMessage">充值金额:</div>
+        <input type="number" placeholder="请输入充值金额" name="money" class="rightMessage"/>
 
-	</div>
-	<!---->
-	<div class="messageDidsplayDiv">
-		<div class="leftMessage">手机号码:</div>
-		<input type="number"  placeholder="请输入手机号" name="phone"    class="rightMessage" />
+    </div>
+    <!---->
+    <div class="messageDidsplayDiv">
+        <div class="leftMessage">手机号码:</div>
+        <input type="number" placeholder="请输入手机号" name="phone" class="rightMessage"/>
 
-	</div>
-	<!---->
-	<div class="messageDidsplayDiv">
-		<div class="leftMessage">微信号码:</div>
-		<input type="text"  placeholder="请输入微信号" name="wx_no"    class="rightMessage" />
+    </div>
+    <!---->
+    <div class="messageDidsplayDiv">
+        <div class="leftMessage">转换类型:</div>
+        <input type="text" value="-----请选择-----" readonly="readonly" class="rightMessage forInputSelect"/>
 
-	</div>
+    </div>
+    <!--input选择列表-->
+    <div class="inputSelectOuterDiv" style="display:none;">
+        <div class="inputSelectDiv">
+            <div class="inputSelecList">
+                <span class="inputSelectValue">微信充值</span>
+                <div style="border-left: solid 50px #fff; border-bottom: solid 23px transparent; border-top: solid 23px transparent;display: inline-block; float: right;"></div>
+            </div>
+            <div class="inputSelecList">
+                <span class="inputSelectValue">支付宝充值</span>
+                <div style="border-left: solid 50px #fff; border-bottom: solid 23px transparent; border-top: solid 23px transparent;display: inline-block; float: right;"></div>
+            </div>
+            <div class="inputSelecList">
+                <span class="inputSelectValue">银行卡充值</span>
+                <div style="border-left: solid 50px #fff; border-bottom: solid 23px transparent; border-top: solid 23px transparent;display: inline-block; float: right;"></div>
+            </div>
+        </div>
+    </div>
+    <!--根据支付方式选择 显示对应输入框DIV -->
+    <!--微信输入框 begin-->
+    <div class="forInputSelect_InputDiv wechatInputDiv" style="display:none;">
+        <!---->
+        <div class="messageDidsplayDiv">
+            <div class="leftMessage">微信号:</div>
+            <input type="number" placeholder="请输入微信号" name="phone" class="rightMessage"/>
 
-	<!--确认按钮-->
-	<div class="etermineButton"  onClick="test()">
-		确认
-	</div>
+        </div>
+    </div>
+    <!--微信输入框 END-->
+    <!--支付宝输入框 begin-->
+    <div class="forInputSelect_InputDiv wechatInputDiv" style="display:none;">
+        <!---->
+        <div class="messageDidsplayDiv">
+            <div class="leftMessage">支付宝号:</div>
+            <input type="number" placeholder="请输入支付宝号" name="phone" class="rightMessage"/>
+        </div>
+    </div>
+    <!--支付宝输入框 END-->
+    <!--银行卡输入框 begin-->
+    <div class="forInputSelect_InputDiv wechatInputDiv" style="display:none;">
+        <!---->
+        <div class="messageDidsplayDiv">
+            <div class="leftMessage">银行名称:</div>
+            <input type="number" placeholder="请输入支付宝号" name="phone" class="rightMessage"/>
+        </div>
+        <!---->
+        <div class="messageDidsplayDiv">
+            <div class="leftMessage">卡号:</div>
+            <input type="number" placeholder="请输入支付宝号" name="phone" class="rightMessage"/>
+        </div>
+        <!---->
+        <div class="messageDidsplayDiv">
+            <div class="leftMessage">持卡人姓名:</div>
+            <input type="number" placeholder="请输入支付宝号" name="phone" class="rightMessage"/>
+        </div>
+    </div>
+    <!--银行卡输入框 END-->
+
+    <!--确认按钮-->
+    <div class="etermineButton" onClick="test()">
+        确认
+    </div>
 </form>
 </body>
 
 <script>
-    function test()
-    {
+    function test() {
         document.getElementById("myform").submit();
     }
+    //根据选择的值 显示后续对应的输入框
+    $(".inputSelecList").click(function(){
+        //获取所有支付方式的对应输入框
+        var chargrType = $(".forInputSelect_InputDiv");
+        $(".forInputSelect_InputDiv").slideUp();
+        $(chargrType[$(this).index()]).slideDown();
+    });
 
 </script>
 </html>

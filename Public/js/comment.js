@@ -45,16 +45,17 @@ $(function(){
 	$('.details_Data').click(function(){
 		$(this).parent().find('.details_MessageRow').slideToggle();
 	})
-
+	//替换SELECT选择列表
 	$('.forInputSelect').click(function(){
+		//input选择列表显示
 		$('.inputSelectOuterDiv').css({'display':'block'});
 		setTimeout(function(){
 			$('.inputSelectOuterDiv').css({'width':'100%'});
 		},500);
 		
 	});
+	//input选择列表 点选后将选择值赋值给input 输入框
 	$('.inputSelecList').click(function(){
-		
 		$('.forInputSelect').val($(this).find('.inputSelectValue').text());	
 		$('.inputSelectOuterDiv').css({'width':'0%'});
 		setTimeout(function(){
@@ -63,6 +64,7 @@ $(function(){
 			}
 		},2500);
 	})
+
 	
 
 });

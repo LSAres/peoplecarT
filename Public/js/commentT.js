@@ -77,6 +77,10 @@ $(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/userDetails.html');
 
     });
+    $('.userActivationDetails').click(function () {
+        $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/userActivationDetails.html');
+
+    });
     $('.userChargeHistory').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/userChargeHistory.html');
     });
@@ -94,9 +98,7 @@ $(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/bonusDetails.html');
 
     });
-    $('.refundAplyHistory').click(function () {
-        $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/refundAplyHistory.html');
-    });
+
     //公告选项
     $(".addNoticePage").click(function () {
         $('iframe').attr('src', 'index.php?s=/super/NoticControl/addNoticePage.html');
