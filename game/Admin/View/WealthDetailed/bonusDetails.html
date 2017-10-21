@@ -35,20 +35,19 @@
     <tr>
         <th>会员账号</th>
         <th>会员姓名</th>
-        <th>奖励时间</th>
+        <th>奖励金额</th>
         <th>奖励原因</th>
+        <th>奖励时间</th>
     </tr>
-    <tr>
-        <td>老人与海鲜</td>
-        <td>2015-01-28</td>
-        <td>
-			哈利波特大
-		</td>
-        <td>
-			死神不来了
-		</td>
-
-    </tr>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.account}</td>
+            <td>{$value.username}</td>
+            <td>{$value.money}</td>
+            <td>{$value.reason}</td>
+            <td>{$value.time|date="Y-m-d H:i:s",###}</td>
+        </tr>
+    </foreach>
 	
 
 </table>

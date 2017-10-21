@@ -3,6 +3,9 @@ namespace Mobile\Controller;
 use Think\Controller;
 class FinancemanagementController extends CommonController {
     public function finance_bonusdetailed(){
+        $userid = session('userid');
+        $bonusArr = M('bonus_record')->where('uid='.$userid)->order('id desc')->select();
+        $this->assign('bonusArr',$bonusArr);
         $this->display();
     }
     public function finance_charge(){
