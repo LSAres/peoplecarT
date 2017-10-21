@@ -33,36 +33,26 @@
 
 <table>
     <tr>
-        <th>激活账号</th>
-        <th>激活时间</th>
+        <th>会员编号</th>
+        <th>会员账号</th>
         <th>会员姓名</th>
-        <th>操作</th>
-        <th>操作</th>
+        <th>激活时间</th>
     </tr>
-    <tr>
-        <td>13111111111</td>
-        <td>2015-01-28</td>
-        <td>
-			哈利波特大
-		</td>
-        <td>
-			死神不来了
-		</td>
-        <td>0000000</td>
-
-    </tr>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.uid}</td>
+            <td>{$value.account}</td>
+            <td>{$value.username}</td>
+            <td>{$value.time|date="Y-m-d H:i:s",###}</td>
+        </tr>
+    </foreach>
 	
 
 </table>
 
 <!--底部页面切换选项卡-->
 <div class="bottomPageSelect">
-    <span class="userMessageUp">|<</span>
-    <!--<span class="bottomPageSelectActive">1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>-->
-    <span class="userMessageDown">>|</span>
+    {$pageshow}
 </div>
 </body>
 <script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>

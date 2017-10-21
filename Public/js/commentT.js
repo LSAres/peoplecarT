@@ -160,8 +160,8 @@ $(function () {
 
     //显示列表选择按钮 class:tableSelectButton
     $(".tableSelectButton").click(function(){
-        var tableList = $("table");
-        $("table").hide();
+        var tableList = $(".tableListDiv");
+        $(".tableListDiv").hide();
         if($(this).index() == 0){
             $(tableList[$(this).index()]).fadeIn();
         }

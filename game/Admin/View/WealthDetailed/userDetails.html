@@ -33,36 +33,28 @@
 
 <table>
     <tr>
-        <th>文档标题</th>
-        <th>添加时间</th>
-        <th>操作</th>
-        <th>操作</th>
-        <th>操作</th>
+        <th>编号</th>
+        <th>用户编号</th>
+        <th>用户姓名</th>
+        <th>用户账号</th>
+        <th>注册时间</th>
     </tr>
-    <tr>
-        <td>老人与海鲜</td>
-        <td>2015-01-28</td>
-        <td>
-			哈利波特大
-		</td>
-        <td>
-			死神不来了
-		</td>
-        <td>删除公告</td>
-
-    </tr>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.id}</td>
+            <td>{$value.uid}</td>
+            <td>{$value.username}</td>
+            <td>{$value.account}</td>
+            <td>{$value.time|date="Y-m-d H:i:s",###}</td>
+        </tr>
+    </foreach>
 	
 
 </table>
 
 <!--底部页面切换选项卡-->
 <div class="bottomPageSelect">
-    <span class="userMessageUp">|<</span>
-    <!--<span class="bottomPageSelectActive">1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>-->
-    <span class="userMessageDown">>|</span>
+    {$pageshow}
 </div>
 </body>
 <script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>

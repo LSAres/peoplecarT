@@ -166,7 +166,13 @@ class IndexController extends CommonController {
 
 		$record['uid'] = $userid;
 		$rem = M('store')->data($record)->add();
-		if($res&&$rem){
+
+		$information['uid']=$userid;
+		$information['username']=$username;
+		$information['account']=$account;
+		$information['time']=time();
+		$rec = M('registration_record')->data($information)->add();
+		if($res&&$rem&&$rec){
 			echo "<script>alert('注册成功');location.href='".U('Index/copyPageTwo')."'</script>";
 			exit();
 		}else{

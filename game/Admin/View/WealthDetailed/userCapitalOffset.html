@@ -33,40 +33,33 @@
 
 <table>
     <tr>
-        <th>冲减题头</th>
-        <th>冲减题头</th>
-        <th>冲减题头</th>
-        <th>冲减题头</th>
-        <th>冲减题头</th>
+        <th>会员账号</th>
+        <th>会员姓名</th>
+        <th>报单币</th>
+        <th>购车基金</th>
+        <th>操作</th>
     </tr>
-    <tr>
-        <td>老人与海鲜</td>
-        <td>2015-01-28</td>
-        <td>
-			哈利波特大
-		</td>
-        <td>
-			死神不来了
-		</td>
-        <td>
-            <a href="{:U(MODULE_NAME.'/WealthDetailed/userCapitalOffset_Rechange')}">
-                修改用户财富
-            </a>
-        </td>
-
-    </tr>
+    <foreach name="userArr" item="value" key="key">
+        <tr>
+            <td>{$value.account}</td>
+            <td>{$value.username}</td>
+            <td>{$value.report_money}</td>
+            <td>{$value.buycar_money}</td>
+            <td>
+                <a href="{:U(MODULE_NAME.'/WealthDetailed/userCapitalOffset_Rechange',array('id'=>$value['id']))}">
+                    修改用户财富
+                </a>
+            </td>
+        </tr>
+    </foreach>
 	
 
 </table>
 
 <!--底部页面切换选项卡-->
+<!--底部页面切换选项卡-->
 <div class="bottomPageSelect">
-    <span class="userMessageUp">|<</span>
-    <!--<span class="bottomPageSelectActive">1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>-->
-    <span class="userMessageDown">>|</span>
+    {$pageshow}
 </div>
 </body>
 <script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>

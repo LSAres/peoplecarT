@@ -33,6 +33,14 @@ class FinancemanagementController extends CommonController {
         $money = I('post.money');
         $phone = I('post.phone');
         $wx_no = I('post.wx_no');
+        $alipay_no = I('post.alipay_no');
+        $bank_name = I('post.bank_name');
+        $bank_no = I('post.bank_no');
+        $card_name = I('post.card_name');
+        if(!$wx_no&&!$alipay_no&&!$bank_no&&!$bank_name&&!$bank_no&&!$card_name){
+            echo "<script>alert('请填写充值方式');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
         if($money<=0){
             echo "<script>alert('金额数值错误');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;

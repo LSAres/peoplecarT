@@ -577,4 +577,94 @@ class UserAdministrationController extends CommonController {
             exit();
         }
     }
+
+    public function regionAgent(){
+        $tb_agent_province = M('agent_province');
+        $province_where=array();
+        $province_pagesize =10000;
+        $p = getpage($tb_agent_province, $province_where, $province_pagesize);
+        $province_pageshow   = $p->show();
+
+        $provinceArr=$tb_agent_province->where($province_where)
+            ->order('id desc ')
+            ->select();
+        foreach ($provinceArr as $k=>$v){
+            $userInfo = M('user')->where('userid='.$v['uid'])->find();
+            $userSum = M('user')->where('province_code='.$v['province_code'])->count();
+            $userid_array = M('user')->where('province_code='.$v['province_code'])->getField('userid',true);
+            $buycar_money_sum=0;
+            if($userid_array) {
+                $condition['uid'] = array('in', $userid_array);
+                $buycar_money_array = M('store')->where($condition)->getField('buycar_money', true);
+                $buycar_money_sum = array_sum($buycar_money_array);
+            }
+            $provinceArr[$k]['userSum']=$userSum;
+            $provinceArr[$k]['buycar_money_sum']=$buycar_money_sum;
+            $provinceArr[$k]['account']=$userInfo['account'];
+            $provinceArr[$k]['username']=$userInfo['username'];
+        }
+        $this->assign(array(
+            'provinceArr'=>$provinceArr,
+            'province_pageshow'=>$province_pageshow,
+        ));
+
+        $tb_agent_city = M('agent_city');
+        $city_where=array();
+        $city_pagesize =10000;
+        $p = getpage($tb_agent_city, $city_where, $city_pagesize);
+        $city_pageshow   = $p->show();
+
+        $cityArr=$tb_agent_city->where($city_where)
+            ->order('id desc ')
+            ->select();
+        foreach ($cityArr as $k=>$v){
+            $userInfo = M('user')->where('userid='.$v['uid'])->find();
+            $userSum = M('user')->where('city_code='.$v['city_code'])->count();
+            $userid_array = M('user')->where('city_code='.$v['city_code'])->getField('userid',true);
+            $buycar_money_sum=0;
+            if($userid_array) {
+                $condition['uid'] = array('in', $userid_array);
+                $buycar_money_array = M('store')->where($condition)->getField('buycar_money', true);
+                $buycar_money_sum = array_sum($buycar_money_array);
+            }
+            $cityArr[$k]['userSum']=$userSum;
+            $cityArr[$k]['buycar_money_sum']=$buycar_money_sum;
+            $cityArr[$k]['account']=$userInfo['account'];
+            $cityArr[$k]['username']=$userInfo['username'];
+        }
+        $this->assign(array(
+            'cityArr'=>$cityArr,
+            'city_pageshow'=>$city_pageshow,
+        ));
+
+        $tb_agent_area = M('agent_area');
+        $area_where=array();
+        $area_pagesize =10000;
+        $p = getpage($tb_agent_area, $area_where, $area_pagesize);
+        $area_pageshow   = $p->show();
+
+        $areaArr=$tb_agent_area->where($area_where)
+            ->order('id desc ')
+            ->select();
+        foreach ($areaArr as $k=>$v){
+            $userInfo = M('user')->where('userid='.$v['uid'])->find();
+            $userSum = M('user')->where('area_code='.$v['area_code'])->count();
+            $userid_array = M('user')->where('area_code='.$v['area_code'])->getField('userid',true);
+            $buycar_money_sum=0;
+            if($userid_array) {
+                $condition['uid'] = array('in', $userid_array);
+                $buycar_money_array = M('store')->where($condition)->getField('buycar_money', true);
+                $buycar_money_sum = array_sum($buycar_money_array);
+            }
+            $areaArr[$k]['userSum']=$userSum;
+            $areaArr[$k]['buycar_money_sum']=$buycar_money_sum;
+            $areaArr[$k]['account']=$userInfo['account'];
+            $areaArr[$k]['username']=$userInfo['username'];
+        }
+        $this->assign(array(
+            'areaArr'=>$areaArr,
+            'area_pageshow'=>$area_pageshow,
+        ));
+        $this->display();
+    }
 }

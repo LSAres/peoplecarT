@@ -13,27 +13,36 @@
         <!--修改功能参数请慎重修改！！！-->
     <!--</div>-->
 <!--</div>-->
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        参数名称
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入数值">
-</div>
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        参数名称2
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入数值">
-</div>
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        参数名称4
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入数值">
-</div>
+<form action="{:U(MODULE_NAME.'/WealthDetailed/userCapitalOffset_Rechange')}" method="post" id="myform">
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            会员账号
+        </span>
+        <input type="text" class="updateMessageInput" value="{$userInfo.account}" readonly="readonly">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            会员姓名
+        </span>
+        <input type="text" class="updateMessageInput" value="{$userInfo.username}" readonly="readonly">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            报单币
+        </span>
+        <input type="text" class="updateMessageInput" name="report_money" value="{$storeInfo.report_money}">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            购车基金
+        </span>
+        <input type="text" class="updateMessageInput" name="buycar_money" value="{$storeInfo.buycar_money}">
+    </div>
+    <input type="text" class="updateMessageInput" name="id" value="{$storeInfo.id}" style="display: none">
+</form>
 
 
-<div class="updateTrue">
+<div class="updateTrue" onclick="test()">
     修改
 </div>
 
@@ -41,6 +50,9 @@
 </body>
 <script type="text/javascript" src="__PUBLIC__/js/commentT.js"></script>
 <script>
+    function test() {
+        document.getElementById("myform").submit();
+    }
     $(function(){
         var testListData =$('#testList option');
         function textFor() {

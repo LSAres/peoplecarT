@@ -51,9 +51,7 @@ class WealthDetailedController extends CommonController{
         ));
         $this->display();
     }
-    public function userCapitalOffset(){
-        $this->display();
-    }
+
     public function userChargeHistory(){
         $where = null;
         $tb_new = M('charge');
@@ -78,7 +76,23 @@ class WealthDetailedController extends CommonController{
         ));
         $this->display();
     }
+
     public function userDetails(){
+        $where = null;
+        $tb_new = M('registration_record');
+        $pagesize =10;
+        $p = getpage($tb_new, $where, $pagesize);
+        $pageshow   = $p->show();
+
+        $userArr=$tb_new->where($where)
+            ->field('id,uid,account,username,time')
+            ->order('id desc ')
+            ->select();
+
+        $this->assign(array(
+            'userArr'=>$userArr,
+            'pageshow'=>$pageshow,
+        ));
         $this->display();
     }
 
@@ -110,6 +124,83 @@ class WealthDetailedController extends CommonController{
                 exit();
             }else{
                 echo "<script>alert('添加失败');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
+    }
+
+    public function userActivationDetails(){
+        $where = null;
+        $tb_new = M('activation_record');
+        $pagesize =10;
+        $p = getpage($tb_new, $where, $pagesize);
+        $pageshow   = $p->show();
+
+        $userArr=$tb_new->where($where)
+            ->field('id,uid,account,username,time')
+            ->order('id desc ')
+            ->select();
+
+        $this->assign(array(
+            'userArr'=>$userArr,
+            'pageshow'=>$pageshow,
+        ));
+        $this->display();
+    }
+
+    public function userCapitalOffset(){
+        $where = null;
+        $tb_new = M('store');
+        $pagesize =10;
+        $p = getpage($tb_new, $where, $pagesize);
+        $pageshow   = $p->show();
+
+        $userArr=$tb_new->where($where)
+            ->order('id desc ')
+            ->select();
+        foreach ($userArr as $k=>$v){
+            $userInfo = M('user')->where('userid='.$v['uid'])->find();
+            $userArr[$k]['username']=$userInfo['account'];
+            $userArr[$k]['account']=$userInfo['username'];
+        }
+        $this->assign(array(
+            'userArr'=>$userArr,
+            'pageshow'=>$pageshow,
+        ));
+        $this->display();
+    }
+
+    public function userCapitalOffset_Rechange(){
+        if(!I('post.')){
+            $id = I('get.id');
+            $storeInfo = M('store')->where('id='.$id)->find();
+            $userInfo = M('user')->where('userid='.$storeInfo['uid'])->find();
+            $this->assign('userInfo',$userInfo);
+            $this->assign('storeInfo',$storeInfo);
+            $this->display();
+        }else{
+            $id = I('post.id');
+            $report_money = I('post.report_money');
+            $buycar_money = I('post.buycar_money');
+            if(!$id){
+                echo "<script>alert('系统错误');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if($report_money<0){
+                echo "<script>alert('报单币数量不可为负');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if($buycar_money<0){
+                echo "<script>alert('购车基金数量不可为负');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            $res = M('store')->where('id='.$id)->setField('report_money',$report_money);
+            $rec = M('store')->where('id='.$id)->setField('buycar_money',$buycar_money);
+            if($res&&$rec){
+                echo "<script>alert('修改成功');location.href='".U('WealthDetailed/userCapitalOffset')."'</script>";
+                exit();
+            }else{
+                echo "<script>alert('修改失败');</script>";
                 echo "<script>javascript:history.back(-1);</script>";die;
             }
         }

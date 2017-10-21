@@ -5,6 +5,12 @@
     <title>区域代理</title>
     <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="__PUBLIC__/css/styleSheetT.css">
+    <style>
+        .tableListDiv{
+            height: 83%;
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
 <!--顶部搜索DIV-->
@@ -41,62 +47,92 @@
         区级代理
     </div>
 </div>
-<table >
 
-    <tr>
-        <th>代理名称</th>
-        <th>代理区域</th>
-        <th>代理区域内人数</th>
-        <th>代理区域内总资金</th>
-        <th>奖励总数</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+<!---->
+<div class="tableListDiv">
+    <table >
 
-    </tr>
-</table>
+        <tr>
+            <th>代理名称</th>
+            <th>代理账号</th>
+            <th>代理区域</th>
+            <th>代理区域内人数</th>
+            <th>代理区域内总资金</th>
+            <th>奖励总数</th>
+        </tr>
+        <foreach name="provinceArr" item="value" key="key">
+            <tr>
+                <td>{$value.username}</td>
+                <td>{$value.account}</td>
+                <td>{$value.province}</td>
+                <td>{$value.userSum}</td>
+                <td>{$value.buycar_money_sum}</td>
+                <td>{$value.rewards}</td>
+            </tr>
+        </foreach>
+        <!--底部页面切换选项卡-->
+        <!--<div class="bottomPageSelect">-->
+            <!--{$province_pageshow}-->
+        <!--</div>-->
+    </table>
+</div>
+<!---->
+<div class="tableListDiv" style="display:none;">
+    <table  >
 
-<table  style="display:none;">
+        <tr>
+            <th>代理名称</th>
+            <th>代理账号</th>
+            <th>代理区域</th>
+            <th>代理区域内人数</th>
+            <th>代理区域内总资金</th>
+            <th>奖励总数</th>
+        </tr>
+        <foreach name="cityArr" item="value" key="key">
+            <tr>
+                <td>{$value.username}</td>
+                <td>{$value.account}</td>
+                <td>{$value.province}{$value.city}</td>
+                <td>{$value.userSum}</td>
+                <td>{$value.buycar_money_sum}</td>
+                <td>{$value.rewards}</td>
+            </tr>
+        </foreach>
+        <!--<div class="bottomPageSelect">-->
+            <!--{$city_pageshow}-->
+        <!--</div>-->
+    </table>
+</div>
+<!---->
+<div class="tableListDiv" style="display:none;">
+    <table >
 
-    <tr>
-        <th>代理名称</th>
-        <th>代理区域</th>
-        <th>代理区域内人数</th>
-        <th>代理区域内总资金</th>
-        <th>奖励总数</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <tr>
+            <th>代理名称</th>
+            <th>代理账号</th>
+            <th>代理区域</th>
+            <th>代理区域内人数</th>
+            <th>代理区域内总资金</th>
+            <th>奖励总数</th>
+        </tr>
+        <foreach name="areaArr" item="value" key="key">
+            <tr>
+                <td>{$value.username}</td>
+                <td>{$value.account}</td>
+                <td>{$value.province}{$value.city}{$value.area}</td>
+                <td>{$value.userSum}</td>
+                <td>{$value.buycar_money_sum}</td>
+                <td>{$value.rewards}</td>
+            </tr>
+        </foreach>
+        <!--<div class="bottomPageSelect">-->
+            <!--{$area_pageshow}-->
+        <!--</div>-->
+    </table>
+</div>
 
-    </tr>
-</table>
 
-<table style="display:none;">
 
-    <tr>
-        <th>代理名称</th>
-        <th>代理区域</th>
-        <th>代理区域内人数</th>
-        <th>代理区域内总资金</th>
-        <th>奖励总数</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-
-    </tr>
-</table>
 
 <!--底部页面切换选项卡-->
 <div class="bottomPageSelect">
