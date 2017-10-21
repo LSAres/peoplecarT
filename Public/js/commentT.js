@@ -40,7 +40,7 @@ $(function () {
                 'transition': '1s'
             });
             $('.rightPageChange').css({
-                'width': '84.5%',
+                'width': '84%',
                 'transition': '1s'
             });
         }

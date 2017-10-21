@@ -50,7 +50,7 @@ $(function(){
 		//input选择列表显示
 		$('.inputSelectOuterDiv').css({'display':'block'});
 		setTimeout(function(){
-			$('.inputSelectOuterDiv').css({'width':'100%'});
+			$('.inputSelectOuterDiv').css({'width':'550px'});
 		},500);
 		
 	});
