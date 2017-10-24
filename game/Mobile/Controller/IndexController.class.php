@@ -180,6 +180,12 @@ class IndexController extends CommonController {
 		        $nn['reason']="注册奖励";
 		        $nn['time']=time();
 		        M('bonus_record')->data($nn)->add();
+
+		        $vv['uid']=$parent_id;
+		        $vv['money']="+1000";
+		        $vv['reason']="注册奖励";
+		        $vv['time']=time();
+		        M('getGold_record')->data($vv)->add();
             }
         }
 		if($res&&$rem&&$rec){

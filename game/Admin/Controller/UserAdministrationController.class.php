@@ -69,6 +69,12 @@ class UserAdministrationController extends CommonController {
                    $information['reason']="直推奖励购车基金";
                    $information['time']=time();
                    $rc = M('bonus_record')->data($data)->add();
+
+                   $cg['uid']=$userid;
+                   $cg['money']="+7000";
+                   $cg['reason']="直推奖励购车基金";
+                   $cg['time']=time();
+                   M('getBuycarMoney_record')->data($cg)->add();
                }
                //判断奖励是否发放成功
                if(!$rs||!$rc){
@@ -272,6 +278,12 @@ class UserAdministrationController extends CommonController {
             $information['reason']="出局奖励";
             $information['time']=time();
             $rcm = M('bonus_record')->data($information)->add();
+
+            $nn['uid']=$top_id;
+            $nn['money'] = "+2000";
+            $nn['reason'] = "出局奖励";
+            $nn['time'] = time();
+            $recc = M('getBonus_record')->data($nn)->add();
         }
         if($recommend_id==1){
             $data['one_id']=$top_id;
