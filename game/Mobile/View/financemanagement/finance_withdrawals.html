@@ -19,7 +19,13 @@
 		资金提现
 	</span>
 </div>
-<form action="{:U(MODULE_NAME.'/Financemanagement/addwithdrawals')}" method="post" id="myform">
+<!--设置密码种类-->
+<div class="changeSelect">
+	<div class="changeTypeSelect changeTypeSelect_selected">购车基金提现</div>
+	<div class="changeTypeSelect">出局奖金提现</div>
+	<div class="changeTypeSelect">推荐奖金提现</div>
+</div>
+<form action="{:U(MODULE_NAME.'/Financemanagement/addwithdrawals')}"class="selectedDiv selected_1" method="post" id="myform">
 	<!---->
 	<div class="messageDidsplayDiv">
 		<div class="leftMessage">真实户名:</div>
@@ -56,6 +62,81 @@
 		确认
 	</div>
 </form>
+<form action="{:U(MODULE_NAME.'/Financemanagement/addwithdrawals')}"class="selectedDiv selected_2" style="display: none;" method="post" id="myform">
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">真实户名:</div>
+		<input type="text" value="{$bankInfo.realname}"  readonly="readonly" name="realname"  class="rightMessage" />
+
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">收款方式:</div>
+		<input type="text" value="{$bankInfo.bank_name}"  readonly="readonly" name="bank_name"  class="rightMessage" />
+
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">开户地址:</div>
+		<input type="text" value="{$bankInfo.bank_address}" readonly="readonly" name="bank_address"   class="rightMessage" />
+
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">银行卡号:</div>
+		<input type="text" value="{$bankInfo.bank_card}"  readonly="readonly" name="bank_card"  class="rightMessage" />
+
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">提现金额:</div>
+		<input type="number" placeholder="请输入提现金额" name="money"  class="rightMessage" />
+
+	</div>
+
+	<!--确认按钮-->
+	<div class="etermineButton" onClick="test()">
+		确认
+	</div>
+</form>
+<form action="{:U(MODULE_NAME.'/Financemanagement/addwithdrawals')}"class="selectedDiv selected_3" style="display: none;" method="post" id="myform">
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">真实户名:</div>
+		<input type="text" value="{$bankInfo.realname}"  readonly="readonly" name="realname"  class="rightMessage" />
+
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">收款方式:</div>
+		<input type="text" value="{$bankInfo.bank_name}"  readonly="readonly" name="bank_name"  class="rightMessage" />
+
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">开户地址:</div>
+		<input type="text" value="{$bankInfo.bank_address}" readonly="readonly" name="bank_address"   class="rightMessage" />
+
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">银行卡号:</div>
+		<input type="text" value="{$bankInfo.bank_card}"  readonly="readonly" name="bank_card"  class="rightMessage" />
+
+	</div>
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">提现金额:</div>
+		<input type="number" placeholder="请输入提现金额" name="money"  class="rightMessage" />
+
+	</div>
+
+	<!--确认按钮-->
+	<div class="etermineButton" onClick="test()">
+		确认
+	</div>
+</form>
+
 </body>
 
 <script>
