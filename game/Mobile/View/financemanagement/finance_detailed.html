@@ -24,97 +24,55 @@
 <!--设置密码种类-->
 <div class="changeSelect">
 	<div class="changeTypeSelect changeTypeSelect_selected">现金币</div>
-	<div class="changeTypeSelect">报单币</div>
+	<div class="changeTypeSelect">出局奖金</div>
 	<div class="changeTypeSelect">购车基金</div>
 </div>
 
 <!--现金币-->
 <div class="selectedDiv selected_1">
-	<!--信息块-->
-	<div class="detailsDiv">
-		<div class="details_Data">
-			2014-04-41
-			<!--向下三角形-->
-			<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
+	<foreach name="goldArr" item="value" key="key">
+		<!--信息块-->
+		<div class="detailsDiv">
+			<div class="details_Data">
+				{$value.time|date="Y-m-d H:i:s",###}
+				<!--向下三角形-->
+				<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
+			</div>
+			<!--信息显示块-->
+			<div class="details_MessageRow">
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					现金币用途：
+				</span>
+				<span class="details_RightMessage">
+					{$value.reason}
+				</span>
+				<!--一条信息 END-->
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					数量：
+				</span>
+				<span class="details_RightMessage">
+					{$value.money}
+				</span>
+				<!--一条信息 END-->
+			</div>
+			<!--信息显示块 END-->
 		</div>
-		<!--信息显示块-->
-		<div class="details_MessageRow">
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				现金币用途：
-			</span>
-			<span class="details_RightMessage">
-				火锅撸串喝啤酒
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				消耗数量：
-			</span>
-			<span class="details_RightMessage">
-				1000000
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				余额：
-			</span>
-			<span class="details_RightMessage">
-				0
-			</span>
-			<!--一条信息 END-->
-		</div>
-		<!--信息显示块 END-->
-	</div>
-	<!--信息块 END-->
-	<!--信息块-->
-	<div class="detailsDiv">
-		<div class="details_Data">
-			2014-04-41
-			<!--向下三角形-->
-			<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
-		</div>
-		<!--信息显示块-->
-		<div class="details_MessageRow">
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				现金币用途：
-			</span>
-			<span class="details_RightMessage">
-				火锅撸串喝啤酒
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				消耗数量：
-			</span>
-			<span class="details_RightMessage">
-				1000000
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				余额：
-			</span>
-			<span class="details_RightMessage">
-				0
-			</span>
-			<!--一条信息 END-->
-		</div>
-		<!--信息显示块 END-->
-	</div>
-	<!--信息块 END-->
+		<!--信息块 END-->
+	</foreach>
 	
 </div>
 
 <!--现金币 END-->
 
-<!--报单币-->
+<!--出局奖金-->
 <div class="selectedDiv selected_2" style="display:none;">
+	<foreach name="bonusArr" item="value" key="key">
 	<!--信息块-->
 	<div class="detailsDiv">
 		<div class="details_Data">
-			2014-04-41
+			{$value.time|date="Y-m-d H:i:s"}
 			<!--向下三角形-->
 			<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
 		</div>
@@ -125,146 +83,59 @@
 				现金币用途：
 			</span>
 			<span class="details_RightMessage">
-				火锅撸串喝啤酒
+				{$value.reason}
 			</span>
 			<!--一条信息 END-->
 			<!--一条信息-->
 			<span class="details_LeftMessage">
-				消耗数量：
+				数量：
 			</span>
 			<span class="details_RightMessage">
-				1000000
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				余额：
-			</span>
-			<span class="details_RightMessage">
-				0
+				{$value.money}
 			</span>
 			<!--一条信息 END-->
 		</div>
 		<!--信息显示块 END-->
 	</div>
 	<!--信息块 END-->
-	<!--信息块-->
-	<div class="detailsDiv">
-		<div class="details_Data">
-			2014-04-41
-			<!--向下三角形-->
-			<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
-		</div>
-		<!--信息显示块-->
-		<div class="details_MessageRow">
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				现金币用途：
-			</span>
-			<span class="details_RightMessage">
-				火锅撸串喝啤酒
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				消耗数量：
-			</span>
-			<span class="details_RightMessage">
-				1000000
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				余额：
-			</span>
-			<span class="details_RightMessage">
-				0
-			</span>
-			<!--一条信息 END-->
-		</div>
-		<!--信息显示块 END-->
-	</div>
-	<!--信息块 END-->
+	</foreach>
 </div>
 
 <!--报单币 END-->
 
 <!--购车基金-->
 <div class="selectedDiv selected_3" style="display:none;">
-	<!--信息块-->
-	<div class="detailsDiv">
-		<div class="details_Data">
-			2014-04-41
-			<!--向下三角形-->
-			<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
+	<foreach name="buyCarArr" item="value" key="key">
+		<!--信息块-->
+		<div class="detailsDiv">
+			<div class="details_Data">
+				{$value.time|date="Y-m-d H:i:s"}
+				<!--向下三角形-->
+				<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
+			</div>
+			<!--信息显示块-->
+			<div class="details_MessageRow">
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					现金币用途：
+				</span>
+				<span class="details_RightMessage">
+					{$value.reason}
+				</span>
+				<!--一条信息 END-->
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					数量：
+				</span>
+				<span class="details_RightMessage">
+					{$value.money}
+				</span>
+				<!--一条信息 END-->
+			</div>
+			<!--信息显示块 END-->
 		</div>
-		<!--信息显示块-->
-		<div class="details_MessageRow">
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				现金币用途：
-			</span>
-			<span class="details_RightMessage">
-				火锅撸串喝啤酒
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				消耗数量：
-			</span>
-			<span class="details_RightMessage">
-				1000000
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				余额：
-			</span>
-			<span class="details_RightMessage">
-				0
-			</span>
-			<!--一条信息 END-->
-		</div>
-		<!--信息显示块 END-->
-	</div>
-	<!--信息块 END-->
-	<!--信息块-->
-	<div class="detailsDiv">
-		<div class="details_Data">
-			2014-04-41
-			<!--向下三角形-->
-			<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
-		</div>
-		<!--信息显示块-->
-		<div class="details_MessageRow">
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				现金币用途：
-			</span>
-			<span class="details_RightMessage">
-				火锅撸串喝啤酒
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				消耗数量：
-			</span>
-			<span class="details_RightMessage">
-				1000000
-			</span>
-			<!--一条信息 END-->
-			<!--一条信息-->
-			<span class="details_LeftMessage">
-				余额：
-			</span>
-			<span class="details_RightMessage">
-				0
-			</span>
-			<!--一条信息 END-->
-		</div>
-		<!--信息显示块 END-->
-	</div>
-	<!--信息块 END-->
+		<!--信息块 END-->
+	</foreach>
 </div>
 
 <!--购车基金 END-->

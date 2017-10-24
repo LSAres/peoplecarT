@@ -62,7 +62,7 @@
 		确认
 	</div>
 </form>
-<form action="{:U(MODULE_NAME.'/Financemanagement/addwithdrawals')}"class="selectedDiv selected_2" style="display: none;" method="post" id="myform">
+<form action="{:U(MODULE_NAME.'/Financemanagement/addwithdrawalsB')}"class="selectedDiv selected_2" style="display: none;" method="post" id="myformB">
 	<!---->
 	<div class="messageDidsplayDiv">
 		<div class="leftMessage">真实户名:</div>
@@ -95,11 +95,11 @@
 	</div>
 
 	<!--确认按钮-->
-	<div class="etermineButton" onClick="test()">
+	<div class="etermineButton" onClick="testB()">
 		确认
 	</div>
 </form>
-<form action="{:U(MODULE_NAME.'/Financemanagement/addwithdrawals')}"class="selectedDiv selected_3" style="display: none;" method="post" id="myform">
+<form action="{:U(MODULE_NAME.'/Financemanagement/addwithdrawalsC')}"class="selectedDiv selected_3" style="display: none;" method="post" id="myformC">
 	<!---->
 	<div class="messageDidsplayDiv">
 		<div class="leftMessage">真实户名:</div>
@@ -132,7 +132,7 @@
 	</div>
 
 	<!--确认按钮-->
-	<div class="etermineButton" onClick="test()">
+	<div class="etermineButton" onClick="testC()">
 		确认
 	</div>
 </form>
@@ -143,6 +143,14 @@
     function test()
     {
         document.getElementById("myform").submit();
+    }
+    function testB()
+    {
+        document.getElementById("myformB").submit();
+    }
+    function testC()
+    {
+        document.getElementById("myformC").submit();
     }
 
 </script>

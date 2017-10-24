@@ -75,7 +75,7 @@ $(function () {
     //财富汇总明细
     $('.userDetails').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/userDetails.html');
-        location.href = "";
+        
     });
     $('.userActivationDetails').click(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/userActivationDetails.html');

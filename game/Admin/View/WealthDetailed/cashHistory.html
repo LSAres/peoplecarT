@@ -17,6 +17,7 @@
         <th>银行卡号</th>
         <th>开户地址</th>
         <th>提现金额</th>
+        <th>提现种类</th>
         <th>提现时间</th>
         <th>操作</th>
     </tr>
@@ -28,6 +29,7 @@
         <td>{$value.bank_card}</td>
         <td>{$value.bank_address}</td>
         <td>{$value.money}</td>
+        <td>{$value.reason}</td>
         <td>{$value.time|date="Y-m-d H:i:s",###}</td>
         <td>
 			<if condition="$value.status eq 0">

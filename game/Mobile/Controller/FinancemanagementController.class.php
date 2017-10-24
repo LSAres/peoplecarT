@@ -13,9 +13,17 @@ class FinancemanagementController extends CommonController {
     }
 
     public function finance_detailed(){
+        $userid = session('userid');
+        $goldArr = M('getgold_record')->where('uid='.$userid)->order('id desc')->select();
+        $bonusArr = M('getbonus_record')->where('uid='.$userid)->order('id desc')->select();
+        $buyCarArr = M('getbuycarmoney_record')->where('uid='.$userid)->order('id desc')->select();
+        $this->assign('goldArr',$goldArr);
+        $this->assign('bonusArr',$bonusArr);
+        $this->assign('buyCarArr',$buyCarArr);
         $this->display();
     }
 
+    //购车基金转换报单币
     public function finance_fundconversion(){
         if(!I('post.')){
             $userid = session('userid');
@@ -173,18 +181,123 @@ class FinancemanagementController extends CommonController {
             echo "<script>alert('金额数量错误');</script>";
             echo "<script>javascript:history.back(-1);</script>";die;
         }
+        $buycar_money = M('store')->where('uid='.$userid)->getField('buycar_money');
+        if($buycar_money<$money){
+            echo "<script>alert('提现数量超过购车基金数量');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        $rem = M('store')->where('uid='.$userid)->setDec('buycar_money',$money);
+        $fund_fee = M('function_parameters')->where('id=1')->getField('fund_fee');
+        $moneyT = $money-$money*$fund_fee;
 
         $data['uid'] = $userid;
         $data['realname'] = $realname;
         $data['bank_name'] = $bank_name;
         $data['bank_address'] = $bank_address;
         $data['bank_card'] = $bank_card;
-        $data['money'] = $money;
+        $data['money'] = $moneyT;
         $data['status'] = 0;
+        $data['reason'] = "购车基金提现";
         $data['time'] = time();
 
         $res = M('withdraw')->data($data)->add();
-        if($res){
+        if($res&&$rem){
+            echo "<script>alert('提现申请成功，请等待工作人员与您联系');</script>";
+            echo "<script>window.location.href='".U('Financemanagement/finance_withdrawalsHistory')."'</script>";
+        }else{
+            echo "<script>alert('提现申请失败');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+    }
+
+    //出局奖金提现
+    public function addwithdrawalsB(){
+        $t=I('post.');
+        foreach($t as $v){
+            if($v == ''){
+                echo "<script>alert('请确认输入完成');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
+        $userid =session('userid');
+        $realname = I('post.realname');
+        $bank_name = I('post.bank_name');
+        $bank_address = I('post.bank_address');
+        $bank_card = I('post.bank_card');
+        $money = I('post.money');
+        if($money<=0){
+            echo "<script>alert('金额数量错误');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        $bonus = M('store')->where('uid='.$userid)->getField('bonus');
+        if($bonus<$money){
+            echo "<script>alert('提现数量超过出局奖金数量');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        $rem = M('store')->where('uid='.$userid)->setDec('bonus',$money);
+        $bonus_fee = M('function_parameters')->where('id=1')->getField('bonus_fee');
+        $moneyT = $money-$money*$bonus_fee;
+
+        $data['uid'] = $userid;
+        $data['realname'] = $realname;
+        $data['bank_name'] = $bank_name;
+        $data['bank_address'] = $bank_address;
+        $data['bank_card'] = $bank_card;
+        $data['money'] = $moneyT;
+        $data['status'] = 0;
+        $data['reason'] = "出局奖金提现";
+        $data['time'] = time();
+
+        $res = M('withdraw')->data($data)->add();
+        if($res&&$rem){
+            echo "<script>alert('提现申请成功，请等待工作人员与您联系');</script>";
+            echo "<script>window.location.href='".U('Financemanagement/finance_withdrawalsHistory')."'</script>";
+        }else{
+            echo "<script>alert('提现申请失败');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+    }
+
+    //推荐奖金提现
+    public function addwithdrawalsC(){
+        $t=I('post.');
+        foreach($t as $v){
+            if($v == ''){
+                echo "<script>alert('请确认输入完成');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
+        $userid =session('userid');
+        $realname = I('post.realname');
+        $bank_name = I('post.bank_name');
+        $bank_address = I('post.bank_address');
+        $bank_card = I('post.bank_card');
+        $money = I('post.money');
+        if($money<=0){
+            echo "<script>alert('金额数量错误');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        $gold= M('store')->where('uid='.$userid)->getField('gold');
+        if($gold<$money){
+            echo "<script>alert('提现数量超过推荐奖金数量');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+        $rem = M('store')->where('uid='.$userid)->setDec('gold',$money);
+        $cash_fee = M('function_parameters')->where('id=1')->getField('cash_fee');
+        $moneyT = $money-$money*$cash_fee;
+
+        $data['uid'] = $userid;
+        $data['realname'] = $realname;
+        $data['bank_name'] = $bank_name;
+        $data['bank_address'] = $bank_address;
+        $data['bank_card'] = $bank_card;
+        $data['money'] = $moneyT;
+        $data['status'] = 0;
+        $data['reason'] = "推荐奖金提现";
+        $data['time'] = time();
+
+        $res = M('withdraw')->data($data)->add();
+        if($res&&$rem){
             echo "<script>alert('提现申请成功，请等待工作人员与您联系');</script>";
             echo "<script>window.location.href='".U('Financemanagement/finance_withdrawalsHistory')."'</script>";
         }else{
