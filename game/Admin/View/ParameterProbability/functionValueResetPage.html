@@ -13,27 +13,35 @@
         修改功能参数请慎重修改！！！
     </div>
 </div>
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        参数名称
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入管理员帐号">
-</div>
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        参数名称2
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入管理员密码">
-</div>
-<div class="upadateMessageDisplay">
-    <span class="updateMessageTitle">
-        参数名称4
-    </span>
-    <input type="text" class="updateMessageInput" placeholder="请输入管理员密码">
-</div>
+<form action="{:U(MODULE_NAME.'/ParameterProbability/functionValueResetPage')}" method="post" id="myform">
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            购车基金提现手续费比例
+        </span>
+        <input type="text" class="updateMessageInput" name="fund_fee" value="{$parameterInfo.fund_fee}">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+           出局积分提现手续费比例
+        </span>
+        <input type="text" class="updateMessageInput" name="bonus_fee" value="{$parameterInfo.bonus_fee}">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+            推荐积分提现手续费比例
+        </span>
+        <input type="text" class="updateMessageInput" name="cash_fee" value="{$parameterInfo.cash_fee}">
+    </div>
+    <div class="upadateMessageDisplay">
+        <span class="updateMessageTitle">
+           转换报单币手续费比例
+        </span>
+        <input type="text" class="updateMessageInput" name="declaration_fee" value="{$parameterInfo.declaration_fee}">
+    </div>
+</form>
 
 
-<div class="updateTrue">
+<div class="updateTrue" onclick="test()">
     确认修改
 </div>
 
@@ -55,7 +63,10 @@
             textFor()
         });
     })
-
+    function test()
+    {
+        document.getElementById("myform").submit();
+    }
 
 
 

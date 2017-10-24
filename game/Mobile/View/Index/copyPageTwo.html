@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="dongjiejine"> 冻结金额 </div>
-        <div class="dongjiejine_shuzi"> 00000000 </div>
+        <div class="dongjiejine_shuzi"> {$storeInfo.frozen_money|default=0} </div>
         <div class="shoujihao">{$userInfo.account}</div>
         <div class="xingming">{$userInfo.username}</div>
         <div class="shenfen">{$userInfo.levename}</div>

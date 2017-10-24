@@ -22,23 +22,25 @@
 
 <!---->
 <div class="messageDidsplayDiv">
-	<div class="leftMessage">当前余额:</div>
-	<input type="text" value="100000"  readonly="readonly"  class="rightMessage" />
+	<div class="leftMessage">购车基金余额:</div>
+	<input type="text" value="{$storeInfo.buycar_money|default=0}"  readonly="readonly"  class="rightMessage" />
 	
 </div>
 <!---->
-<div class="messageDidsplayDiv">
-	<div class="leftMessage">转换金额:</div>
-	<input type="text" value="建设银行"    class="rightMessage" />
-	
-</div>
+<form action="{:U(MODULE_NAME.'/Financemanagement/finance_fundconversion')}" method="post" id="myform">
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">转换金额:</div>
+		<input type="number"  class="rightMessage" name="num" />
+
+	</div>
+</form>
 
 <!---->
-<div class="messageDidsplayDiv">
-	<div class="leftMessage">转换类型:</div>
-	<input type="text" value="-----请选择-----"  readonly="readonly"  class="rightMessage forInputSelect" />
-	
-</div>
+<!--<div class="messageDidsplayDiv">-->
+	<!--<div class="leftMessage">转换类型:</div>-->
+	<!--<input type="text" value="-&#45;&#45;&#45;&#45;请选择-&#45;&#45;&#45;&#45;"  readonly="readonly"  class="rightMessage forInputSelect" />-->
+	<!---->
+<!--</div>-->
 <!--input选择列表-->
 <div class="inputSelectOuterDiv">
 	<div class="inputSelectDiv">
@@ -54,7 +56,7 @@
 </div>
 
 <!--确认按钮-->
-<div class="etermineButton">
+<div class="etermineButton" onclick="test()">
 	确认
 </div>
 
@@ -63,7 +65,9 @@
 </body>
 
 <script>
-   
+    function test() {
+        document.getElementById("myform").submit();
+    }
 
 </script>
 </html>

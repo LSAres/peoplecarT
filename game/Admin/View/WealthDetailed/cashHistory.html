@@ -31,7 +31,7 @@
         <td>{$value.time|date="Y-m-d H:i:s",###}</td>
         <td>
 			<if condition="$value.status eq 0">
-                    申请中
+                <a href="{:U(MODULE_NAME.'/WealthDetailed/updateCash',array('id'=>$value['id']))}"> 申请中</a>
                 <else/>
                     已打款
             </if>

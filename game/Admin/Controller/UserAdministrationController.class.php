@@ -65,7 +65,7 @@ class UserAdministrationController extends CommonController {
                $rs=M('store')->where('uid='.$recommend_id)->setInc('frozen_money',7000);
                if($rs){
                    $information['uid']=$userid;
-                   $information['money']=6000;
+                   $information['money']=7000;
                    $information['reason']="直推奖励购车基金";
                    $information['time']=time();
                    $rc = M('bonus_record')->data($data)->add();
@@ -259,6 +259,13 @@ class UserAdministrationController extends CommonController {
     public function recombination($top_id=null){
         $recommend_id = M('user')->where('userid='.$top_id)->getField('recommend_id');
         $ree=M('store')->where('uid='.$top_id)->setInc('bonus',2000);
+        $frozen_money = M('store')->where('uid='.$top_id)->getField('frozen_money');
+        if($frozen_money>0) {
+            $rem = M('store')->where('uid='.$top_id)->setInc('buycar_money',$frozen_money);
+            if($rem){
+                M('store')->where('uid='.$top_id)->setField('frozen_money',0);
+            }
+        }
         if($ree){
             $information['uid']=$top_id;
             $information['money']=2000;

@@ -17,7 +17,35 @@ class FinancemanagementController extends CommonController {
     }
 
     public function finance_fundconversion(){
-        $this->display();
+        if(!I('post.')){
+            $userid = session('userid');
+            $storeInfo = M('store')->where('uid='.$userid)->find();
+            $this->assign('storeInfo',$storeInfo);
+            $this->display();
+        }else{
+            $num = I('post.num');
+            $userid = session('userid');
+            $storeInfo = M('store')->where('uid='.$userid)->find();
+            if($num<=0){
+                echo "<script>alert('转换数量错误');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if($num>$storeInfo['buycar_money']){
+                echo "<script>alert('转换数量超过现有购车基金数量');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            $declaration_fee = M('function_parameters')->where('id=1')->getField('declaration_fee');
+            $conversions_num = $num-$num*$declaration_fee;
+            $res = M('store')->where('uid='.$userid)->setDec('buycar_money',$num);
+            $rem = M('store')->where('uid='.$userid)->setInc('report_money',$conversions_num);
+            if($res&&$rem){
+                echo "<script>alert('转换成功');</script>";
+                echo "<script>window.location.href='".U('Index/copyPageTwo')."'</script>";
+            }else{
+                echo "<script>alert('转换失败');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
     }
 
     public function finance_transfer(){
@@ -170,6 +198,89 @@ class FinancemanagementController extends CommonController {
         $condition['uid']=$userid;
         $withdrawlist = M('withdraw')->where($condition)->order('id desc')->select();
         $this->assign('withdrawlist',$withdrawlist);
+        $this->display();
+    }
+
+    public function finance_transaction(){
+        $userid = session('userid');
+        if(!I('post.')){
+            $this->display();
+        }else{
+            $t=I('post.');
+            foreach($t as $v){
+                if($v == ''){
+                    echo "<script>alert('请确认输入完成');</script>";
+                    echo "<script>javascript:history.back(-1);</script>";die;
+                }
+            }
+            $account = I('post.account');
+            $money = I('post.money');
+            $password = I('post.password');
+            $userInfo = M('user')->where('userid='.$userid)->find();
+            $buy_userid = M('user')->where("account='".$account."'")->getField('userid');
+            $m=$money+0;
+            if(!is_numeric($money) || $m<=0){
+                echo "<script>alert('输入数量错误!');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if(!$buy_userid){
+                echo "<script>alert('目标用户信息不正确');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if($userid==$buy_userid){
+                echo "<script>alert('不可出售给自己');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            $storeInfo = M('store')->where('uid='.$userid)->find();
+            if($storeInfo['buycar_money']<$money){
+                echo "<script>alert('出售数量超过');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            $yu=$money%100;
+            if ($yu!=0) {
+                echo "<script>alert('数量请输入100的倍数');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+
+            }
+            $twopw=md5(md5($password).$userInfo['safety_salt']);
+            if($twopw!=$userInfo['password']){
+                echo "<script>alert('交易密码输入错误');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            $res = M('store')->where('uid='.$userid)->setDec('buycar_money',$money);
+            if(!$res){
+                echo "<script>alert('出售失败');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            $rem = M('store')->where('uid='.$buy_userid)->setInc('buycar_money',$money);
+            if(!$rem){
+                echo "<script>alert('出售未到账，请截图并联系客服');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            $data['uid']=$userid;
+            $data['buy_id']=$buy_userid;
+            $data['money']=$money;
+            $data['status']=1;
+            $data['time']=time();
+            $ren = M('transaction')->data($data)->add();
+            if($ren&&$res&&$rem){
+                echo "<script>alert('交易成功');</script>";
+                echo "<script>window.location.href='".U('Financemanagement/finance_transactiondetailed')."'</script>";
+            }else{
+                echo "<script>alert('记录写入失败');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
+    }
+
+    public function finance_transactiondetailed(){
+        $userid = session('userid');
+        $transaction_list = M('transaction')->where('uid='.$userid)->select();
+        foreach ($transaction_list as $k=>$v){
+            $buy_account = M('user')->where('userid='.$v['buy_id'])->getField('account');
+            $transaction_list[$k]['buy_account']=$buy_account;
+        }
+        $this->assign('transaction_list',$transaction_list);
         $this->display();
     }
 }

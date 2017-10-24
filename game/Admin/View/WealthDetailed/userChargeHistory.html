@@ -62,7 +62,7 @@
             <td>{$value.money}</td>
             <td>
                <if condition="$value.status eq 0">
-                        申请中
+                   <a href="{:U(MODULE_NAME.'/WealthDetailed/updateCharge',array('id'=>$value['id']))}"> 申请中</a>
                    <else/>
                         充值完成
                </if>

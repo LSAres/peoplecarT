@@ -225,4 +225,28 @@ class WealthDetailedController extends CommonController{
             }
         }
     }
+
+    public function updateCharge(){
+        $id = I('get.id');
+        $res = M('charge')->where('id='.$id)->setField('status',1);
+        if($res){
+            echo "<script>alert('审核成功');location.href='".U('WealthDetailed/userChargeHistory')."'</script>";
+            exit();
+        }else{
+            echo "<script>alert('审核失败');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+    }
+
+    public function updateCash(){
+        $id = I('get.id');
+        $res = M('withdraw')->where('id='.$id)->setField('status',1);
+        if($res){
+            echo "<script>alert('审核成功');location.href='".U('WealthDetailed/cashHistory')."'</script>";
+            exit();
+        }else{
+            echo "<script>alert('审核失败');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
+    }
 }

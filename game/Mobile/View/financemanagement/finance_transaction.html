@@ -19,23 +19,23 @@
 		交易
 	</span>
 </div>
-<form action="{:U(MODULE_NAME.'/Financemanagement/addwithdrawals')}" method="post" id="myform">
+<form action="{:U(MODULE_NAME.'/Financemanagement/finance_transaction')}" method="post" id="myform">
 	<!---->
 	<div class="messageDidsplayDiv">
 		<div class="leftMessage">对方账号:</div>
-		<input type="text" value="{$bankInfo.realname}"  readonly="readonly" name="realname"  class="rightMessage" />
+		<input type="text" name="account"  class="rightMessage" />
 
 	</div>
 	<!---->
 	<div class="messageDidsplayDiv">
 		<div class="leftMessage">交易金额:</div>
-		<input type="text" value="{$bankInfo.bank_name}"  readonly="readonly" name="bank_name"  class="rightMessage" />
+		<input type="text" name="money"  class="rightMessage" />
 
 	</div>
 	<!---->
 	<div class="messageDidsplayDiv">
 		<div class="leftMessage">交易密码:</div>
-		<input type="text" value="{$bankInfo.bank_address}" readonly="readonly" name="bank_address"   class="rightMessage" />
+		<input type="text" name="password"   class="rightMessage" />
 
 	</div>
 
