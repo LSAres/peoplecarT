@@ -33,7 +33,7 @@
 <div class="typeSelected">
 	<!---->
 	<div class="messageDidsplayDiv">
-		<div class="leftMessage">购车基金余额1111:</div>
+		<div class="leftMessage">购车基金余额:</div>
 		<input type="text" value="{$storeInfo.buycar_money|default=0}"  readonly="readonly"  class="rightMessage" />
 
 	</div>
@@ -53,12 +53,12 @@
 <div class="typeSelected" >
 	<!---->
 	<div class="messageDidsplayDiv">
-		<div class="leftMessage">购车基金余额222:</div>
-		<input type="text" value="{$storeInfo.buycar_money|default=0}"  readonly="readonly"  class="rightMessage" />
+		<div class="leftMessage">出局奖金余额:</div>
+		<input type="text" value="{$storeInfo.bonus|default=0}"  readonly="readonly"  class="rightMessage" />
 
 	</div>
 	<!---->
-	<form action="{:U(MODULE_NAME.'/Financemanagement/finance_fundconversion')}" method="post" id="myform">
+	<form action="{:U(MODULE_NAME.'/Financemanagement/finance_fundconversionT')}" method="post" id="myformT">
 		<div class="messageDidsplayDiv">
 			<div class="leftMessage">转换金额:</div>
 			<input type="number"  class="rightMessage" name="num" />
@@ -66,7 +66,7 @@
 		</div>
 	</form>
 	<!--确认按钮-->
-	<div class="etermineButton" onclick="test()">
+	<div class="etermineButton" onclick="testT()">
 		确认
 	</div>
 </div>
@@ -79,11 +79,11 @@
 <div class="inputSelectOuterDiv">
 	<div class="inputSelectDiv">
 		<div class="inputSelecList" >
-			<span class="inputSelectValue">现金币转报单币</span>
+			<span class="inputSelectValue">购车基金转推荐奖金</span>
 			<div class="inputSelectOuterDivRightArrow"></div>
 		</div>
 		<div class="inputSelecList" >
-			<span class="inputSelectValue">购车基金转现金币</span>
+			<span class="inputSelectValue">出局奖金转推荐奖金</span>
 			<div class="inputSelectOuterDivRightArrow"></div>
 		</div>
 	</div>
@@ -98,6 +98,9 @@
 <script>
     function test() {
         document.getElementById("myform").submit();
+    }
+    function testT() {
+        document.getElementById("myformT").submit();
     }
     $(function(){
         $(".inputSelecList").click(function(){
