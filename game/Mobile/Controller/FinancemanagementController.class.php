@@ -23,7 +23,7 @@ class FinancemanagementController extends CommonController {
         $this->display();
     }
 
-    //购车基金转换报单币
+    //购车基金转换推荐奖金
     public function finance_fundconversion(){
         if(!I('post.')){
             $userid = session('userid');
@@ -42,10 +42,10 @@ class FinancemanagementController extends CommonController {
                 echo "<script>alert('转换数量超过现有购车基金数量');</script>";
                 echo "<script>javascript:history.back(-1);</script>";die;
             }
-            $declaration_fee = M('function_parameters')->where('id=1')->getField('declaration_fee');
-            $conversions_num = $num-$num*$declaration_fee;
+            $fund_fee = M('function_parameters')->where('id=1')->getField('fund_fee');
+            $conversions_num = $num-$num*$fund_fee;
             $res = M('store')->where('uid='.$userid)->setDec('buycar_money',$num);
-            $rem = M('store')->where('uid='.$userid)->setInc('report_money',$conversions_num);
+            $rem = M('store')->where('uid='.$userid)->setInc('gold',$conversions_num);
             if($res&&$rem){
                 echo "<script>alert('转换成功');</script>";
                 echo "<script>window.location.href='".U('Index/copyPageTwo')."'</script>";
@@ -54,6 +54,32 @@ class FinancemanagementController extends CommonController {
                 echo "<script>javascript:history.back(-1);</script>";die;
             }
         }
+    }
+
+    public function finance_fundconversionT(){
+            $num = I('post.num');
+            $userid = session('userid');
+            $storeInfo = M('store')->where('uid='.$userid)->find();
+            if($num<=0){
+                echo "<script>alert('转换数量错误');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            if($num>$storeInfo['bonus']){
+                echo "<script>alert('转换数量超过现有出局奖金数量');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+            $bonus_fee = M('function_parameters')->where('id=1')->getField('bonus_fee');
+            $conversions_num = $num-$num*$bonus_fee;
+            $res = M('store')->where('uid='.$userid)->setDec('bonus',$num);
+            $rem = M('store')->where('uid='.$userid)->setInc('gold',$conversions_num);
+            if($res&&$rem){
+                echo "<script>alert('转换成功');</script>";
+                echo "<script>window.location.href='".U('Index/copyPageTwo')."'</script>";
+            }else{
+                echo "<script>alert('转换失败');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+
     }
 
     public function finance_transfer(){
