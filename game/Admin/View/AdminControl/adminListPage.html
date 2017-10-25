@@ -15,6 +15,7 @@
         <th>登陆时间</th>
         <th>注册时间</th>
         <th>登陆IP</th>
+        <th>操作</th>
     </tr>
     <foreach name="userArr" item="value" key="key">
         <tr>
@@ -23,6 +24,11 @@
             <td>{$value.sp_logintime|date="Y-m-d h:i:s",###}</td>
             <td>{$value.sp_addtime|date="Y-m-d h:i:s",###}</td>
             <td>{$value.sp_loginip}</td>
+            <td>
+                <a href="">删除管理员</a>
+                <br>
+                <a href="index.php?s=/super/AdminControl/adminPasswordUpdate.html">修改管理员密码</a>
+            </td>
         </tr>
     </foreach>
 	

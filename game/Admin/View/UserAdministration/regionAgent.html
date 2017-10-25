@@ -13,28 +13,9 @@
     </style>
 </head>
 <body>
-<!--顶部搜索DIV-->
-<div class="topSearchDiv">
-    <form id="form_search" action="{:U('Index/administrationPage')}" method="post">
-        <label class="searchTitelDate" for="searchTitelOrStartDate">
-            开始日期
-        </label>
-        <input type="date" class="searchDataStyle" name="start_time" id="searchTitelOrStartDate">
-        <label class="searchTitelDate" for="searchTitelOrEndDate"> 结束日期</label>
-        <input type="date" class="searchDataStyle" name="end_time" id="searchTitelOrEndDate">
-        <label class="searchTitelDate" for="searchConditionSelect"> 搜索条件选择</label>
-        <select name="condition" class="searchConditionSelect" id="searchConditionSelect">
-            <option value="" selected="selected">请选择搜索条件</option>
-            <option value="userid">会员编号</option>
-            <option value="account">会员账号</option>
-            <option value="username">会员姓名</option>
-            <option value="identity_card">身份证</option>
-            <option value="phone">手机号</option>
-        </select>
-        <input type="text" name="text" class="searchDataStyle searchInputStyle" placeholder="请输入搜索条件">
-        <div class="conditionEndSearchStart" onClick="test()">开始搜索</div>
-    </form>
-</div>
+<!--顶部搜索DIV 删除  如有需要可从用户列表页面复制-->
+
+
 <!--显示列表切换选线DIV-->
 <div class="topTableSelectDiv">
     <div class="tableSelectButton">
