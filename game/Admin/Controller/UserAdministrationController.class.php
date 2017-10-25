@@ -62,16 +62,16 @@ class UserAdministrationController extends CommonController {
                }
                //查询上级，将购车基金返给上级，并将金额计算到总金额中
                $recommend_id = M('user')->where('userid='.$userid)->getField('recommend_id');
-               $rs=M('store')->where('uid='.$recommend_id)->setInc('frozen_money',7000);
+               $rs=M('store')->where('uid='.$recommend_id)->setInc('frozen_money',8000);
                if($rs){
                    $information['uid']=$userid;
-                   $information['money']=7000;
+                   $information['money']=8000;
                    $information['reason']="直推奖励购车基金";
                    $information['time']=time();
                    $rc = M('bonus_record')->data($data)->add();
 
                    $cg['uid']=$userid;
-                   $cg['money']="+7000";
+                   $cg['money']="+8000";
                    $cg['reason']="直推奖励购车基金";
                    $cg['time']=time();
                    M('getBuycarMoney_record')->data($cg)->add();
@@ -264,7 +264,7 @@ class UserAdministrationController extends CommonController {
     //顶端出局重组
     public function recombination($top_id=null){
         $recommend_id = M('user')->where('userid='.$top_id)->getField('recommend_id');
-        $ree=M('store')->where('uid='.$top_id)->setInc('bonus',2000);
+        $ree=M('store')->where('uid='.$top_id)->setInc('bonus',2500);
         $frozen_money = M('store')->where('uid='.$top_id)->getField('frozen_money');
         if($frozen_money>0) {
             $rem = M('store')->where('uid='.$top_id)->setInc('buycar_money',$frozen_money);
@@ -274,13 +274,13 @@ class UserAdministrationController extends CommonController {
         }
         if($ree){
             $information['uid']=$top_id;
-            $information['money']=2000;
+            $information['money']=2500;
             $information['reason']="出局奖励";
             $information['time']=time();
             $rcm = M('bonus_record')->data($information)->add();
 
             $nn['uid']=$top_id;
-            $nn['money'] = "+2000";
+            $nn['money'] = "+2500";
             $nn['reason'] = "出局奖励";
             $nn['time'] = time();
             $recc = M('getBonus_record')->data($nn)->add();

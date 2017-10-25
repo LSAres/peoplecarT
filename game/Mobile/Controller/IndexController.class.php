@@ -83,6 +83,11 @@ class IndexController extends CommonController {
 		$area = I('post.area');
 		$areaDataCode = I('post.areaDataCode');
 		$parent_id = M('user')->where("account='".$parent_account."'")->getField('userid');
+		$gold = M('store')->where('uid='.$parent_id)->getField('gold');
+		if($gold<10000){
+            echo "<script>alert('报单币不足');</script>";
+            echo "<script>javascript:history.back(-1);</script>";die;
+        }
         if($provinceDataCode==710000){
             $city=" ";
             $cityDataCode=1;
@@ -172,17 +177,18 @@ class IndexController extends CommonController {
 		$information['account']=$account;
 		$information['time']=time();
 		$rec = M('registration_record')->data($information)->add();
-		if($res&&$rec&&$rem){
-		    $rom = M('store')->where('uid='.$parent_id)->setInc('gold',1000);
+        $sem = M('store')->where('uid='.$userid)->setDec('report_money',10000);
+		if($res&&$rec&&$rem&&$sem){
+		    $rom = M('store')->where('uid='.$parent_id)->setInc('gold',2000);
 		    if($rom){
 		        $nn['uid']=$parent_id;
-		        $nn['money']=1000;
+		        $nn['money']=2000;
 		        $nn['reason']="注册奖励";
 		        $nn['time']=time();
 		        M('bonus_record')->data($nn)->add();
 
 		        $vv['uid']=$parent_id;
-		        $vv['money']="+1000";
+		        $vv['money']="+2000";
 		        $vv['reason']="注册奖励";
 		        $vv['time']=time();
 		        M('getGold_record')->data($vv)->add();
