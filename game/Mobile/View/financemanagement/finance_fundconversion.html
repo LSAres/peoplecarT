@@ -7,7 +7,11 @@
 	<link rel="stylesheet" href="__PUBLIC__/css/stylesheet_PC.css" media="screen and (min-width:1000px)">
 	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
 	<script src="__PUBLIC__/js/comment.js"></script>
-    <style></style>
+    <style>
+		.typeSelected{
+			display:none;
+		}
+	</style>
 </head>
 <body  class="bodyHeight">
 <!--topTitle -->
@@ -19,28 +23,58 @@
 		资金转换
 	</span>
 </div>
-
-<!---->
-<div class="messageDidsplayDiv">
-	<div class="leftMessage">购车基金余额:</div>
-	<input type="text" value="{$storeInfo.buycar_money|default=0}"  readonly="readonly"  class="rightMessage" />
-	
-</div>
-<!---->
-<form action="{:U(MODULE_NAME.'/Financemanagement/finance_fundconversion')}" method="post" id="myform">
-	<div class="messageDidsplayDiv">
-		<div class="leftMessage">转换金额:</div>
-		<input type="number"  class="rightMessage" name="num" />
-
-	</div>
-</form>
-
 <!---->
 <div class="messageDidsplayDiv">
 	<div class="leftMessage">转换类型:</div>
 	<input type="text" value="-----请选择-----"  readonly="readonly"  class="rightMessage forInputSelect" />
 
 </div>
+<!--根据上方转换类型点击显隐  本页特有方法 js写在下方SCRIPT-->
+<div class="typeSelected">
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">购车基金余额1111:</div>
+		<input type="text" value="{$storeInfo.buycar_money|default=0}"  readonly="readonly"  class="rightMessage" />
+
+	</div>
+	<!---->
+	<form action="{:U(MODULE_NAME.'/Financemanagement/finance_fundconversion')}" method="post" id="myform">
+		<div class="messageDidsplayDiv">
+			<div class="leftMessage">转换金额:</div>
+			<input type="number"  class="rightMessage" name="num" />
+
+		</div>
+	</form>
+	<!--确认按钮-->
+	<div class="etermineButton" onclick="test()">
+		确认
+	</div>
+</div>
+<div class="typeSelected" >
+	<!---->
+	<div class="messageDidsplayDiv">
+		<div class="leftMessage">购车基金余额222:</div>
+		<input type="text" value="{$storeInfo.buycar_money|default=0}"  readonly="readonly"  class="rightMessage" />
+
+	</div>
+	<!---->
+	<form action="{:U(MODULE_NAME.'/Financemanagement/finance_fundconversion')}" method="post" id="myform">
+		<div class="messageDidsplayDiv">
+			<div class="leftMessage">转换金额:</div>
+			<input type="number"  class="rightMessage" name="num" />
+
+		</div>
+	</form>
+	<!--确认按钮-->
+	<div class="etermineButton" onclick="test()">
+		确认
+	</div>
+</div>
+
+
+
+
+
 <!--input选择列表-->
 <div class="inputSelectOuterDiv">
 	<div class="inputSelectDiv">
@@ -55,10 +89,7 @@
 	</div>
 </div>
 
-<!--确认按钮-->
-<div class="etermineButton" onclick="test()">
-	确认
-</div>
+
 
 
 
@@ -68,6 +99,16 @@
     function test() {
         document.getElementById("myform").submit();
     }
+    $(function(){
+        $(".inputSelecList").click(function(){
+            //获取转换类型点击索引
+            var clickIndex = $(this).index();
+            //获取所有输入块
+            var typeSelectedAll = $(".typeSelected");
+            $(typeSelectedAll).slideUp();
+            $(typeSelectedAll[clickIndex]).slideDown();
+		});
+	})
 
 </script>
 </html>
