@@ -102,6 +102,10 @@ $(function () {
         $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/userTransactionHistory.html');
 
     });
+    $('.freezeDetails').click(function () {
+        $('iframe').attr('src', 'index.php?s=/super/WealthDetailed/freezeDetails.html');
+
+    });
 
     //公告选项
     $(".addNoticePage").click(function () {

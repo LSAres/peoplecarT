@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	<link rel="stylesheet" href="__PUBLIC__/css/stylesheet.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/stylesheet_PC.css" media="screen and (min-width:1000px)">
+	<script src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+	<script src="__PUBLIC__/js/comment.js"></script>
+    <style>
+	
+	</style>
+</head>
+<body  class="bodyHeight">
+<!--topTitle -->
+<div class="pageTitleDiv">
+	<div class="backButton">
+		返回
+	</div>
+	<span class="pageTitleText">
+		冻结记录
+	</span>
+</div>
+
+
+<!--奖金记录-->
+<div class="selectedDiv selected_1">
+	<foreach name="chargelist" item="value" key="key">
+		<!--信息块-->
+		<div class="detailsDiv">
+			<div class="details_Data">
+				{$value.time|date="Y-m-d H:i:s",###}
+				<!--向下三角形-->
+				<div style=" border-top: solid 30px #fff; border-left: solid 15px transparent; border-right: solid 15px transparent; display: inline-block;float: right;"></div>
+			</div>
+			<!--信息显示块-->
+			<div class="details_MessageRow">
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					奖金数量：
+				</span>
+				<span class="details_RightMessage">
+					{$value.money}
+				</span>
+				<!--一条信息 END-->
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					奖励原因：
+				</span>
+				<span class="details_RightMessage">
+					{$value.reason}
+				</span>
+
+			</div>
+			<!--信息显示块 END-->
+		</div>
+		<!--信息块 END-->
+	</foreach>
+	
+	
+</div>
+
+<!--奖金记录 END-->
+
+
+
+</body>
+
+<script>
+  
+
+</script>
+</html>
