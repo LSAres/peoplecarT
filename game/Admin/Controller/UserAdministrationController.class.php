@@ -82,6 +82,10 @@ class UserAdministrationController extends CommonController {
                    echo "<script>javascript:history.back(-1);</script>";die;
                }
                //查询推荐人是否为小组顶端
+               $ishave_upside_id = M('user')->where('userid='.$userid)->getField('upside_id');
+               if($ishave_upside_id){
+                   $recommend_id = $ishave_upside_id;
+               }
                $is_top_id = M('group')->where('one_id='.$recommend_id)->find();
                //推荐人为小组顶端时将注册用户进行分组
                if($is_top_id){

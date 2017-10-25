@@ -61,6 +61,9 @@ class IndexController extends CommonController {
             $t['area']="无";
             $t['areaDataCode']=1;
         }
+        if($t['upside_account']==""){
+            $t['upside_account']=1;
+        }
 		foreach($t as $v){
 			if($v == ''){
 				echo "<script>alert('请确认输入完成');</script>";
@@ -82,6 +85,15 @@ class IndexController extends CommonController {
 		$cityDataCode = I('post.cityDataCode');
 		$area = I('post.area');
 		$areaDataCode = I('post.areaDataCode');
+        $upside_account = I('post.upside_account');
+        $upside_id="";
+        if($upside_account){
+            $upside_id = M('user')->where("account='".$upside_account."'")->getField('userid');
+            if(!$upside_id){
+                echo "<script>alert('分组上级账号不存在，请重新填写');</script>";
+                echo "<script>javascript:history.back(-1);</script>";die;
+            }
+        }
 		$parent_id = M('user')->where("account='".$parent_account."'")->getField('userid');
 		$gold = M('store')->where('uid='.$parent_id)->getField('gold');
 		if($gold<10000){
@@ -165,6 +177,7 @@ class IndexController extends CommonController {
 		$data['city_code']=$cityDataCode;
 		$data['area']=$area;
 		$data['area_code']=$areaDataCode;
+		$data['upside_id']=$upside_id;
 		$res = M('user')->data($data)->add();
 
 		$userid = M('user')->where("account='".$account."'")->getField('userid');
