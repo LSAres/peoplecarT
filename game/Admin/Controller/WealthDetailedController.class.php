@@ -249,4 +249,29 @@ class WealthDetailedController extends CommonController{
             echo "<script>javascript:history.back(-1);</script>";die;
         }
     }
+
+    public function freezeDetailed(){
+        $where = null;
+        $tb_new = M('upside_record');
+        $pagesize =10;
+        $p = getpage($tb_new, $where, $pagesize);
+        $pageshow   = $p->show();
+
+        $userArr=$tb_new->where($where)
+            ->order('id desc ')
+            ->select();
+        foreach ($userArr as $k=>$v){
+            $userInfo = M('user')->where('userid='.$v['uid'])->find();
+            $userArr[$k]['username']=$userInfo['account'];
+            $userArr[$k]['account']=$userInfo['username'];
+            $upsideInfo = M('user')->where('userid='.$v['upside_id'])->find();
+            $userArr[$k]['upside_username']=$upsideInfo['username'];
+            $userArr[$k]['upside_account']=$upsideInfo['account'];
+        }
+        $this->assign(array(
+            'userArr'=>$userArr,
+            'pageshow'=>$pageshow,
+        ));
+        $this->display();
+    }
 }

@@ -33,18 +33,20 @@
 
 <table>
     <tr>
-        <th>会员账号</th>
-        <th>会员姓名</th>
+        <th>拥有者账号</th>
+        <th>拥有者姓名</th>
+        <th>倒挂者账号</th>
+        <th>倒挂者姓名</th>
         <th>冻结金额</th>
-        <th>冻结原因</th>
         <th>冻结时间</th>
     </tr>
     <foreach name="userArr" item="value" key="key">
         <tr>
             <td>{$value.account}</td>
             <td>{$value.username}</td>
+            <td>{$value.upside_account}</td>
+            <td>{$value.upside_username}</td>
             <td>{$value.money}</td>
-            <td>{$value.reason}</td>
             <td>{$value.time|date="Y-m-d H:i:s",###}</td>
         </tr>
     </foreach>

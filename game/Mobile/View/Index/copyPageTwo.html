@@ -35,8 +35,8 @@
                 <div class="pageTwoTitleDiv-RowMessage oneRowLeftSkew">{$storeInfo.gold|default=0}</div>
             </div>
             <div class="pageTwoTitleDiv-RowRightDiv oneRowRight" style="background-color: rgba(243, 157, 18, 0.98);">
-                <div class="pageTwoTitleDiv-RowTitle oneRowRightSkew">报单币</div>
-                <div class="pageTwoTitleDiv-RowMessage oneRowRightSkew">{$storeInfo.report_money|default=0}</div>
+                <div class="pageTwoTitleDiv-RowTitle oneRowRightSkew">冻结金额</div>
+                <div class="pageTwoTitleDiv-RowMessage oneRowRightSkew">{$storeInfo.frozen_money|default=0} </div>
             </div>
         </div>
         <div class="pageTwoTitleDiv-Row">
@@ -50,8 +50,6 @@
 
             </div>
         </div>
-        <div class="dongjiejine"> 冻结金额 </div>
-        <div class="dongjiejine_shuzi"> {$storeInfo.frozen_money|default=0} </div>
         <div class="shoujihao">{$userInfo.account}</div>
         <div class="xingming">{$userInfo.username}</div>
         <div class="shenfen">{$userInfo.levename}</div>
@@ -269,6 +267,14 @@
                style="margin-top:0;">
                 <img src="__PUBLIC__/img/16.png" alt="" class="body_control_titleImage">
                 <span class="body_control_message">交易记录</span>
+                <div class="body_control_titleRight">
+                    <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
+                </div>
+            </a>
+            <a href="{:U('financemanagement/finance_freeze')} " class="body_control_Div listTwoColor"
+               style="margin-top:0;">
+                <img src="__PUBLIC__/img/16.png" alt="" class="body_control_titleImage">
+                <span class="body_control_message">冻结记录</span>
                 <div class="body_control_titleRight">
                     <img src="__PUBLIC__/img/rightIcon.gif" alt="" class="body_control_bottomImage">
                 </div>

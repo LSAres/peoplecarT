@@ -422,4 +422,16 @@ class FinancemanagementController extends CommonController {
         $this->assign('transaction_list',$transaction_list);
         $this->display();
     }
+
+    public function finance_freeze(){
+        $userid = session('userid');
+        $upsideInfo = M('upside_record')->where('uid='.$userid)->order('id desc')->select();
+        foreach($upsideInfo as $k=>$v){
+            $upsideuser = M('user')->where('userid='.$v['upside_id'])->find();
+            $upsideInfo[$k]['username']=$upsideuser['username'];
+            $upsideInfo[$k]['account']=$upsideuser['account'];
+        }
+        $this->assign('upsideInfo',$upsideInfo);
+        $this->display();
+    }
 }

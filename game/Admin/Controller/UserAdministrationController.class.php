@@ -74,7 +74,7 @@ class UserAdministrationController extends CommonController {
                    $cg['money']="+8000";
                    $cg['reason']="直推奖励购车基金";
                    $cg['time']=time();
-                   M('getBuycarMoney_record')->data($cg)->add();
+                   M('getbuycarmoney_record')->data($cg)->add();
                }
                //判断奖励是否发放成功
                if(!$rs||!$rc){
@@ -211,25 +211,50 @@ class UserAdministrationController extends CommonController {
                 M('group')->where('one_id='.$top_id)->setField('last_time',time());
             }
         }else{
+            $recommend_id = M('user')->where('userid='.$userid)->getField('recommend_id');
             //判断三层4-7号位置哪个为空，查找为空位置，将新成员放置
             if($group['four_id']==null){
                 M('user')->where('userid='.$userid)->setField('parent_id',$group['two_id']);
                 M('group')->where('one_id='.$top_id)->setField('four_id',$userid);
                 M('group')->where('one_id='.$top_id)->setField('four_time',time());
                 M('group')->where('one_id='.$top_id)->setField('last_time',time());
+
+                $data['uid'] = $recommend_id;
+                $data['upside_id'] = $group['three_id'];
+                $data['money'] = 8000;
+                $data['time']=time();
+                M('upside_record')->data($data)->add();
             }else{
                 if($group['five_id']==null){
                     M('user')->where('userid='.$userid)->setField('parent_id',$group['two_id']);
                     M('group')->where('one_id='.$top_id)->setField('five_id',$userid);
                     M('group')->where('one_id='.$top_id)->setField('five_time',time());
                     M('group')->where('one_id='.$top_id)->setField('last_time',time());
+
+                    $data['uid'] = $recommend_id;
+                    $data['upside_id'] = $group['three_id'];
+                    $data['money'] = 8000;
+                    $data['time']=time();
+                    M('upside_record')->data($data)->add();
                 }else{
                     if ($group['six_id']==null){
                         M('user')->where('userid='.$userid)->setField('parent_id',$group['three_id']);
                         M('group')->where('one_id='.$top_id)->setField('six_id',$userid);
                         M('group')->where('one_id='.$top_id)->setField('six_time',time());
                         M('group')->where('one_id='.$top_id)->setField('last_time',time());
+
+                        $data['uid'] = $recommend_id;
+                        $data['upside_id'] = $group['two_id'];
+                        $data['money'] = 8000;
+                        $data['time']=time();
+                        M('upside_record')->data($data)->add();
                     }else{
+                        $data['uid'] = $recommend_id;
+                        $data['upside_id'] = $group['two_id'];
+                        $data['money'] = 8000;
+                        $data['time']=time();
+                        M('upside_record')->data($data)->add();
+
                         //如果7号位置为空，将原小组打散，顶端出局，其余组员组成两个新小组
                         $data['one_id']=$group['two_id'];
                         $data['one_time']=time();
@@ -263,6 +288,21 @@ class UserAdministrationController extends CommonController {
 
     //顶端出局重组
     public function recombination($top_id=null){
+        $upside_list = M('upside_record')->where('upside_id='.$top_id)->select();
+        foreach($upside_list as $k=>$v){
+            $frozen_money = M('store')->where('uid='.$v['uid'])->getField('frozen_money');
+            if($frozen_money>=8000){
+                $res = M('store')->where('uid='.$v['uid'])->setDec('frozen_money',$v['money']);
+                if($res){
+                    $rnn = M('store')->where('uid='.$v['uid'])->setInc('buycar_money',$v['money']);
+                    $cn = M('upside_record')->where('id='.$v['id'])->delete();
+                }
+            }else{
+                $rcc = M('store')->where('uid='.$v['uid'])->setInc('buycar_money',$v['money']);
+                $rcs = M('upside_record')->where('id='.$v['id'])->delete();
+            }
+        }
+
         $recommend_id = M('user')->where('userid='.$top_id)->getField('recommend_id');
         $ree=M('store')->where('uid='.$top_id)->setInc('bonus',2500);
         if($ree){

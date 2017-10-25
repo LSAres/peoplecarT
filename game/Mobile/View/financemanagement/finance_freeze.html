@@ -25,7 +25,7 @@
 
 <!--奖金记录-->
 <div class="selectedDiv selected_1">
-	<foreach name="chargelist" item="value" key="key">
+	<foreach name="upsideInfo" item="value" key="key">
 		<!--信息块-->
 		<div class="detailsDiv">
 			<div class="details_Data">
@@ -37,20 +37,26 @@
 			<div class="details_MessageRow">
 				<!--一条信息-->
 				<span class="details_LeftMessage">
-					奖金数量：
+					倒挂人账号：
 				</span>
 				<span class="details_RightMessage">
-					{$value.money}
+					{$value.account}
 				</span>
 				<!--一条信息 END-->
 				<!--一条信息-->
 				<span class="details_LeftMessage">
-					奖励原因：
+					倒挂人姓名：
 				</span>
 				<span class="details_RightMessage">
-					{$value.reason}
+					{$value.username}
 				</span>
-
+				<!--一条信息-->
+				<span class="details_LeftMessage">
+					冻结金额：
+				</span>
+				<span class="details_RightMessage">
+					{$value.money}
+				</span>
 			</div>
 			<!--信息显示块 END-->
 		</div>

@@ -191,7 +191,7 @@ class IndexController extends CommonController {
 		        $vv['money']="+2000";
 		        $vv['reason']="注册奖励";
 		        $vv['time']=time();
-		        M('getGold_record')->data($vv)->add();
+		        M('getgold_record')->data($vv)->add();
             }
         }
 		if($res&&$rem&&$rec){
