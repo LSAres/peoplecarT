@@ -265,13 +265,6 @@ class UserAdministrationController extends CommonController {
     public function recombination($top_id=null){
         $recommend_id = M('user')->where('userid='.$top_id)->getField('recommend_id');
         $ree=M('store')->where('uid='.$top_id)->setInc('bonus',2500);
-        $frozen_money = M('store')->where('uid='.$top_id)->getField('frozen_money');
-        if($frozen_money>0) {
-            $rem = M('store')->where('uid='.$top_id)->setInc('buycar_money',$frozen_money);
-            if($rem){
-                M('store')->where('uid='.$top_id)->setField('frozen_money',0);
-            }
-        }
         if($ree){
             $information['uid']=$top_id;
             $information['money']=2500;
