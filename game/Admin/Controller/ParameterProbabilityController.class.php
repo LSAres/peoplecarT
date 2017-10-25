@@ -18,11 +18,9 @@ class ParameterProbabilityController extends CommonController{
             $fund_fee = I('post.fund_fee');
             $bonus_fee = I('post.bonus_fee');
             $cash_fee = I('post.cash_fee');
-            $declaration_fee = I('post.declaration_fee');
             $res = M('function_parameters')->where('id=1')->setField('fund_fee',$fund_fee);
             $rea = M('function_parameters')->where('id=1')->setField('bonus_fee',$bonus_fee);
             $reb = M('function_parameters')->where('id=1')->setField('cash_fee',$cash_fee);
-            $rec = M('function_parameters')->where('id=1')->setField('declaration_fee',$declaration_fee);
             echo "<script>alert('修改成功');</script>";
             echo "<script>window.location.href='".U('ParameterProbability/functionValueResetPage')."'</script>";
 

@@ -200,23 +200,23 @@ class WealthDetailedController extends CommonController{
             $this->display();
         }else{
             $id = I('post.id');
-            $report_money = I('post.report_money');
+//            $report_money = I('post.report_money');
             $buycar_money = I('post.buycar_money');
             if(!$id){
                 echo "<script>alert('系统错误');</script>";
                 echo "<script>javascript:history.back(-1);</script>";die;
             }
-            if($report_money<0){
-                echo "<script>alert('报单币数量不可为负');</script>";
-                echo "<script>javascript:history.back(-1);</script>";die;
-            }
+//            if($report_money<0){
+//                echo "<script>alert('报单币数量不可为负');</script>";
+//                echo "<script>javascript:history.back(-1);</script>";die;
+//            }
             if($buycar_money<0){
                 echo "<script>alert('购车基金数量不可为负');</script>";
                 echo "<script>javascript:history.back(-1);</script>";die;
             }
-            $res = M('store')->where('id='.$id)->setField('report_money',$report_money);
+//            $res = M('store')->where('id='.$id)->setField('report_money',$report_money);
             $rec = M('store')->where('id='.$id)->setField('buycar_money',$buycar_money);
-            if($res&&$rec){
+            if($rec){
                 echo "<script>alert('修改成功');location.href='".U('WealthDetailed/userCapitalOffset')."'</script>";
                 exit();
             }else{
